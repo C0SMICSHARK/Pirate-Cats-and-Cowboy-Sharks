@@ -9,6 +9,7 @@ radius = 7.0
 height = 26.0
 
 [node name="Player 1" type="Node2D"]
+z_index = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_2mvbs")
