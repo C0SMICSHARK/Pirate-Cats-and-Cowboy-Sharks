@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://djc42utyrnb0m"]
+[gd_scene load_steps=7 format=3 uid="uid://djc42utyrnb0m"]
 
 [ext_resource type="Script" uid="uid://b64ndw6jydvxy" path="res://Scripts/test_scene.gd" id="1_wtb4w"]
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="2_kaqar"]
 [ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/player_1.tscn" id="3_m3drp"]
-[ext_resource type="PackedScene" uid="uid://cg6dul6g2cnl5" path="res://Scenes/player_2.tscn" id="4_yafff"]
-[ext_resource type="PackedScene" uid="uid://csi2k0pbl08yp" path="res://Scenes/enemy.tscn" id="5_ejcod"]
+[ext_resource type="Script" uid="uid://bpqey475r4mar" path="res://Scripts/water.gd" id="5_tciti"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r5l72"]
 
@@ -15,14 +14,40 @@ size = Vector2(0.99978405, 1.0044043)
 script = ExtResource("1_wtb4w")
 
 [node name="DebugFloor" type="MeshInstance2D" parent="."]
-position = Vector2(578.875, 621.00006)
-scale = Vector2(1156.25, 56.75003)
+position = Vector2(409.375, 621.00006)
+scale = Vector2(817.25, 56.75003)
 mesh = SubResource("BoxMesh_r5l72")
 texture = ExtResource("2_kaqar")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="DebugFloor"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DebugFloor/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_3dogw")
+
+[node name="DebugFloor2" type="MeshInstance2D" parent="."]
+position = Vector2(1674, 624.00006)
+scale = Vector2(1156.25, 56.75003)
+mesh = SubResource("BoxMesh_r5l72")
+texture = ExtResource("2_kaqar")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DebugFloor2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DebugFloor2/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_3dogw")
+
+[node name="DebugFloor3" type="MeshInstance2D" parent="."]
+position = Vector2(939, 676)
+scale = Vector2(386.6189, 56.75003)
+mesh = SubResource("BoxMesh_r5l72")
+texture = ExtResource("2_kaqar")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DebugFloor3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DebugFloor3/StaticBody2D"]
 position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_3dogw")
@@ -67,17 +92,13 @@ scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_3dogw")
 
 [node name="Cat" parent="." instance=ExtResource("3_m3drp")]
+z_index = 0
 position = Vector2(24.999998, 564.00006)
 scale = Vector2(1.8399999, 1.8399999)
 
-[node name="Shark" parent="." instance=ExtResource("4_yafff")]
-position = Vector2(89, 565)
-scale = Vector2(1.7269723, -1.7598324)
-
-[node name="Enemy" parent="." instance=ExtResource("5_ejcod")]
-position = Vector2(686, 475)
-scale = Vector2(-1.2770917, 2.012024)
-
-[node name="Enemy2" parent="." instance=ExtResource("5_ejcod")]
-position = Vector2(759, 572)
-scale = Vector2(-1.2770917, 2.012024)
+[node name="water" type="Node2D" parent="."]
+z_index = -1
+position = Vector2(815, 595)
+script = ExtResource("5_tciti")
+water_size = Vector2(284, 55)
+metadata/_custom_type_script = "uid://bpqey475r4mar"
