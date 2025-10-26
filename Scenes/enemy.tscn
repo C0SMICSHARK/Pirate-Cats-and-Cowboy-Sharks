@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://csi2k0pbl08yp"]
+
+[ext_resource type="Texture2D" uid="uid://bm0e1ls4n7lbg" path="res://Debug Assets/dark-red-color-solid-background-1920x1080.png" id="1_hghv2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ne65n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hghv2"]
+
+[node name="Enemy" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
+position = Vector2(0, 5.9604645e-08)
+scale = Vector2(20, 19.999998)
+mesh = SubResource("BoxMesh_ne65n")
+texture = ExtResource("1_hghv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_hghv2")
