@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dksykscfxj8rk"]
+
+[ext_resource type="Script" uid="uid://pdp0rkxp8kog" path="res://Scripts/Player1.gd" id="1_2mvbs"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r7fgb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r7fgb"]
+radius = 7.0
+height = 26.0
+
+[node name="Player 1" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_2mvbs")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
+position = Vector2(9.536743e-07, 1)
+scale = Vector2(14, 13.000002)
+mesh = SubResource("CapsuleMesh_r7fgb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_r7fgb")
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.4
+
+[connection signal="timeout" from="DashTimer" to="CharacterBody2D" method="_on_dash_timer_timeout"]

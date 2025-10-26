@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://djc42utyrnb0m"]
+
+[ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="1_3dogw"]
+[ext_resource type="Script" uid="uid://b64ndw6jydvxy" path="res://Scripts/test_scene.gd" id="1_50ct6"]
+[ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/player_1.tscn" id="2_r5l72"]
+[ext_resource type="PackedScene" uid="uid://cg6dul6g2cnl5" path="res://Scenes/player_2.tscn" id="4_hb2xm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r5l72"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dogw"]
+size = Vector2(0.99978405, 1.0044043)
+
+[node name="Test Scene" type="Node2D"]
+script = ExtResource("1_50ct6")
+
+[node name="DebugFloor" type="MeshInstance2D" parent="."]
+position = Vector2(578.875, 621.00006)
+scale = Vector2(1156.25, 56.75003)
+mesh = SubResource("BoxMesh_r5l72")
+texture = ExtResource("1_3dogw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DebugFloor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DebugFloor/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_3dogw")
+
+[node name="DebugPlatform" type="MeshInstance2D" parent="."]
+position = Vector2(579.00006, 511.00003)
+scale = Vector2(385.2739, 28.35759)
+mesh = SubResource("BoxMesh_r5l72")
+texture = ExtResource("1_3dogw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DebugPlatform"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DebugPlatform/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_3dogw")
+
+[node name="DebugWall" type="MeshInstance2D" parent="."]
+position = Vector2(758.00006, 470.00003)
+scale = Vector2(-26.99894, 54.942936)
+mesh = SubResource("BoxMesh_r5l72")
+texture = ExtResource("1_3dogw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DebugWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DebugWall/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_3dogw")
+
+[node name="DebugFloatingPlatform" type="MeshInstance2D" parent="."]
+position = Vector2(950, 449)
+scale = Vector2(-146.03656, 10.089114)
+mesh = SubResource("BoxMesh_r5l72")
+texture = ExtResource("1_3dogw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DebugFloatingPlatform"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DebugFloatingPlatform/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_3dogw")
+
+[node name="Cat" parent="." instance=ExtResource("2_r5l72")]
+position = Vector2(24.999998, 564.00006)
+scale = Vector2(1.8399999, 1.8399999)
+
+[node name="Shark" parent="." instance=ExtResource("4_hb2xm")]
+position = Vector2(89, 565)
+scale = Vector2(1.7269723, -1.7598324)
