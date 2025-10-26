@@ -152,8 +152,10 @@ func splash(splash_pos: Vector2, splash_velocity: float) -> void: #Splashing Wat
 	
 	
 	
-func _on_body_entered(_body: Node2D) -> void:
-	pass
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("can_interact_with_water"):
+		splash(body.global_position, -body.velocity.y * player_splash_multiplier)
 	
-func _on_body_exited(_body: Node2D) -> void:
-	pass
+func _on_body_exited(body: Node2D) -> void:
+	if body.is_in_group("can_interact_with_water"):
+		splash(body.global_position, body.velocity.y * player_splash_multiplier)

@@ -9,6 +9,8 @@ const JUMP_VELOCITY = -400.0
 var dashing = false
 @onready var DashTimer = $"../DashTimer"
 
+func _ready() -> void:
+	add_to_group("can_interact_with_water")
 
 
 func _physics_process(delta: float) -> void:

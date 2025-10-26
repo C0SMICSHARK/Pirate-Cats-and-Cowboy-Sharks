@@ -8,7 +8,7 @@
 radius = 7.0
 height = 26.0
 
-[node name="Player 1" type="Node2D"]
+[node name="Player 1" type="Node2D" groups=["can_interact_with_water"]]
 z_index = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
