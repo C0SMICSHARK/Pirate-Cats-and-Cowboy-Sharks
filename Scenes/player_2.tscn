@@ -1,9 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg6dul6g2cnl5"]
+[gd_scene load_steps=3 format=3 uid="uid://cg6dul6g2cnl5"]
 
 [ext_resource type="Script" uid="uid://fop0iyjxa0tr" path="res://Scripts/Player2.gd" id="1_mkara"]
-[ext_resource type="Texture2D" uid="uid://bu3s7sxp148w7" path="res://Debug Assets/Perfect Navy Solid.jpg" id="2_cgts5"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_cgts5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3adp"]
 radius = 7.0
@@ -14,12 +11,6 @@ z_index = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_mkara")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
-position = Vector2(9.536743e-07, 1)
-scale = Vector2(14, 13.000002)
-mesh = SubResource("CapsuleMesh_cgts5")
-texture = ExtResource("2_cgts5")
 
 [node name="Hitbox" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
