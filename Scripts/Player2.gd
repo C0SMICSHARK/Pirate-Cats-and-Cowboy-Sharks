@@ -11,7 +11,7 @@ func _ready() -> void:
 func fire():
 	var Bullet=bullet_path.instantiate()
 	Bullet.dir=rotation
-	Bullet.pos=$Node2D.global_position
+	Bullet.pos=$FiringPos.global_position
 	Bullet.rota=global_rotation
 	get_parent().add_child(Bullet)
 
