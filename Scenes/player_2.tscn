@@ -1,13 +1,189 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg6dul6g2cnl5"]
+[gd_scene load_steps=34 format=3 uid="uid://cg6dul6g2cnl5"]
 
 [ext_resource type="Script" uid="uid://fop0iyjxa0tr" path="res://Scripts/Player2.gd" id="1_mkara"]
-[ext_resource type="Texture2D" uid="uid://bm0e1ls4n7lbg" path="res://Debug Assets/dark-red-color-solid-background-1920x1080.png" id="2_cgts5"]
+[ext_resource type="Texture2D" uid="uid://b5uwq4j25mops" path="res://Assets/Shark/Idle1.png" id="2_eus2p"]
+[ext_resource type="Texture2D" uid="uid://w4a6aq1xis7j" path="res://Assets/Shark/Idle2.png" id="3_6cafw"]
+[ext_resource type="Texture2D" uid="uid://5uecp16w65ve" path="res://Assets/Shark/Idle3.png" id="4_mtyrt"]
+[ext_resource type="Texture2D" uid="uid://1oya0touyf5" path="res://Assets/Shark/Idle4.png" id="5_bth63"]
+[ext_resource type="Texture2D" uid="uid://bywdxmkyud2bi" path="res://Assets/Shark/Run0.png" id="6_c6poq"]
+[ext_resource type="Texture2D" uid="uid://dudn1ls71eaap" path="res://Assets/Shark/Run1.png" id="7_gsfwq"]
+[ext_resource type="Texture2D" uid="uid://bn4bijlbkgh8k" path="res://Assets/Shark/Run2.png" id="8_iet35"]
+[ext_resource type="Texture2D" uid="uid://47h0aups3fes" path="res://Assets/Shark/Run3.png" id="9_mxbqu"]
+[ext_resource type="Texture2D" uid="uid://3pteroggqw3v" path="res://Assets/Shark/Run4.png" id="10_0l2yj"]
+[ext_resource type="Texture2D" uid="uid://drj0dno3kw3sa" path="res://Assets/Shark/Run5.png" id="11_x8cua"]
+[ext_resource type="Texture2D" uid="uid://cwpkd7isai5js" path="res://Assets/Shark/Run6.png" id="12_s3tad"]
+[ext_resource type="Texture2D" uid="uid://cq5o83434n62b" path="res://Assets/Shark/Run7.png" id="13_ne8t6"]
+[ext_resource type="Texture2D" uid="uid://dwxwpdedvnta4" path="res://Assets/Shark/Run8.png" id="14_sc7t3"]
+[ext_resource type="Texture2D" uid="uid://dj2u0imxvp72i" path="res://Assets/Shark/Run9.png" id="15_mcfkd"]
+[ext_resource type="Texture2D" uid="uid://deannimnnf0el" path="res://Assets/Shark/ShootAnim.png" id="16_iet35"]
+[ext_resource type="Texture2D" uid="uid://cl6sj1sficr6e" path="res://Assets/Shark/SwimAnim.png" id="17_mxbqu"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_a3adp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l2yj"]
+atlas = ExtResource("16_iet35")
+region = Rect2(0, 0, 166, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8cua"]
+atlas = ExtResource("16_iet35")
+region = Rect2(166, 0, 166, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3tad"]
+atlas = ExtResource("16_iet35")
+region = Rect2(332, 0, 166, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne8t6"]
+atlas = ExtResource("16_iet35")
+region = Rect2(498, 0, 166, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc7t3"]
+atlas = ExtResource("16_iet35")
+region = Rect2(664, 0, 166, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcfkd"]
+atlas = ExtResource("16_iet35")
+region = Rect2(830, 0, 166, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg5fg"]
+atlas = ExtResource("17_mxbqu")
+region = Rect2(0, 0, 250, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_064nc"]
+atlas = ExtResource("17_mxbqu")
+region = Rect2(250, 0, 250, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utg3y"]
+atlas = ExtResource("17_mxbqu")
+region = Rect2(500, 0, 250, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb6qd"]
+atlas = ExtResource("17_mxbqu")
+region = Rect2(750, 0, 250, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmca1"]
+atlas = ExtResource("17_mxbqu")
+region = Rect2(0, 135, 250, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgtdn"]
+atlas = ExtResource("17_mxbqu")
+region = Rect2(250, 135, 250, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s081i"]
+atlas = ExtResource("17_mxbqu")
+region = Rect2(500, 135, 250, 135)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_achxb"]
+atlas = ExtResource("17_mxbqu")
+region = Rect2(750, 135, 250, 135)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8os5a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eus2p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6cafw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mtyrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bth63")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_c6poq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gsfwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_iet35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mxbqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0l2yj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_x8cua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s3tad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ne8t6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_sc7t3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_mcfkd")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l2yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8cua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3tad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne8t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc7t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcfkd")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg5fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_064nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utg3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb6qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmca1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgtdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s081i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_achxb")
+}],
+"loop": true,
+"name": &"Swim",
+"speed": 15.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3adp"]
-radius = 7.0
-height = 26.0
+radius = 12.0
+height = 50.0
 
 [node name="Player2" type="Node2D" groups=["can_interact_with_water"]]
 z_index = 1
@@ -15,15 +191,15 @@ z_index = 1
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_mkara")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
-position = Vector2(-4.7683716e-07, 1.0000024)
-scale = Vector2(14.000001, 13.000002)
-mesh = SubResource("CapsuleMesh_a3adp")
-texture = ExtResource("2_cgts5")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(1.8125, 0.9750099)
+scale = Vector2(0.258125, 0.25812507)
+sprite_frames = SubResource("SpriteFrames_8os5a")
+animation = &"Idle"
 
 [node name="Hitbox" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 1)
+position = Vector2(-0.375, -0.3999939)
 shape = SubResource("CapsuleShape2D_a3adp")
 
 [node name="FiringPos" type="Node2D" parent="CharacterBody2D"]
-position = Vector2(7, 0)
+position = Vector2(17, -4)

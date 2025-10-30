@@ -33,7 +33,15 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("LEFT_P2", "RIGHT_P2")
 	if direction:
 		velocity.x = direction * SPEED
+		$AnimatedSprite2D.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		$AnimatedSprite2D.play("Idle")
+		
+	if Input.is_action_just_pressed("LEFT_P2"):
+		$AnimatedSprite2D.flip_h = true
+	
+	if Input.is_action_just_pressed("RIGHT_P2"):
+		$AnimatedSprite2D.flip_h = false
 
 	move_and_slide()
