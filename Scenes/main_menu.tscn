@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://brt5ikhgib8k7"]
+[gd_scene load_steps=4 format=3 uid="uid://brt5ikhgib8k7"]
 
 [ext_resource type="Script" uid="uid://dmwrtfpqohva3" path="res://Scripts/main_menu.gd" id="1_48xlc"]
 [ext_resource type="PackedScene" uid="uid://bvhg2nv87al38" path="res://Scenes/Scene_transition.tscn" id="2_1ehe0"]
+[ext_resource type="Script" uid="uid://s4s2601isl56" path="res://Scripts/controller_button.gd" id="2_ce3w2"]
 
 [node name="Main menu" type="Node2D"]
 script = ExtResource("1_48xlc")
@@ -20,6 +21,7 @@ offset_right = 1297.0
 offset_bottom = 447.0
 text = "Start Game"
 icon_alignment = 1
+script = ExtResource("2_ce3w2")
 
 [node name="Options" type="Button" parent="Button_manager"]
 layout_mode = 0
