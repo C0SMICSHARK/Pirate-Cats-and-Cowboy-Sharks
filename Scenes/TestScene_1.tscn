@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://djc42utyrnb0m"]
+[gd_scene load_steps=9 format=3 uid="uid://djc42utyrnb0m"]
 
 [ext_resource type="Script" uid="uid://b64ndw6jydvxy" path="res://Scripts/test_scene.gd" id="1_wtb4w"]
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="2_kaqar"]
 [ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/player_1.tscn" id="3_m3drp"]
 [ext_resource type="PackedScene" uid="uid://cg6dul6g2cnl5" path="res://Scenes/player_2.tscn" id="4_tciti"]
 [ext_resource type="Script" uid="uid://bpqey475r4mar" path="res://Scripts/water.gd" id="5_tciti"]
+[ext_resource type="PackedScene" uid="uid://bvhg2nv87al38" path="res://Scenes/Scene_transition.tscn" id="6_wtb4w"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r5l72"]
 
@@ -106,3 +107,10 @@ position = Vector2(815, 595)
 script = ExtResource("5_tciti")
 water_size = Vector2(284, 55)
 metadata/_custom_type_script = "uid://bpqey475r4mar"
+
+[node name="ColorRect" parent="." instance=ExtResource("6_wtb4w")]
+visible = false
+offset_left = -47.0
+offset_top = -34.0
+offset_right = 1961.0
+offset_bottom = 1106.0

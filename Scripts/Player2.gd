@@ -10,8 +10,6 @@ func _ready() -> void:
 
 func fire():
 	var Bullet=bullet_path.instantiate()
-	#Bullet.pos=$FiringPos.global_position
-	#Bullet.rota=global_rotation
 	#Makes the bullet travel the direction the player is facing
 	if $AnimatedSprite2D.flip_h:
 		$FiringPos.position.x = -17

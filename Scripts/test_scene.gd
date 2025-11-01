@@ -4,3 +4,8 @@ extends Node2D
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("QUIT"):
 		get_tree().quit()
+
+#Responsible for fade out effect
+func _ready():
+	$ColorRect.show()
+	$ColorRect/AnimationPlayer.play("Fade_out")
