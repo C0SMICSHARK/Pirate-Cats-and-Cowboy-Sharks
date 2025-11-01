@@ -10,17 +10,31 @@ func _ready() -> void:
 
 func fire():
 	var Bullet=bullet_path.instantiate()
-	Bullet.dir=rotation
+	#Bullet.pos=$FiringPos.global_position
+	#Bullet.rota=global_rotation
+	#Makes the bullet travel the direction the player is facing
+	if $AnimatedSprite2D.flip_h:
+		$FiringPos.position.x = -17
+		Bullet.dir=3.14159
+	else:
+		$FiringPos.position.x = 17
+		Bullet.dir=0
+	
 	Bullet.pos=$FiringPos.global_position
 	Bullet.rota=global_rotation
 	get_parent().add_child(Bullet)
+	
+	#if Input.is_action_just_pressed("BREAK"):
+		#$AnimatedSprite2D.play("Shoot")
+	#else:
+		#$AnimatedSprite2D.play("Idle")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	look_at(get_global_mouse_position())
+	#look_at(get_global_mouse_position())
 	if Input.is_action_just_pressed("BREAK"):
 		fire()
 
@@ -43,5 +57,8 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("RIGHT_P2"):
 		$AnimatedSprite2D.flip_h = false
+	if Input.is_action_just_pressed("BREAK"):
+		$AnimatedSprite2D.play("Shoot")
+	
 
 	move_and_slide()

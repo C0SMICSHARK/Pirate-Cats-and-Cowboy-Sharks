@@ -23,6 +23,7 @@ window/size/viewport_height=1080
 [global_group]
 
 can_interact_with_water=""
+Projectile=""
 
 [input]
 

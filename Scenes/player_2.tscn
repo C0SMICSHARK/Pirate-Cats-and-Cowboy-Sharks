@@ -195,7 +195,7 @@ script = ExtResource("1_mkara")
 position = Vector2(1.8125, 0.9750099)
 scale = Vector2(0.258125, 0.25812507)
 sprite_frames = SubResource("SpriteFrames_8os5a")
-animation = &"Idle"
+animation = &"Shoot"
 
 [node name="Hitbox" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-0.375, -0.3999939)
