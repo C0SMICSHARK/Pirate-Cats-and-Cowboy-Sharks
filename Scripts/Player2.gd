@@ -1,5 +1,6 @@
 extends CharacterBody2D
 var bullet_path=preload("res://Scenes/Objects/Bullet.tscn")
+@onready var bulletCooldown := $"../BulletCooldown"
 
 const SPEED = 400.0
 #const JUMP_VELOCITY = -400.0
@@ -21,7 +22,7 @@ func fire():
 	Bullet.pos=$FiringPos.global_position
 	Bullet.rota=global_rotation
 	get_parent().add_child(Bullet)
-	
+	bulletCooldown.start()
 	#if Input.is_action_just_pressed("BREAK"):
 		#$AnimatedSprite2D.play("Shoot")
 	#else:
@@ -33,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	#look_at(get_global_mouse_position())
-	if Input.is_action_just_pressed("BREAK"):
+	if Input.is_action_just_pressed("BREAK") and bulletCooldown.is_stopped():
 		fire()
 
 	# Handle jump.
@@ -43,10 +44,10 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("LEFT_P2", "RIGHT_P2")
-	if direction:
+	if direction and bulletCooldown.is_stopped():
 		velocity.x = direction * SPEED
 		$AnimatedSprite2D.play("Run")
-	else:
+	elif bulletCooldown.is_stopped():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		$AnimatedSprite2D.play("Idle")
 		
