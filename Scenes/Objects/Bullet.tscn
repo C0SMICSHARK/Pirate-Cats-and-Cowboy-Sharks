@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://5wy13dmxx21y"]
 
-[ext_resource type="Script" uid="uid://d0gj42c64kbwq" path="res://Scripts/Bullets.gd" id="1_14k46"]
-[ext_resource type="Texture2D" uid="uid://ie1d1xwpyv88" path="res://icon.svg" id="2_qvus8"]
+[ext_resource type="Script" uid="uid://d0gj42c64kbwq" path="res://Scripts/Bullets.gd" id="1_nl5gi"]
+[ext_resource type="Texture2D" uid="uid://ie1d1xwpyv88" path="res://icon.svg" id="2_82osk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pypll"]
 radius = 4.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Projectile"]]
-script = ExtResource("1_14k46")
+script = ExtResource("1_nl5gi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -1.9073486e-06)
 scale = Vector2(0.056382913, 0.057212073)
-texture = ExtResource("2_qvus8")
+texture = ExtResource("2_82osk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pypll")

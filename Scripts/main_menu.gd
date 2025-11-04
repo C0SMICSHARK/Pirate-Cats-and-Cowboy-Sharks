@@ -21,8 +21,8 @@ func _on_quit_pressed() -> void:
 
 func _on_fade_timer_timeout() -> void:
 	if button_type == "start" :
-		get_tree().change_scene_to_file("res://Scenes/TestScene_1.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Levels/TestScene_1.tscn")
 	
 	elif button_type == "options" :
-		get_tree().change_scene_to_file("res://Scenes/TestScene_1.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Levels/TestScene_1.tscn")
 	#Idealy this would change to an options screen rather than the level

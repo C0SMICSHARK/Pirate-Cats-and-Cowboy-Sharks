@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var bullet_path=preload("res://Scenes/Bullet.tscn")
+var bullet_path=preload("res://Scenes/Objects/Bullet.tscn")
 
 const SPEED = 400.0
 #const JUMP_VELOCITY = -400.0
@@ -57,6 +57,8 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = false
 	if Input.is_action_just_pressed("BREAK"):
 		$AnimatedSprite2D.play("Shoot")
+		
+
 	
 
 	move_and_slide()

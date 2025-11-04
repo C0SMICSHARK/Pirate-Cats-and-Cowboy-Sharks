@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://brt5ikhgib8k7"]
 
-[ext_resource type="Script" uid="uid://dmwrtfpqohva3" path="res://Scripts/main_menu.gd" id="1_48xlc"]
-[ext_resource type="PackedScene" uid="uid://bvhg2nv87al38" path="res://Scenes/Scene_transition.tscn" id="2_1ehe0"]
-[ext_resource type="Script" uid="uid://s4s2601isl56" path="res://Scripts/controller_button.gd" id="2_ce3w2"]
+[ext_resource type="Script" uid="uid://dmwrtfpqohva3" path="res://Scripts/main_menu.gd" id="1_t475i"]
+[ext_resource type="Script" uid="uid://s4s2601isl56" path="res://Scripts/controller_button.gd" id="2_xg7my"]
+[ext_resource type="PackedScene" uid="uid://bvhg2nv87al38" path="res://Scenes/Misc/Scene_transition.tscn" id="3_wmo1h"]
 
 [node name="Main menu" type="Node2D"]
-script = ExtResource("1_48xlc")
+script = ExtResource("1_t475i")
 
 [node name="Button_manager" type="Control" parent="."]
 layout_mode = 3
@@ -21,7 +21,7 @@ offset_right = 1297.0
 offset_bottom = 447.0
 text = "Start Game"
 icon_alignment = 1
-script = ExtResource("2_ce3w2")
+script = ExtResource("2_xg7my")
 
 [node name="Options" type="Button" parent="Button_manager"]
 layout_mode = 0
@@ -41,7 +41,7 @@ offset_bottom = 871.0
 text = "Quit"
 icon_alignment = 1
 
-[node name="ColorRect" parent="." instance=ExtResource("2_1ehe0")]
+[node name="ColorRect" parent="." instance=ExtResource("3_wmo1h")]
 visible = false
 offset_left = -44.0
 offset_top = -26.0

@@ -5,6 +5,7 @@ var rota:float
 var dir:float
 var speed=2000
 
+
 func _ready():
 	add_to_group("Projectile")#useful for breakable walls
 	global_position=pos
@@ -14,3 +15,4 @@ func _physics_process(_delta):
 	move_and_slide()
 	if velocity.x == 0:
 		queue_free()
+		

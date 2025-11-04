@@ -24,6 +24,7 @@ window/size/viewport_height=1080
 
 can_interact_with_water=""
 Projectile=""
+Breakable=""
 
 [input]
 
