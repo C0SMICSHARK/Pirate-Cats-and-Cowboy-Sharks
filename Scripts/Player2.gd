@@ -50,15 +50,21 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		$AnimatedSprite2D.play("Idle")
 		
+		
 	if Input.is_action_just_pressed("LEFT_P2"):
 		$AnimatedSprite2D.flip_h = true
 	
 	if Input.is_action_just_pressed("RIGHT_P2"):
 		$AnimatedSprite2D.flip_h = false
+		
 	if Input.is_action_just_pressed("BREAK"):
 		$AnimatedSprite2D.play("Shoot")
 		
-
 	
-
+	
+	
+	
+	
+	
+	
 	move_and_slide()

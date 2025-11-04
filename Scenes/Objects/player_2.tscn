@@ -89,9 +89,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_bth63")
 }],
-"loop": true,
+"loop": false,
 "name": &"Idle",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -124,7 +124,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("15_mcfkd")
 }],
-"loop": true,
+"loop": false,
 "name": &"Run",
 "speed": 15.0
 }, {
@@ -195,7 +195,7 @@ script = ExtResource("1_mkara")
 position = Vector2(1.8125, 0.9750099)
 scale = Vector2(0.258125, 0.25812507)
 sprite_frames = SubResource("SpriteFrames_8os5a")
-animation = &"Shoot"
+animation = &"Run"
 
 [node name="Hitbox" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(-0.375, -0.3999939)
