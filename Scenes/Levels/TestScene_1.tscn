@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://djc42utyrnb0m"]
+[gd_scene load_steps=10 format=3 uid="uid://djc42utyrnb0m"]
 
 [ext_resource type="Script" uid="uid://b64ndw6jydvxy" path="res://Scripts/test_scene.gd" id="1_wmggh"]
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="2_cdg6i"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cg6dul6g2cnl5" path="res://Scenes/Objects/player_2.tscn" id="4_akanh"]
 [ext_resource type="Script" uid="uid://bpqey475r4mar" path="res://Scripts/water.gd" id="5_5k3us"]
 [ext_resource type="PackedScene" uid="uid://bvhg2nv87al38" path="res://Scenes/Misc/Scene_transition.tscn" id="6_fqvrj"]
+[ext_resource type="PackedScene" uid="uid://wfta78sese1g" path="res://Scenes/Objects/breakableWall.tscn" id="7_cdg6i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r5l72"]
 
@@ -114,3 +115,7 @@ offset_left = -47.0
 offset_top = -34.0
 offset_right = 1961.0
 offset_bottom = 1106.0
+
+[node name="Node2D" parent="." instance=ExtResource("7_cdg6i")]
+position = Vector2(659, 560)
+scale = Vector2(1, 3.1600003)
