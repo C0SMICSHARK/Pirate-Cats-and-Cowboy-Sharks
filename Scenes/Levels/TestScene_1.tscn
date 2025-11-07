@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://djc42utyrnb0m"]
+[gd_scene load_steps=16 format=3 uid="uid://djc42utyrnb0m"]
 
 [ext_resource type="Script" uid="uid://b64ndw6jydvxy" path="res://Scripts/test_scene.gd" id="1_wmggh"]
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="2_cdg6i"]
@@ -7,11 +7,55 @@
 [ext_resource type="Script" uid="uid://bpqey475r4mar" path="res://Scripts/water.gd" id="5_5k3us"]
 [ext_resource type="PackedScene" uid="uid://bvhg2nv87al38" path="res://Scenes/Misc/Scene_transition.tscn" id="6_fqvrj"]
 [ext_resource type="PackedScene" uid="uid://wfta78sese1g" path="res://Scenes/Objects/breakableWall.tscn" id="7_cdg6i"]
+[ext_resource type="Script" uid="uid://qn5yfkeyyu4j" path="res://Scripts/moving_platform.gd" id="8_g25kj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r5l72"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dogw"]
 size = Vector2(0.99978405, 1.0044043)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cdg6i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdg6i"]
+size = Vector2(20, 3)
+
+[sub_resource type="Animation" id="Animation_cdg6i"]
+resource_name = "PlatformSideToSide"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3.99),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1073, 448), Vector2(1187, 448), Vector2(1054.0001, 449.00003)]
+}
+
+[sub_resource type="Animation" id="Animation_g25kj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1073, 448)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g25kj"]
+_data = {
+&"PlatformSideToSide": SubResource("Animation_cdg6i"),
+&"RESET": SubResource("Animation_g25kj")
+}
 
 [node name="TestScene_1" type="Node2D"]
 script = ExtResource("1_wmggh")
@@ -109,13 +153,31 @@ script = ExtResource("5_5k3us")
 water_size = Vector2(284, 55)
 metadata/_custom_type_script = "uid://bpqey475r4mar"
 
-[node name="ColorRect" parent="." instance=ExtResource("6_fqvrj")]
+[node name="FadeOut" parent="." instance=ExtResource("6_fqvrj")]
 visible = false
 offset_left = -47.0
 offset_top = -34.0
 offset_right = 1961.0
 offset_bottom = 1106.0
 
-[node name="Node2D" parent="." instance=ExtResource("7_cdg6i")]
+[node name="BreakableWall" parent="." instance=ExtResource("7_cdg6i")]
 position = Vector2(659, 560)
 scale = Vector2(1, 3.1600003)
+
+[node name="MovingPlatform" type="AnimatableBody2D" parent="."]
+position = Vector2(1073, 448)
+scale = Vector2(2.357035, 3.066038)
+script = ExtResource("8_g25kj")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="MovingPlatform"]
+position = Vector2(-2.842171e-14, -4.7683716e-07)
+scale = Vector2(19.859997, 2.94)
+mesh = SubResource("BoxMesh_cdg6i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform"]
+shape = SubResource("RectangleShape2D_cdg6i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform"]
+libraries = {
+&"": SubResource("AnimationLibrary_g25kj")
+}

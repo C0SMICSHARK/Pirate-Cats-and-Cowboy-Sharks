@@ -7,5 +7,5 @@ func _process(_delta: float) -> void:
 
 #Responsible for fade out effect
 func _ready():
-	$ColorRect.show()
-	$ColorRect/AnimationPlayer.play("Fade_out")
+	$FadeOut.show()
+	$FadeOut/AnimationPlayer.play("Fade_out")
