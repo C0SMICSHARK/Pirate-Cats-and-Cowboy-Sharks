@@ -12,6 +12,7 @@ height = 26.0
 z_index = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_mask = 17
 script = ExtResource("1_2mvbs")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]

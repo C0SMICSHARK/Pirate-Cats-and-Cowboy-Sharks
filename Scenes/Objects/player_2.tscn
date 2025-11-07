@@ -189,6 +189,7 @@ height = 50.0
 z_index = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_mask = 19
 script = ExtResource("1_mkara")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
