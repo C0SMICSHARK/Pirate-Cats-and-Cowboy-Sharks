@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://d0gj42c64kbwq" path="res://Scripts/Bullets.gd" id="1_nl5gi"]
 [ext_resource type="Texture2D" uid="uid://ie1d1xwpyv88" path="res://icon.svg" id="2_82osk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pypll"]
-radius = 4.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nl5gi"]
+size = Vector2(20, 6)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Projectile"]]
+collision_layer = 2
 script = ExtResource("1_nl5gi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,4 +16,4 @@ scale = Vector2(0.056382913, 0.057212073)
 texture = ExtResource("2_82osk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_pypll")
+shape = SubResource("RectangleShape2D_nl5gi")
