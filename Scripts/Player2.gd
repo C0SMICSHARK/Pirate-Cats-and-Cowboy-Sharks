@@ -8,6 +8,7 @@ const SPEED = 400.0
 
 func _ready() -> void:
 	add_to_group("can_interact_with_water")
+	add_to_group("Shark")
 
 func fire():
 	var Bullet=bullet_path.instantiate()

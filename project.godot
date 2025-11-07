@@ -26,6 +26,8 @@ can_interact_with_water=""
 Projectile=""
 Breakable=""
 Enemy=""
+Shark=""
+Cat=""
 
 [input]
 
