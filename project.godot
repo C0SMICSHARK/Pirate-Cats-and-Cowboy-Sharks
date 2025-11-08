@@ -28,6 +28,8 @@ Breakable=""
 Enemy=""
 Shark=""
 Cat=""
+Player=""
+PlayerAttack=""
 
 [input]
 

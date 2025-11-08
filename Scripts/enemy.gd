@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@export var EnemyHealth = 2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("Enemy")#Useful for collisons
@@ -8,4 +8,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if EnemyHealth <= 0:
+		queue_free()
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group(	"PlayerAttack"):
+		body.queue_free()
+		EnemyHealth -= 1

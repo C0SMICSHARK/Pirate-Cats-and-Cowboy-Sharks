@@ -8,6 +8,7 @@ var speed=800
 
 func _ready():
 	add_to_group("Projectile")#useful for breakable walls
+	add_to_group("PlayerAttack")
 	global_position=pos
 	global_rotation=rota
 func _physics_process(_delta):

@@ -12,7 +12,7 @@ var dashing = false
 func _ready() -> void:
 	add_to_group("can_interact_with_water")
 	add_to_group("Cat")
-
+	add_to_group("Player")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
