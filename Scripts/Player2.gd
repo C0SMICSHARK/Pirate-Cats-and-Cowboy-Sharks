@@ -1,8 +1,10 @@
 extends CharacterBody2D
 var bullet_path=preload("res://Scenes/Objects/Bullet.tscn")
 @onready var bulletCooldown := $"../BulletCooldown"
-
+var Knocked = false
 const SPEED = 400.0
+var t = 0.0
+var KnockbackVector = Vector2(0,0)
 #const JUMP_VELOCITY = -400.0
 	
 
@@ -43,6 +45,12 @@ func _physics_process(delta: float) -> void:
 	#if Input.is_action_just_pressed("JUMP_P2") and is_on_floor():
 	#	velocity.y = JUMP_VELOCITY
 	
+	if Knocked and not $"../KnockbackTimer".is_stopped():
+		KnockbackVector.x = $"..".position.x-20
+		KnockbackVector.y = $"..".position.y
+		t += delta
+		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("LEFT_P2", "RIGHT_P2")
@@ -69,5 +77,10 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	
-	move_and_slide()
+	if $"../KnockbackTimer".is_stopped():
+		move_and_slide()
+
+
+func _on_hurtbox_body_entered(_body: Node2D) -> void:
+	Knocked = true
+	$"../KnockbackTimer".start()
