@@ -46,8 +46,6 @@ func _physics_process(delta: float) -> void:
 	#	velocity.y = JUMP_VELOCITY
 	
 	if Knocked and not $"../KnockbackTimer".is_stopped():
-		KnockbackVector.x = $"..".position.x-20
-		KnockbackVector.y = $"..".position.y
 		t += delta
 		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
 	
@@ -79,8 +77,18 @@ func _physics_process(delta: float) -> void:
 	
 	if $"../KnockbackTimer".is_stopped():
 		move_and_slide()
+		Knocked = false
 
-
+#Makes the shark specifically bounce LEFT when hurt
 func _on_hurtbox_body_entered(_body: Node2D) -> void:
 	Knocked = true
 	$"../KnockbackTimer".start()
+	KnockbackVector.x = $"..".position.x-30
+	KnockbackVector.y = $"..".position.y-10
+
+#Makes the shark specifically bounce RIGHT when hurt
+func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
+	Knocked = true
+	$"../KnockbackTimer".start()
+	KnockbackVector.x = $"..".position.x+30
+	KnockbackVector.y = $"..".position.y-10

@@ -8,6 +8,9 @@ const JUMP_VELOCITY = -400.0
 @export var DASH = 1.8
 var dashing = false
 @onready var DashTimer = $"../DashTimer"
+var t = 0.0
+var KnockbackVector = Vector2(0,0)
+var Knocked = false
 
 func _ready() -> void:
 	add_to_group("can_interact_with_water")
@@ -41,8 +44,28 @@ func _physics_process(delta: float) -> void:
 	if dashing:
 		velocity.x = direction * SPEED * DASH
 
-	move_and_slide()
+	if Knocked and not $"../KnockbackTimer".is_stopped():
+		t += delta
+		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
+	
+	if $"../KnockbackTimer".is_stopped():
+		move_and_slide()
+		Knocked = false
 
 # Dashing Cooldown Mechanic:
 func _on_dash_timer_timeout() -> void:
 	dashing = false
+
+#Makes the Cat specifically bounce LEFT when hurt
+func _on_right_hurtbox_body_entered(_body: Node2D) -> void:
+	Knocked = true
+	$"../KnockbackTimer".start()
+	KnockbackVector.x = $"..".position.x-30
+	KnockbackVector.y = $"..".position.y-10
+
+#Makes the Cat specifically bounce LEFT when hurt
+func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
+	Knocked = true
+	$"../KnockbackTimer".start()
+	KnockbackVector.x = $"..".position.x+30
+	KnockbackVector.y = $"..".position.y-10

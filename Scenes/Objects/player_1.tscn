@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dksykscfxj8rk"]
+[gd_scene load_steps=5 format=3 uid="uid://dksykscfxj8rk"]
 
 [ext_resource type="Script" uid="uid://pdp0rkxp8kog" path="res://Scripts/Player1.gd" id="1_2mvbs"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_r7fgb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r7fgb"]
-radius = 7.0
+radius = 6.0
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_50gjg"]
+radius = 3.0
 height = 26.0
 
 [node name="Player 1" type="Node2D" groups=["can_interact_with_water"]]
@@ -16,15 +20,37 @@ collision_mask = 17
 script = ExtResource("1_2mvbs")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
-position = Vector2(9.536743e-07, 1)
-scale = Vector2(14, 13.000002)
+position = Vector2(-2.9802322e-08, 1)
+scale = Vector2(12.000001, 13.000002)
 mesh = SubResource("CapsuleMesh_r7fgb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_r7fgb")
 
+[node name="RightHurtbox" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/RightHurtbox"]
+position = Vector2(4, 1)
+shape = SubResource("CapsuleShape2D_50gjg")
+
+[node name="LeftHurtbox" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/LeftHurtbox"]
+position = Vector2(-4, 1)
+shape = SubResource("CapsuleShape2D_50gjg")
+
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.4
 
+[node name="KnockbackTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="CharacterBody2D/RightHurtbox" to="CharacterBody2D" method="_on_right_hurtbox_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/LeftHurtbox" to="CharacterBody2D" method="_on_left_hurtbox_body_entered"]
 [connection signal="timeout" from="DashTimer" to="CharacterBody2D" method="_on_dash_timer_timeout"]

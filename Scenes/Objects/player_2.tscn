@@ -189,8 +189,8 @@ height = 48.0
 size = Vector2(20, 10.000008)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivfq8"]
-radius = 13.0
-height = 48.0
+radius = 6.0
+height = 44.0
 
 [node name="Player2" type="Node2D" groups=["can_interact_with_water"]]
 z_index = 1
@@ -221,11 +221,20 @@ position = Vector2(0, -25)
 scale = Vector2(1.1677438, 0.07876829)
 shape = SubResource("RectangleShape2D_ivfq8")
 
-[node name="Hurtbox" type="Area2D" parent="CharacterBody2D"]
+[node name="RightHurtbox" type="Area2D" parent="CharacterBody2D"]
 collision_layer = 64
 collision_mask = 64
 
-[node name="HurtboxCollision" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
+[node name="HurtboxCollision" type="CollisionShape2D" parent="CharacterBody2D/RightHurtbox"]
+position = Vector2(7, 0)
+shape = SubResource("CapsuleShape2D_ivfq8")
+
+[node name="LeftHurtbox" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="CharacterBody2D/LeftHurtbox"]
+position = Vector2(-7, 0)
 shape = SubResource("CapsuleShape2D_ivfq8")
 
 [node name="BulletCooldown" type="Timer" parent="."]
@@ -236,4 +245,5 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
-[connection signal="body_entered" from="CharacterBody2D/Hurtbox" to="CharacterBody2D" method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/RightHurtbox" to="CharacterBody2D" method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/LeftHurtbox" to="CharacterBody2D" method="_on_left_hurtbox_body_entered"]
