@@ -5,6 +5,7 @@ var Knocked = false
 const SPEED = 400.0
 var t = 0.0
 var KnockbackVector = Vector2(0,0)
+var KnockbackForce = Vector2(0,0)
 #const JUMP_VELOCITY = -400.0
 	
 
@@ -37,17 +38,18 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	#look_at(get_global_mouse_position())
+	
 	if Input.is_action_just_pressed("BREAK") and bulletCooldown.is_stopped():
 		fire()
 
 	# Handle jump.
 	#if Input.is_action_just_pressed("JUMP_P2") and is_on_floor():
 	#	velocity.y = JUMP_VELOCITY
-	
+	#Responsible for knockback action
 	if Knocked and not $"../KnockbackTimer".is_stopped():
 		t += delta
 		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
+		#velocity = KnockbackForce 
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -73,11 +75,12 @@ func _physics_process(delta: float) -> void:
 	
 	
 	
-	
+
 	
 	if $"../KnockbackTimer".is_stopped():
 		move_and_slide()
 		Knocked = false
+		
 
 #Makes the shark specifically bounce LEFT when hurt
 func _on_hurtbox_body_entered(_body: Node2D) -> void:
@@ -85,6 +88,8 @@ func _on_hurtbox_body_entered(_body: Node2D) -> void:
 	$"../KnockbackTimer".start()
 	KnockbackVector.x = $"..".position.x-30
 	KnockbackVector.y = $"..".position.y-10
+	KnockbackForce = -velocity
+	KnockbackForce.x -= 500
 
 #Makes the shark specifically bounce RIGHT when hurt
 func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
@@ -92,3 +97,5 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	$"../KnockbackTimer".start()
 	KnockbackVector.x = $"..".position.x+30
 	KnockbackVector.y = $"..".position.y-10
+	KnockbackForce = velocity
+	KnockbackForce.x += 500

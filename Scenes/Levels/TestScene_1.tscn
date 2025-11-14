@@ -232,11 +232,11 @@ position = Vector2(24.999998, 564.00006)
 scale = Vector2(1.8399999, 1.8399999)
 
 [node name="Player2" parent="." instance=ExtResource("4_akanh")]
-position = Vector2(66, 567)
+position = Vector2(71, 567)
 
 [node name="water" type="Node2D" parent="."]
 z_index = -1
-position = Vector2(815, 595)
+position = Vector2(815, 597)
 script = ExtResource("5_5k3us")
 water_size = Vector2(284, 55)
 metadata/_custom_type_script = "uid://bpqey475r4mar"
