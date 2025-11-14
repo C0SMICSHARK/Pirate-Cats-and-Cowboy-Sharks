@@ -11,6 +11,7 @@ var dashing = false
 var t = 0.0
 var KnockbackVector = Vector2(0,0)
 var Knocked = false
+var HasJumped = false
 
 func _ready() -> void:
 	add_to_group("can_interact_with_water")
@@ -23,25 +24,39 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("JUMP_P1") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		$AnimatedSprite2D.play("Jump")
+	#if Input.is_action_just_pressed("JUMP_P1") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
+		#HasJumped = true
+		#$AnimatedSprite2D.play("Jump")
+		
+	if is_on_floor():
+		HasJumped = false
 
 	#Movement
 	var direction := Input.get_axis("LEFT_P1", "RIGHT_P1")
+	
 	if direction:
 		velocity.x = direction * SPEED
+	if direction and not HasJumped:
+		#velocity.x = direction * SPEED
 		$AnimatedSprite2D.play("Walk")
-	else:
+	elif not HasJumped:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		$AnimatedSprite2D.play("Idle")#
 	
 	if Input.is_action_just_pressed("LEFT_P1"):
 		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D.rotation_degrees = -3
 		
 	if Input.is_action_just_pressed("RIGHT_P1"):
 		$AnimatedSprite2D.flip_h = false
+		$AnimatedSprite2D.rotation_degrees = 3
 		
+	if Input.is_action_just_pressed("JUMP_P1") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		HasJumped = true
+		$AnimatedSprite2D.play("Jump")
+	
 	#Dash Mechanic:
 	if Input.is_action_just_pressed("DASH") and not dashing:
 		dashing = true
@@ -71,6 +86,7 @@ func _on_right_hurtbox_body_entered(_body: Node2D) -> void:
 	$"../KnockbackTimer".start()
 	KnockbackVector.x = $"..".position.x-30
 	KnockbackVector.y = $"..".position.y-10
+	HasJumped = true
 
 #Makes the Cat specifically bounce LEFT when hurt
 func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
@@ -78,3 +94,4 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	$"../KnockbackTimer".start()
 	KnockbackVector.x = $"..".position.x+30
 	KnockbackVector.y = $"..".position.y-10
+	HasJumped = true
