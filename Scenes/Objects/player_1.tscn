@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://ff31qakjksyp" path="res://Assets/Cat/right_jump_spritesheet.png" id="3_kafha"]
 [ext_resource type="Texture2D" uid="uid://lvcbmpt2a15c" path="res://Assets/Cat/right_walk_spritesheet.png" id="4_8nnth"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmrqu"]
+atlas = ExtResource("3_kafha")
+region = Rect2(4500, 0, 900, 900)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_kafha"]
 atlas = ExtResource("2_0douk")
 region = Rect2(0, 0, 900, 900)
@@ -40,10 +44,6 @@ region = Rect2(2700, 0, 900, 900)
 [sub_resource type="AtlasTexture" id="AtlasTexture_m10f4"]
 atlas = ExtResource("3_kafha")
 region = Rect2(3600, 0, 900, 900)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lmrqu"]
-atlas = ExtResource("3_kafha")
-region = Rect2(4500, 0, 900, 900)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wbr66"]
 atlas = ExtResource("3_kafha")
@@ -93,6 +93,14 @@ region = Rect2(6300, 0, 900, 900)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lmrqu")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kafha")
 }, {
 "duration": 1.0,
@@ -138,6 +146,42 @@ animations = [{
 }],
 "loop": true,
 "name": &"Jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f410")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m10f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmrqu")
+}],
+"loop": false,
+"name": &"JumpApex",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifcvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ihub")
+}],
+"loop": false,
+"name": &"JumpLand",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dow7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al3y4")
+}],
+"loop": false,
+"name": &"JumpStart",
 "speed": 10.0
 }, {
 "frames": [{
@@ -190,8 +234,9 @@ position = Vector2(-1, -1)
 rotation = 0.05235988
 scale = Vector2(0.03378336, 0.03378336)
 sprite_frames = SubResource("SpriteFrames_0vr67")
-animation = &"Idle"
-frame_progress = 0.68829083
+animation = &"JumpLand"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
@@ -220,6 +265,7 @@ wait_time = 0.4
 wait_time = 0.2
 one_shot = true
 
+[connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="CharacterBody2D/RightHurtbox" to="CharacterBody2D" method="_on_right_hurtbox_body_entered"]
 [connection signal="body_entered" from="CharacterBody2D/LeftHurtbox" to="CharacterBody2D" method="_on_left_hurtbox_body_entered"]
 [connection signal="timeout" from="DashTimer" to="CharacterBody2D" method="_on_dash_timer_timeout"]

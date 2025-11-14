@@ -12,6 +12,7 @@ var t = 0.0
 var KnockbackVector = Vector2(0,0)
 var Knocked = false
 var HasJumped = false
+var JumpApex = false
 
 func _ready() -> void:
 	add_to_group("can_interact_with_water")
@@ -31,16 +32,18 @@ func _physics_process(delta: float) -> void:
 		
 	if is_on_floor():
 		HasJumped = false
+		if JumpApex:
+			$AnimatedSprite2D.play("JumpLand")
 
 	#Movement
 	var direction := Input.get_axis("LEFT_P1", "RIGHT_P1")
 	
 	if direction:
 		velocity.x = direction * SPEED
-	if direction and not HasJumped:
+	if direction and not HasJumped and not JumpApex:
 		#velocity.x = direction * SPEED
 		$AnimatedSprite2D.play("Walk")
-	elif not HasJumped:
+	elif not HasJumped and not JumpApex:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		$AnimatedSprite2D.play("Idle")#
 	
@@ -55,8 +58,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("JUMP_P1") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		HasJumped = true
-		$AnimatedSprite2D.play("Jump")
-	
+		$AnimatedSprite2D.play("JumpStart")
 	#Dash Mechanic:
 	if Input.is_action_just_pressed("DASH") and not dashing:
 		dashing = true
@@ -95,3 +97,12 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackVector.x = $"..".position.x+30
 	KnockbackVector.y = $"..".position.y-10
 	HasJumped = true
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if  $AnimatedSprite2D.animation == "JumpStart":
+		$AnimatedSprite2D.play("JumpApex")
+	if  $AnimatedSprite2D.animation == "JumpApex":
+		JumpApex = true
+	if  $AnimatedSprite2D.animation == "JumpLand":
+		JumpApex = false

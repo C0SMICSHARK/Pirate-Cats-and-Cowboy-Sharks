@@ -228,8 +228,8 @@ shape = SubResource("RectangleShape2D_3dogw")
 
 [node name="Cat" parent="." instance=ExtResource("3_g25kj")]
 z_index = 0
-position = Vector2(24.999998, 564.00006)
-scale = Vector2(1.8399999, 1.8399999)
+position = Vector2(40.000015, 565)
+scale = Vector2(1.8, 1.8)
 
 [node name="Player2" parent="." instance=ExtResource("4_akanh")]
 position = Vector2(71, 567)
