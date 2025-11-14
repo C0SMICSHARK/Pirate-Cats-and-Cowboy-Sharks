@@ -25,13 +25,22 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("JUMP_P1") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		$AnimatedSprite2D.play("Jump")
 
 	#Movement
 	var direction := Input.get_axis("LEFT_P1", "RIGHT_P1")
 	if direction:
 		velocity.x = direction * SPEED
+		$AnimatedSprite2D.play("Walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		$AnimatedSprite2D.play("Idle")#
+	
+	if Input.is_action_just_pressed("LEFT_P1"):
+		$AnimatedSprite2D.flip_h = true
+		
+	if Input.is_action_just_pressed("RIGHT_P1"):
+		$AnimatedSprite2D.flip_h = false
 		
 	#Dash Mechanic:
 	if Input.is_action_just_pressed("DASH") and not dashing:

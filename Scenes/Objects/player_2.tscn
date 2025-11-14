@@ -89,7 +89,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_bth63")
 }],
-"loop": false,
+"loop": true,
 "name": &"Idle",
 "speed": 5.0
 }, {
@@ -203,7 +203,9 @@ script = ExtResource("1_mkara")
 position = Vector2(1.8125, 0.9750099)
 scale = Vector2(0.258125, 0.25812507)
 sprite_frames = SubResource("SpriteFrames_8os5a")
-animation = &"Shoot"
+animation = &"Idle"
+frame = 2
+frame_progress = 0.54315764
 
 [node name="Hitbox" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CapsuleShape2D_a3adp")
