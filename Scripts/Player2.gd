@@ -92,7 +92,7 @@ func _on_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackForce = -velocity
 	KnockbackForce.x -= 500
 		#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
-	Global.healthp2 = Global.healthp2 - 10
+	Global.healthp2 = Global.healthp2 - (10 * Global.Difficulty)
 	modulate = Color(1,0,0)
 
 #Makes the shark specifically bounce RIGHT when hurt
@@ -103,6 +103,6 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackVector.y = $"..".position.y-10
 	KnockbackForce = velocity
 	KnockbackForce.x += 500
-	Global.healthp2 = Global.healthp2 - 10
+	Global.healthp2 = Global.healthp2 - (10 * Global.Difficulty)
 	modulate = Color(1,0,0)
 	

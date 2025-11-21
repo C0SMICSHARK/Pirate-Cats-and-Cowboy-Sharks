@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var EnemyHealth = 2
+@export var EnemyHealth = 2 * Global.Difficulty
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("Enemy")#Useful for collisons

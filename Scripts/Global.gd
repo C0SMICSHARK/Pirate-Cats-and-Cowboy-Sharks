@@ -1,6 +1,7 @@
 extends Node
 var healthp1 = 100
 var healthp2 = 100
+var Difficulty = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
