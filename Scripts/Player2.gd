@@ -80,7 +80,8 @@ func _physics_process(delta: float) -> void:
 	if $"../KnockbackTimer".is_stopped():
 		move_and_slide()
 		Knocked = false
-		
+		modulate = Color(1,clamp(modulate.g+ delta,0,1),clamp(modulate.b+ delta,0,1))
+
 
 #Makes the shark specifically bounce LEFT when hurt
 func _on_hurtbox_body_entered(_body: Node2D) -> void:
@@ -92,6 +93,7 @@ func _on_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackForce.x -= 500
 		#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
 	Global.healthp2 = Global.healthp2 - 10
+	modulate = Color(1,0,0)
 
 #Makes the shark specifically bounce RIGHT when hurt
 func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
@@ -101,4 +103,6 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackVector.y = $"..".position.y-10
 	KnockbackForce = velocity
 	KnockbackForce.x += 500
+	Global.healthp2 = Global.healthp2 - 10
+	modulate = Color(1,0,0)
 	

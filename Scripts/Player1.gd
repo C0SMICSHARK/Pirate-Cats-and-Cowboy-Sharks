@@ -83,6 +83,7 @@ func _physics_process(delta: float) -> void:
 	if $"../KnockbackTimer".is_stopped():
 		move_and_slide()
 		Knocked = false
+		modulate = Color(1,clamp(modulate.g+ delta,0,1),clamp(modulate.b+ delta,0,1))
 		
 	
 	if Input.is_action_just_pressed("CatAttack"):
@@ -102,6 +103,7 @@ func _on_right_hurtbox_body_entered(_body: Node2D) -> void:
 	HasJumped = true
 	#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
 	Global.healthp1 = Global.healthp1 - 10
+	modulate = Color(1,0,0)
 
 #Makes the Cat specifically bounce LEFT when hurt
 func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
@@ -110,7 +112,9 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackVector.x = $"..".position.x+30
 	KnockbackVector.y = $"..".position.y-10
 	HasJumped = true
-
+	#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
+	Global.healthp1 = Global.healthp1 - 10
+	modulate = Color(1,0,0)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if  $AnimatedSprite2D.animation == "JumpStart":
@@ -120,4 +124,3 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if  $AnimatedSprite2D.animation == "JumpLand":
 		JumpApex = false
 		velocity.x = 0
-	
