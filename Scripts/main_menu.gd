@@ -20,7 +20,7 @@ func _on_options_pressed() -> void:
 
 func _on_back_pressed() -> void:
 	pass # Replace with function body.
-	button_type = "start"
+	button_type = "back"
 	$ColorRect.show()
 	$ColorRect/Fade_timer.start()
 	$ColorRect/AnimationPlayer.play("Fade_in")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0f7m53obnvpa"]
+[gd_scene load_steps=4 format=3 uid="uid://d0f7m53obnvpa"]
 
 [ext_resource type="Script" uid="uid://dmwrtfpqohva3" path="res://Scripts/main_menu.gd" id="1_thu7k"]
 [ext_resource type="Script" uid="uid://s4s2601isl56" path="res://Scripts/controller_button.gd" id="1_xoak5"]
+[ext_resource type="PackedScene" uid="uid://bvhg2nv87al38" path="res://Scenes/Misc/Scene_transition.tscn" id="3_b7rbr"]
 
 [node name="Options Menu" type="Node2D"]
 script = ExtResource("1_thu7k")
@@ -100,6 +101,15 @@ offset_left = 179.0
 offset_top = 606.0
 offset_right = 207.0
 offset_bottom = 643.0
+
+[node name="ColorRect" parent="." instance=ExtResource("3_b7rbr")]
+visible = false
+offset_left = -44.0
+offset_top = -26.0
+offset_right = 1964.0
+offset_bottom = 1114.0
+
+[node name="Fade_timer" type="Timer" parent="ColorRect"]
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="Back" to="." method="_on_back_toggled"]
