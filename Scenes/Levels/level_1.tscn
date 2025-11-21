@@ -1,13 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://chmasl8ee65ml"]
+[gd_scene load_steps=11 format=3 uid="uid://chmasl8ee65ml"]
 
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/Objects/player_1.tscn" id="2_3mqfk"]
 [ext_resource type="PackedScene" uid="uid://cg6dul6g2cnl5" path="res://Scenes/Objects/player_2.tscn" id="3_iixi8"]
+[ext_resource type="Script" uid="uid://k1ixb18rffp5" path="res://Scripts/HealthP2.gd" id="4_cyadu"]
+[ext_resource type="Script" uid="uid://djmbvvkcvt2hp" path="res://Scripts/HealthP1.gd" id="5_5f3p6"]
+[ext_resource type="Texture2D" uid="uid://7l4s5chkh6fa" path="res://Debug Assets/white.png" id="5_xgxfi"]
+[ext_resource type="PackedScene" uid="uid://csi2k0pbl08yp" path="res://Scenes/Objects/enemy.tscn" id="6_xgxfi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8ffim"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfk5q"]
 size = Vector2(0.99978405, 1.0044043)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5f3p6"]
 
 [node name="Level1" type="Node2D"]
 
@@ -64,8 +70,48 @@ scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_xfk5q")
 
 [node name="Player 1" parent="." instance=ExtResource("2_3mqfk")]
-position = Vector2(116.00001, 888)
+position = Vector2(33.000008, 884)
 scale = Vector2(1.8711351, 1.8711351)
+
+[node name="HealthBarP1" type="Node2D" parent="Player 1"]
+position = Vector2(-15.498618, -41.68594)
+scale = Vector2(0.534435, 0.534435)
+script = ExtResource("5_5f3p6")
+
+[node name="P1HealthBarTexture" type="Sprite2D" parent="Player 1/HealthBarP1"]
+position = Vector2(63, -17)
+scale = Vector2(0.08203126, 0.012962956)
+texture = ExtResource("5_xgxfi")
+
+[node name="P1HealthLabel" type="Label" parent="Player 1/HealthBarP1"]
+offset_left = 9.000002
+offset_top = -41.0
+offset_right = 33.0
+offset_bottom = -18.0
+text = "1"
+label_settings = SubResource("LabelSettings_5f3p6")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBarP2" type="Node2D" parent="Player 1/HealthBarP1"]
+position = Vector2(1.9073486e-06, 49)
+script = ExtResource("4_cyadu")
+
+[node name="P2HealthBarTexture" type="Sprite2D" parent="Player 1/HealthBarP1/HealthBarP2"]
+position = Vector2(63, -17)
+scale = Vector2(0.08203126, 0.012962956)
+texture = ExtResource("5_xgxfi")
+
+[node name="P2HealthLabel" type="Label" parent="Player 1/HealthBarP1/HealthBarP2"]
+offset_left = 11.000002
+offset_top = -43.0
+offset_right = 35.0
+offset_bottom = -20.0
+text = "1"
+label_settings = SubResource("LabelSettings_5f3p6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Enemy" parent="." instance=ExtResource("6_xgxfi")]
+position = Vector2(166, 894)
 
 [node name="Player2" parent="." instance=ExtResource("3_iixi8")]
 position = Vector2(71, 891)
