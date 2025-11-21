@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bh8qip8k11m6i"]
 
-[ext_resource type="Script" uid="uid://k1ixb18rffp5" path="res://Scenes/Levels/HealthP2.gd" id="1_mldkt"]
+[ext_resource type="Script" uid="uid://k1ixb18rffp5" path="res://Scripts/HealthP2.gd" id="1_mldkt"]
 [ext_resource type="Texture2D" uid="uid://7l4s5chkh6fa" path="res://Debug Assets/white.png" id="2_khms6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l4tgx"]
