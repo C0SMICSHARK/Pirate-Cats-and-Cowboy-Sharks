@@ -1,5 +1,5 @@
 extends Node2D
-var health = Global.healthp1
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,10 +10,24 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-	$P1HealthLabel.text = str(Global.healthp1)
-	$P1HealthBarTexture.position = Vector2(64.25 * (Global.healthp1 * 0.01),0.013)
-	$P1HealthBarTexture.modulate = Color(1 - (Global.healthp1 * 0.01),Global.healthp1 * 0.01,0)
+	var heartarray = [$p1heart1,$p1heart2,$p1heart3]
+	$P1HealthLabel.text = str(Global.healthp2)
+	if Global.healthp1 == 3:
+		for n in [0,1,2]:
+			heartarray[n].modulate = Color(1,0,0)
+			
+	elif Global.healthp1 == 2:
+		for n in [0,1]:
+			heartarray[n].modulate = Color(1,0,0)
+			heartarray[2].modulate = Color(0,0,0)
+	elif Global.healthp1 == 1:
+		for n in [1,2]:
+			heartarray[n].modulate = Color(0,0,0)
+			heartarray[0].modulate = Color(1,0,0)
+	else:
+		for n in [0,1,2]:
+			heartarray[n].modulate = Color(0,0,0)
+	
 	
 
 		
