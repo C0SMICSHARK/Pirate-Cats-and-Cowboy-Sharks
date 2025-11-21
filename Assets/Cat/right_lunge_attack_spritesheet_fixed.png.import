@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c87ccj33ymtmq"
-path="res://.godot/imported/right_lunge_attack_spritesheet.webp-0a220547a5f0a5e1fd0b17496cf9e0c1.ctex"
+uid="uid://c6bk8pbdiuki3"
+path="res://.godot/imported/right_lunge_attack_spritesheet_fixed.png-cdd36bc43409f8c59809972ce619417d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cat/right_lunge_attack_spritesheet.webp"
-dest_files=["res://.godot/imported/right_lunge_attack_spritesheet.webp-0a220547a5f0a5e1fd0b17496cf9e0c1.ctex"]
+source_file="res://Assets/Cat/right_lunge_attack_spritesheet_fixed.png"
+dest_files=["res://.godot/imported/right_lunge_attack_spritesheet_fixed.png-cdd36bc43409f8c59809972ce619417d.ctex"]
 
 [params]
 

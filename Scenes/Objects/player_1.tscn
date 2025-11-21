@@ -2,33 +2,33 @@
 
 [ext_resource type="Script" uid="uid://pdp0rkxp8kog" path="res://Scripts/Player1.gd" id="1_2mvbs"]
 [ext_resource type="Texture2D" uid="uid://b5rde1hhxtymo" path="res://Assets/Cat/idle_spritesheet.png" id="2_0douk"]
-[ext_resource type="Texture2D" uid="uid://c87ccj33ymtmq" path="res://Assets/Cat/right_lunge_attack_spritesheet.webp" id="2_qoejl"]
+[ext_resource type="Texture2D" uid="uid://c6bk8pbdiuki3" path="res://Assets/Cat/right_lunge_attack_spritesheet_fixed.png" id="2_qoejl"]
 [ext_resource type="Texture2D" uid="uid://ff31qakjksyp" path="res://Assets/Cat/right_jump_spritesheet.png" id="3_kafha"]
 [ext_resource type="Texture2D" uid="uid://lvcbmpt2a15c" path="res://Assets/Cat/right_walk_spritesheet.png" id="4_8nnth"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ot205"]
 atlas = ExtResource("2_qoejl")
-region = Rect2(0, 0, 628, 629)
+region = Rect2(0, 0, 900, 900)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_23feb"]
 atlas = ExtResource("2_qoejl")
-region = Rect2(628, 0, 628, 629)
+region = Rect2(900, 0, 900, 900)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yabra"]
 atlas = ExtResource("2_qoejl")
-region = Rect2(1256, 0, 628, 629)
+region = Rect2(1800, 0, 900, 900)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybxvx"]
 atlas = ExtResource("2_qoejl")
-region = Rect2(1884, 0, 628, 629)
+region = Rect2(2700, 0, 900, 900)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q81tf"]
 atlas = ExtResource("2_qoejl")
-region = Rect2(2512, 0, 628, 629)
+region = Rect2(3600, 0, 900, 900)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfxlm"]
 atlas = ExtResource("2_qoejl")
-region = Rect2(3140, 0, 628, 629)
+region = Rect2(4500, 0, 900, 900)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmrqu"]
 atlas = ExtResource("3_kafha")
@@ -137,7 +137,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Attack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -282,7 +282,9 @@ position = Vector2(-1, -1)
 rotation = 0.05235988
 scale = Vector2(0.03378336, 0.03378336)
 sprite_frames = SubResource("SpriteFrames_0vr67")
-animation = &"Idle"
+animation = &"Attack"
+frame = 2
+frame_progress = 0.70487857
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
