@@ -258,6 +258,9 @@ position = Vector2(70, 569)
 =======
 [node name="Player2" parent="." instance=ExtResource("4_akanh")]
 position = Vector2(86, 566)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 [node name="water" type="Node2D" parent="."]
