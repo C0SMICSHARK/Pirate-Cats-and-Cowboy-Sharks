@@ -116,12 +116,12 @@ label_settings = SubResource("LabelSettings_5f3p6")
 metadata/_edit_use_anchors_ = true
 
 [node name="p2heart2" type="Sprite2D" parent="Player 1/HealthBarP1/HealthBarP2"]
-position = Vector2(68.16797, -17.220398)
+position = Vector2(37.99999, -18)
 scale = Vector2(0.007, 0.013)
 texture = ExtResource("5_xgxfi")
 
 [node name="p2heart3" type="Sprite2D" parent="Player 1/HealthBarP1/HealthBarP2"]
-position = Vector2(37.999996, -17)
+position = Vector2(61.99999, -19)
 scale = Vector2(0.007, 0.013)
 texture = ExtResource("5_xgxfi")
 

@@ -102,7 +102,7 @@ func _on_right_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackVector.y = $"..".position.y-10
 	HasJumped = true
 	#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
-	Global.healthp1 = Global.healthp1 - (10 * Global.Difficulty)
+	Global.healthp1 = Global.healthp1 - 1
 	modulate = Color(1,0,0)
 
 #Makes the Cat specifically bounce LEFT when hurt
@@ -113,7 +113,7 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackVector.y = $"..".position.y-10
 	HasJumped = true
 	#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
-	Global.healthp1 = Global.healthp1 - (10 * Global.Difficulty)
+	Global.healthp1 = Global.healthp1 - 1
 	modulate = Color(1,0,0)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
