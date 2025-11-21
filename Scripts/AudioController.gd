@@ -1,10 +1,6 @@
-extends Node
-var Difficulty = 1
-var healthp1 = clamp(4 - Difficulty,0,3)
-var healthp2 = clamp(4 - Difficulty,0,3)
-var IsMuted = false
-var Volume = 50
-
+extends Node2D
+var Shooting = false
+var RevolverPitchLast = 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -13,3 +9,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+	
+func play_revolver():
+	Shooting = true
+	$RevolverSound.play()
+	await $RevolverSound.finished
+	Shooting = false

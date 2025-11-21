@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1jmm2dyvi1k0"]
+
+[ext_resource type="Script" uid="uid://ykhxl33ah8u6" path="res://Scripts/AudioController.gd" id="1_htpxc"]
+[ext_resource type="AudioStream" uid="uid://bwbsgccftpity" path="res://Assets/SFX/Revolver.mp3" id="2_7omf4"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fy4f6"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("2_7omf4")
+
+[node name="AudioController" type="Node2D"]
+script = ExtResource("1_htpxc")
+
+[node name="RevolverSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_fy4f6")
+volume_db = -75.0

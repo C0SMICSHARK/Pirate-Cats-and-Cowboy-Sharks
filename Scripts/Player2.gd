@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	if Input.is_action_just_pressed("BREAK") and bulletCooldown.is_stopped():
+	if Input.is_action_just_pressed("BREAK") and bulletCooldown.is_stopped() and AudioController.Shooting == false:
 		fire()
 
 	# Handle jump.
@@ -68,8 +68,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("RIGHT_P2"):
 		$AnimatedSprite2D.flip_h = false
 		
-	if Input.is_action_just_pressed("BREAK"):
+	if Input.is_action_just_pressed("BREAK") and AudioController.Shooting == false:
 		$AnimatedSprite2D.play("Shoot")
+		AudioController.play_revolver()
+		
 		
 	
 	

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccb7rpeatu70j"]
+
+[ext_resource type="AudioStream" uid="uid://bwbsgccftpity" path="res://Assets/SFX/Revolver.mp3" id="1_03xye"]
+[ext_resource type="Script" uid="uid://ykhxl33ah8u6" path="res://Scripts/AudioController.gd" id="1_auu5f"]
+
+[node name="AudioController" type="Node2D"]
+script = ExtResource("1_auu5f")
+
+[node name="Revolver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_03xye")
+volume_db = -75.0
