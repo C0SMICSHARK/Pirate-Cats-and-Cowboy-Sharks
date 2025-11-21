@@ -12,5 +12,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	healthp1 = clamp(healthp1,0,4 - Difficulty)
-	healthp2 = clamp(healthp1,0,4 - Difficulty)
+	
