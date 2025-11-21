@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0xwhk5101v7s"
+path="res://.godot/imported/jumplanding-398256 (1).mp3-a6c8ec83d34955acd4bc6607f1054934.mp3str"
+
+[deps]
+
+source_file="res://Assets/SFX/jumplanding-398256 (1).mp3"
+dest_files=["res://.godot/imported/jumplanding-398256 (1).mp3-a6c8ec83d34955acd4bc6607f1054934.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

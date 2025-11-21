@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://chmasl8ee65ml"]
+[gd_scene load_steps=12 format=3 uid="uid://chmasl8ee65ml"]
 
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/Objects/player_1.tscn" id="2_3mqfk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://djmbvvkcvt2hp" path="res://Scripts/HealthP1.gd" id="5_5f3p6"]
 [ext_resource type="Texture2D" uid="uid://7l4s5chkh6fa" path="res://Debug Assets/white.png" id="5_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://csi2k0pbl08yp" path="res://Scenes/Objects/enemy.tscn" id="6_xgxfi"]
+[ext_resource type="PackedScene" uid="uid://oqo6io1ho0yb" path="res://Scripts/coin.tscn" id="8_jv26f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8ffim"]
 
@@ -135,3 +136,6 @@ position = Vector2(166, 894)
 
 [node name="Player2" parent="." instance=ExtResource("3_iixi8")]
 position = Vector2(71, 891)
+
+[node name="Coin" parent="." instance=ExtResource("8_jv26f")]
+position = Vector2(260, 807)

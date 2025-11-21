@@ -30,7 +30,7 @@ func _on_h_slider_value_changed(value: float) -> void:
 	var Audio = int(value) 
 	AudioServer.set_bus_volume_db(0,value)
 	Global.Volume=value
-	$SoundCheck.play()
+	AudioController.play_revolver()
 
 	
 	$VolumeLabel.text = ("Volume: " + str(Audio))
@@ -80,6 +80,6 @@ func _on_mute_2_toggled(toggled_on: bool) -> void:
 	pass # Replace with fu
 	AudioServer.set_bus_mute(0,toggled_on)
 	Global.IsMuted = toggled_on
-	$SoundCheck.play()
+	AudioController.play_revolver()
 	
 	

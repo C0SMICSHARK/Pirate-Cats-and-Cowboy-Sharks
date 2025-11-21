@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0f7m53obnvpa"]
+[gd_scene load_steps=4 format=3 uid="uid://d0f7m53obnvpa"]
 
 [ext_resource type="Script" uid="uid://dgmeb6wjec5jr" path="res://Scripts/optionsmenu.gd" id="1_am41c"]
 [ext_resource type="Script" uid="uid://s4s2601isl56" path="res://Scripts/controller_button.gd" id="1_xoak5"]
-[ext_resource type="PackedScene" uid="uid://ccb7rpeatu70j" path="res://Assets/SFX/revolver.tscn" id="3_am41c"]
 [ext_resource type="PackedScene" uid="uid://bvhg2nv87al38" path="res://Scenes/Misc/Scene_transition.tscn" id="3_b7rbr"]
 
 [node name="Options Menu" type="Node2D"]
@@ -28,10 +27,6 @@ offset_left = 70.0
 offset_top = 607.0
 offset_right = 98.0
 offset_bottom = 644.0
-
-[node name="SoundCheck" parent="." instance=ExtResource("3_am41c")]
-volume_db = -75.0
-autoplay = false
 
 [node name="VolumeLabel" type="Label" parent="."]
 offset_left = 77.0

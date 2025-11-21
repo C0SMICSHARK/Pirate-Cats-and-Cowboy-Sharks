@@ -1,10 +1,5 @@
-extends Node
-var Difficulty = 1
-var healthp1 = clamp(4 - Difficulty,0,3)
-var healthp2 = clamp(4 - Difficulty,0,3)
-var IsMuted = false
-var Volume = 50
-var Score = 0
+extends Node2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,3 +9,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		AudioController.play_CoinGet()
+		Global.Score = Global.Score + 1
+		queue_free()

@@ -65,9 +65,11 @@ func _physics_process(delta: float) -> void:
 		HasJumped = true
 		$AnimatedSprite2D.play("JumpStart")
 		$AnimatedSprite2D.position.y = -1
+		AudioController.play_Jump()
 	#Dash Mechanic:
 	if Input.is_action_just_pressed("DASH") and not dashing:
 		dashing = true
+		AudioController.Dash()
 		DashTimer.start()
 	
 	elif Input.is_action_just_pressed("DASH") and dashing :
@@ -104,7 +106,7 @@ func _on_right_hurtbox_body_entered(_body: Node2D) -> void:
 	#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
 	Global.healthp1 = Global.healthp1 - 1
 	modulate = Color(1,0,0)
-
+	AudioController.play_catmeowchies()
 #Makes the Cat specifically bounce LEFT when hurt
 func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	Knocked = true
@@ -115,7 +117,7 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
 	Global.healthp1 = Global.healthp1 - 1
 	modulate = Color(1,0,0)
-
+	AudioController.play_catmeowchies()
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if  $AnimatedSprite2D.animation == "JumpStart":
 		$AnimatedSprite2D.play("JumpApex")
