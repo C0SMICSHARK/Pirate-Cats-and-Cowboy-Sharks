@@ -80,5 +80,10 @@ func _on_resolution_item_selected(index: int) -> void:
 
 
 func _on_fullscreen_toggled(toggled_on: bool) -> void:
-	# I'm going to make it so this is toggable later
-	DisplayServer.WINDOW_MODE_FULLSCREEN
+	if toggled_on == true:
+		
+		DisplayServer.WINDOW_MODE_FULLSCREEN
+		
+	else:
+			DisplayServer.WINDOW_MODE_WINDOWED
+	
