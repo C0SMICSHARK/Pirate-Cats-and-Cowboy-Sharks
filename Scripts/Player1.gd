@@ -41,13 +41,13 @@ func _physics_process(delta: float) -> void:
 	
 	if direction:
 		velocity.x = direction * SPEED
-	if direction and not HasJumped and not JumpApex:
+	if direction and not HasJumped and not JumpApex and $"../AttackTimer".is_stopped():
 		#velocity.x = direction * SPEED
 		$AnimatedSprite2D.play("Walk")
 		Walking = true
 		$AnimatedSprite2D.position.y = 3
 		
-	elif not HasJumped and not JumpApex:
+	elif not HasJumped and not JumpApex and $"../AttackTimer".is_stopped():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		$AnimatedSprite2D.play("Idle")#
 		$AnimatedSprite2D.position.y = -1
@@ -85,7 +85,8 @@ func _physics_process(delta: float) -> void:
 		Knocked = false
 		
 	
-	if Input.is_action_just_pressed("BREAK"):
+	if Input.is_action_just_pressed("CatAttack"):
+		$"../AttackTimer".start()
 		$AnimatedSprite2D.play("Attack")
 
 # Dashing Cooldown Mechanic:
@@ -117,3 +118,4 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if  $AnimatedSprite2D.animation == "JumpLand":
 		JumpApex = false
 		velocity.x = 0
+	
