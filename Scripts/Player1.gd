@@ -83,6 +83,10 @@ func _physics_process(delta: float) -> void:
 	if $"../KnockbackTimer".is_stopped():
 		move_and_slide()
 		Knocked = false
+		
+	
+	if Input.is_action_just_pressed("BREAK"):
+		$AnimatedSprite2D.play("Attack")
 
 # Dashing Cooldown Mechanic:
 func _on_dash_timer_timeout() -> void:
