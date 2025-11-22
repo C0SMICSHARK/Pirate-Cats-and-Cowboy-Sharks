@@ -133,6 +133,7 @@ texture = ExtResource("5_xgxfi")
 
 [node name="Enemy" parent="." instance=ExtResource("6_xgxfi")]
 position = Vector2(166, 894)
+EnemyHealth = 2
 
 [node name="Player2" parent="." instance=ExtResource("3_iixi8")]
 position = Vector2(71, 891)

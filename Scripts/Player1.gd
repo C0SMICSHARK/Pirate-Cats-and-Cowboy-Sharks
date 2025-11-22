@@ -20,6 +20,7 @@ func _ready() -> void:
 	add_to_group("Cat")
 	add_to_group("Player")
 
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -31,6 +32,9 @@ func _physics_process(delta: float) -> void:
 		#HasJumped = true
 		#$AnimatedSprite2D.play("Jump")
 		
+	if $"../AttackTimer".is_stopped():
+		$AttackHitbox.position.y = 1000
+	
 	if is_on_floor():
 		HasJumped = false
 		if JumpApex:
@@ -90,7 +94,14 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("CatAttack"):
 		$"../AttackTimer".start()
+		$AnimatedSprite2D.position.y = 1.5
 		$AnimatedSprite2D.play("Attack")
+		if not $AnimatedSprite2D.flip_h:
+			$AttackHitbox.position.x = 13
+			$AttackHitbox.position.y = 0
+		elif $AnimatedSprite2D.flip_h:
+			$AttackHitbox.position.x = -13
+			$AttackHitbox.position.y = 0
 
 # Dashing Cooldown Mechanic:
 func _on_dash_timer_timeout() -> void:
@@ -126,3 +137,4 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if  $AnimatedSprite2D.animation == "JumpLand":
 		JumpApex = false
 		velocity.x = 0
+	

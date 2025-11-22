@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dksykscfxj8rk"]
+[gd_scene load_steps=38 format=3 uid="uid://dksykscfxj8rk"]
 
 [ext_resource type="Script" uid="uid://pdp0rkxp8kog" path="res://Scripts/Player1.gd" id="1_2mvbs"]
 [ext_resource type="Texture2D" uid="uid://b5rde1hhxtymo" path="res://Assets/Cat/idle_spritesheet.png" id="2_0douk"]
@@ -270,6 +270,11 @@ height = 26.0
 radius = 3.0
 height = 26.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qoejl"]
+radius = 7.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_qoejl"]
+
 [node name="Player 1" type="Node2D" groups=["can_interact_with_water"]]
 z_index = 1
 
@@ -282,9 +287,7 @@ position = Vector2(-1, -1)
 rotation = 0.05235988
 scale = Vector2(0.03378336, 0.03378336)
 sprite_frames = SubResource("SpriteFrames_0vr67")
-animation = &"Attack"
-frame = 2
-frame_progress = 0.70487857
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
@@ -314,6 +317,20 @@ limit_bottom = 1000
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
+
+[node name="AttackHitbox" type="CharacterBody2D" parent="CharacterBody2D" groups=["PlayerAttack"]]
+position = Vector2(13, 1000)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackHitbox"]
+shape = SubResource("CircleShape2D_qoejl")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D/AttackHitbox"]
+visible = false
+position = Vector2(9.536743e-07, 0)
+scale = Vector2(13.514741, 13.500003)
+mesh = SubResource("SphereMesh_qoejl")
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.4

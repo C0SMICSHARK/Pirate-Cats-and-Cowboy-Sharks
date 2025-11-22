@@ -14,5 +14,7 @@ func _process(_delta: float) -> void:
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group(	"PlayerAttack"):
-		body.queue_free()
 		EnemyHealth -= 1
+		if body.is_in_group("Projectile"):
+			body.queue_free()
+		
