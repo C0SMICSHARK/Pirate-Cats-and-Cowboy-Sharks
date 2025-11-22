@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Scripts/Global.gd"
 AudioController="*res://Scripts/AudioController.tscn"
+MusicController="*res://Scripts/MusicController.tscn"
 
 [display]
 
@@ -35,6 +36,7 @@ Shark=""
 Cat=""
 Player=""
 PlayerAttack=""
+Sword=""
 
 [input]
 

@@ -74,63 +74,6 @@ shape = SubResource("RectangleShape2D_xfk5q")
 position = Vector2(33.000008, 884)
 scale = Vector2(1.8711351, 1.8711351)
 
-[node name="HealthBarP1" type="Node2D" parent="Player 1"]
-position = Vector2(-15.498618, -41.68594)
-scale = Vector2(0.534435, 0.534435)
-script = ExtResource("5_5f3p6")
-
-[node name="p1heart1" type="Sprite2D" parent="Player 1/HealthBarP1"]
-position = Vector2(14.75, -17)
-scale = Vector2(0.0066406312, 0.012962956)
-texture = ExtResource("5_xgxfi")
-
-[node name="p1heart2" type="Sprite2D" parent="Player 1/HealthBarP1"]
-position = Vector2(31.000002, -17)
-scale = Vector2(0.0066406312, 0.012962956)
-texture = ExtResource("5_xgxfi")
-
-[node name="p1heart3" type="Sprite2D" parent="Player 1/HealthBarP1"]
-position = Vector2(49, -17)
-scale = Vector2(0.0066406312, 0.012962956)
-texture = ExtResource("5_xgxfi")
-
-[node name="P1HealthLabel" type="Label" parent="Player 1/HealthBarP1"]
-offset_left = 9.000002
-offset_top = -41.0
-offset_right = 33.0
-offset_bottom = -18.0
-text = "1"
-label_settings = SubResource("LabelSettings_5f3p6")
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBarP2" type="Node2D" parent="Player 1/HealthBarP1"]
-position = Vector2(1.9073486e-06, 49)
-script = ExtResource("4_cyadu")
-
-[node name="P2HealthLabel" type="Label" parent="Player 1/HealthBarP1/HealthBarP2"]
-offset_left = 11.000002
-offset_top = -43.0
-offset_right = 35.0
-offset_bottom = -20.0
-text = "1"
-label_settings = SubResource("LabelSettings_5f3p6")
-metadata/_edit_use_anchors_ = true
-
-[node name="p2heart2" type="Sprite2D" parent="Player 1/HealthBarP1/HealthBarP2"]
-position = Vector2(37.99999, -18)
-scale = Vector2(0.007, 0.013)
-texture = ExtResource("5_xgxfi")
-
-[node name="p2heart3" type="Sprite2D" parent="Player 1/HealthBarP1/HealthBarP2"]
-position = Vector2(61.99999, -19)
-scale = Vector2(0.007, 0.013)
-texture = ExtResource("5_xgxfi")
-
-[node name="p2heart1" type="Sprite2D" parent="Player 1/HealthBarP1/HealthBarP2"]
-position = Vector2(15.000001, -17)
-scale = Vector2(0.007, 0.013)
-texture = ExtResource("5_xgxfi")
-
 [node name="Enemy" parent="." instance=ExtResource("6_xgxfi")]
 position = Vector2(166, 894)
 EnemyHealth = 2
@@ -140,3 +83,61 @@ position = Vector2(71, 891)
 
 [node name="Coin" parent="." instance=ExtResource("8_jv26f")]
 position = Vector2(260, 807)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBarP1" type="Node2D" parent="CanvasLayer"]
+position = Vector2(7, 39)
+script = ExtResource("5_5f3p6")
+
+[node name="p1heart1" type="Sprite2D" parent="CanvasLayer/HealthBarP1"]
+position = Vector2(14.75, -17)
+scale = Vector2(0.0066406312, 0.012962956)
+texture = ExtResource("5_xgxfi")
+
+[node name="p1heart2" type="Sprite2D" parent="CanvasLayer/HealthBarP1"]
+position = Vector2(31.000002, -17)
+scale = Vector2(0.0066406312, 0.012962956)
+texture = ExtResource("5_xgxfi")
+
+[node name="p1heart3" type="Sprite2D" parent="CanvasLayer/HealthBarP1"]
+position = Vector2(49, -17)
+scale = Vector2(0.0066406312, 0.012962956)
+texture = ExtResource("5_xgxfi")
+
+[node name="P1HealthLabel" type="Label" parent="CanvasLayer/HealthBarP1"]
+offset_left = 9.000002
+offset_top = -41.0
+offset_right = 33.0
+offset_bottom = -18.0
+text = "1"
+label_settings = SubResource("LabelSettings_5f3p6")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBarP2" type="Node2D" parent="CanvasLayer/HealthBarP1"]
+position = Vector2(1.9073486e-06, 49)
+script = ExtResource("4_cyadu")
+
+[node name="P2HealthLabel" type="Label" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+offset_left = 11.000002
+offset_top = -43.0
+offset_right = 35.0
+offset_bottom = -20.0
+text = "1"
+label_settings = SubResource("LabelSettings_5f3p6")
+metadata/_edit_use_anchors_ = true
+
+[node name="p2heart2" type="Sprite2D" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+position = Vector2(37.99999, -18)
+scale = Vector2(0.007, 0.013)
+texture = ExtResource("5_xgxfi")
+
+[node name="p2heart3" type="Sprite2D" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+position = Vector2(61.99999, -19)
+scale = Vector2(0.007, 0.013)
+texture = ExtResource("5_xgxfi")
+
+[node name="p2heart1" type="Sprite2D" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+position = Vector2(15.000001, -17)
+scale = Vector2(0.007, 0.013)
+texture = ExtResource("5_xgxfi")

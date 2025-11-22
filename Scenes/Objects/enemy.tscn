@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://csi2k0pbl08yp"]
 
-[ext_resource type="Texture2D" uid="uid://bm0e1ls4n7lbg" path="res://Debug Assets/dark-red-color-solid-background-1920x1080.png" id="1_hghv2"]
 [ext_resource type="Script" uid="uid://ndxy14vqroqq" path="res://Scripts/enemy.gd" id="1_i2hje"]
+[ext_resource type="Texture2D" uid="uid://7l4s5chkh6fa" path="res://Debug Assets/white.png" id="2_i2hje"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ne65n"]
 
@@ -22,7 +22,7 @@ collision_mask = 65
 position = Vector2(0, -1)
 scale = Vector2(20, 36)
 mesh = SubResource("BoxMesh_ne65n")
-texture = ExtResource("1_hghv2")
+texture = ExtResource("2_i2hje")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, -1)

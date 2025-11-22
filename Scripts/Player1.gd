@@ -92,7 +92,8 @@ func _physics_process(delta: float) -> void:
 		modulate = Color(1,clamp(modulate.g+ delta,0,1),clamp(modulate.b+ delta,0,1))
 		
 	
-	if Input.is_action_just_pressed("CatAttack"):
+	if Input.is_action_just_pressed("CatAttack") and $"../AttackTimer".is_stopped() == true:
+		AudioController.play_SwordSwing()
 		$"../AttackTimer".start()
 		$AnimatedSprite2D.position.y = 1.5
 		$AnimatedSprite2D.play("Attack")
@@ -102,7 +103,7 @@ func _physics_process(delta: float) -> void:
 		elif $AnimatedSprite2D.flip_h:
 			$AttackHitbox.position.x = -13
 			$AttackHitbox.position.y = 0
-
+			AudioController.play_SwordSwing()
 # Dashing Cooldown Mechanic:
 func _on_dash_timer_timeout() -> void:
 	dashing = false

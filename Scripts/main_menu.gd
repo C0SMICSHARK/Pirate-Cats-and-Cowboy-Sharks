@@ -2,11 +2,12 @@ extends Node2D
 
 var button_type = null
 var muted = false
-
+var SFX = AudioServer.get_bus_index("SFX")
+var Music = AudioServer.get_bus_index("Music")
 func _ready() -> void: 
 	pass
-	AudioServer.set_bus_volume_db(0,Global.Volume)
-
+	AudioServer.set_bus_volume_db(SFX,Global.Volume)
+	AudioServer.set_bus_volume_db(Music,Global.Music)
 	
 func _on_start_pressed() -> void:
 	button_type = "start"

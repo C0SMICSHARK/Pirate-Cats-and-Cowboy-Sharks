@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b1jmm2dyvi1k0"]
+[gd_scene load_steps=26 format=3 uid="uid://b1jmm2dyvi1k0"]
 
 [ext_resource type="Script" uid="uid://ykhxl33ah8u6" path="res://Scripts/AudioController.gd" id="1_htpxc"]
 [ext_resource type="AudioStream" uid="uid://bwbsgccftpity" path="res://Assets/SFX/Revolver.mp3" id="2_7omf4"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://bhyrpg61jcrca" path="res://Assets/SFX/TheWorldsMostFiscalSound.mp3" id="9_mt6a0"]
 [ext_resource type="AudioStream" uid="uid://homfpie5ucyo" path="res://Assets/SFX/WorldsLargestW.mp3" id="10_kimik"]
 [ext_resource type="AudioStream" uid="uid://cre2yculw2qvd" path="res://Assets/SFX/water_movement_fast_004.mp3" id="11_7dalo"]
+[ext_resource type="AudioStream" uid="uid://3dnwakddoyg6" path="res://Assets/SFX/whoosh-effect-382717.mp3" id="11_8hdyg"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mt6a0"]
 random_pitch = 1.35
@@ -43,13 +44,15 @@ streams_count = 1
 stream_0/stream = ExtResource("5_ii7mm")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8hdyg"]
-random_pitch = 1.2
-streams_count = 2
+random_pitch = 1.5
+streams_count = 4
 stream_0/stream = ExtResource("6_wlpc1")
 stream_1/stream = ExtResource("7_7dalo")
+stream_2/stream = ExtResource("7_7dalo")
+stream_3/stream = ExtResource("11_8hdyg")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l4ihm"]
-random_pitch = 1.2
+random_pitch = 1.3
 streams_count = 1
 stream_0/stream = ExtResource("8_hlos1")
 
@@ -75,49 +78,63 @@ script = ExtResource("1_htpxc")
 stream = SubResource("AudioStreamRandomizer_mt6a0")
 volume_db = -75.0
 mix_target = 2
+bus = &"SFX"
 
 [node name="RevolverSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_fy4f6")
 volume_db = -75.0
 mix_target = 2
+bus = &"SFX"
 
 [node name="SharkOuchies" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_nfs8n")
 volume_db = -75.0
 mix_target = 2
+bus = &"SFX"
 
 [node name="CatMeowchies" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ii7mm")
 volume_db = -75.0
 mix_target = 2
+bus = &"SFX"
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_c25by")
 volume_db = -65.0
 mix_target = 2
+bus = &"SFX"
 
-[node name="SwordMiss" type="AudioStreamPlayer" parent="."]
+[node name="SwordSwing" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_8hdyg")
 volume_db = -75.0
 pitch_scale = 1.25
 mix_target = 2
+bus = &"SFX"
 
 [node name="SwordHit" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_l4ihm")
-volume_db = -75.0
+volume_db = -80.0
 mix_target = 2
+bus = &"SFX"
 
 [node name="CoinGet" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_l0xvi")
 volume_db = -75.0
 mix_target = 2
+bus = &"SFX"
 
 [node name="Win" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_3vfj0")
 volume_db = -75.0
 mix_target = 2
+bus = &"SFX"
 
 [node name="Moist" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_hlos1")
 volume_db = -75.0
 mix_target = 2
+bus = &"SFX"
+
+[node name="Test" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7omf4")
+volume_db = -25.0
