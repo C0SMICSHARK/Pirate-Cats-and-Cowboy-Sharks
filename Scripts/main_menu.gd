@@ -14,7 +14,7 @@ func _on_start_pressed() -> void:
 	$ColorRect.show()
 	$ColorRect/Fade_timer.start()
 	$ColorRect/AnimationPlayer.play("Fade_in")
-	get_tree().change_scene_to_file("res://Scenes/Levels/Level_1.tscn")
+	#get_tree().change_scene_to_file("res://Scenes/Levels/Level_1.tscn")
 
 func _on_options_pressed() -> void:
 	button_type = "options"
@@ -29,8 +29,8 @@ func _on_quit_pressed() -> void:
 	
 func _on_fade_timer_timeout() -> void:
 	pass
-	#if button_type == "start" :
-		#get_tree().change_scene_to_file("res://Scenes/Levels/TestScene_1.tscn")
+	if button_type == "start" :
+		get_tree().change_scene_to_file("res://Scenes/Levels/Level_1.tscn")
 	
 	#elif button_type == "options" :
 		#get_tree().change_scene_to_file("res://Scenes/Levels/TestScene_1.tscn")
