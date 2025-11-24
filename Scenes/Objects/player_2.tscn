@@ -183,7 +183,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3adp"]
 radius = 12.0
-height = 48.0
+height = 44.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivfq8"]
 size = Vector2(20, 10.000008)
@@ -208,12 +208,14 @@ frame = 2
 frame_progress = 0.54315764
 
 [node name="Hitbox" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_a3adp")
 
 [node name="FiringPos" type="Node2D" parent="CharacterBody2D"]
 position = Vector2(17, -4)
 
 [node name="CatPlatform" type="CharacterBody2D" parent="CharacterBody2D"]
+position = Vector2(0, 4)
 collision_mask = 19
 
 [node name="If you want the cat to stay on sharks head then keep this character2D node, if you want cat to fall off make the above node a static body2D" type="Node" parent="CharacterBody2D/CatPlatform"]
