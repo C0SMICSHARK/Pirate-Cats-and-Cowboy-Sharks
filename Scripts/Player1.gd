@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		HasJumped = true
 		$AnimatedSprite2D.play("JumpStart")
-		$AnimatedSprite2D.position.y = -1
+		$AnimatedSprite2D.position.y = 0
 		AudioController.play_Jump()
 	#Dash Mechanic:
 	if Input.is_action_just_pressed("DASH") and not dashing:
@@ -138,4 +138,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if  $AnimatedSprite2D.animation == "JumpLand":
 		JumpApex = false
 		velocity.x = 0
+	if  $AnimatedSprite2D.animation == "Attack" and not is_on_floor():
+		JumpApex = true
+		$AnimatedSprite2D.play("JumpApex")
+		$AnimatedSprite2D.position.y = 0
 	

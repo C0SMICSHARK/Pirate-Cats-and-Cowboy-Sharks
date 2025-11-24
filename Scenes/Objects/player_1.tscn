@@ -135,7 +135,7 @@ animations = [{
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_qfxlm")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 10.0
 }, {
@@ -287,7 +287,7 @@ position = Vector2(-1, -1)
 rotation = 0.05235988
 scale = Vector2(0.03378336, 0.03378336)
 sprite_frames = SubResource("SpriteFrames_0vr67")
-animation = &"Attack"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
