@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var EnemyHealth = 2 * Global.Difficulty
+@export var AnimPlayer = Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("Enemy")#Useful for collisons
@@ -9,6 +10,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta) -> void:
 	modulate = Color(1,clamp(modulate.g + delta,0,1),clamp(modulate.b + delta,0,1))
+	if $StunTimer.is_stopped():
+		AnimPlayer.play()
 	if EnemyHealth <= 0:
 		queue_free()
 
@@ -22,6 +25,8 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		modulate = Color(1,0,0)
 		if body.is_in_group("Projectile"):
 			body.queue_free()
-			
-	
+		AnimPlayer.pause()
+		$StunTimer.start()
 		
+	
+	
