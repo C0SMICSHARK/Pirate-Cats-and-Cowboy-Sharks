@@ -14,6 +14,7 @@ var Knocked = false
 var HasJumped = false
 var JumpApex = false
 var Walking = false
+var AttackHit = false
 
 func _ready() -> void:
 	add_to_group("can_interact_with_water")
@@ -86,7 +87,14 @@ func _physics_process(delta: float) -> void:
 		t += delta
 		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
 	
-	if $"../KnockbackTimer".is_stopped():
+	if AttackHit and not $"../AttackImpactTimer".is_stopped():
+		t += delta
+		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
+	
+	if $"../AttackImpactTimer".is_stopped():
+		AttackHit = false
+	
+	if $"../KnockbackTimer".is_stopped() and $"../AttackImpactTimer".is_stopped():
 		move_and_slide()
 		Knocked = false
 		modulate = Color(1,clamp(modulate.g+ delta,0,1),clamp(modulate.b+ delta,0,1))
@@ -98,10 +106,10 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.position.y = 1.5
 		$AnimatedSprite2D.play("Attack")
 		if not $AnimatedSprite2D.flip_h:
-			$AttackHitbox.position.x = 13
+			$AttackHitbox.position.x = 13.5
 			$AttackHitbox.position.y = 0
 		elif $AnimatedSprite2D.flip_h:
-			$AttackHitbox.position.x = -13
+			$AttackHitbox.position.x = -13.5
 			$AttackHitbox.position.y = 0
 			AudioController.play_SwordSwing()
 # Dashing Cooldown Mechanic:
@@ -143,3 +151,14 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		$AnimatedSprite2D.play("JumpApex")
 		$AnimatedSprite2D.position.y = 0
 	
+func _on_hit_impact_body_entered(_body: Node2D) -> void:
+	$"../AttackImpactTimer".start()
+	AttackHit = true
+	velocity.y=0
+	$AttackHitbox.position.y = 1000
+	if not $AnimatedSprite2D.flip_h:
+		KnockbackVector.x = $"..".position.x-20
+		KnockbackVector.y = $"..".position.y-0
+	elif  $AnimatedSprite2D.flip_h:
+		KnockbackVector.x = $"..".position.x+20
+		KnockbackVector.y = $"..".position.y-0

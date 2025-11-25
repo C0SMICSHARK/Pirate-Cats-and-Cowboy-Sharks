@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dksykscfxj8rk"]
+[gd_scene load_steps=39 format=3 uid="uid://dksykscfxj8rk"]
 
 [ext_resource type="Script" uid="uid://pdp0rkxp8kog" path="res://Scripts/Player1.gd" id="1_2mvbs"]
 [ext_resource type="Texture2D" uid="uid://b5rde1hhxtymo" path="res://Assets/Cat/idle_spritesheet.png" id="2_0douk"]
@@ -270,10 +270,15 @@ height = 26.0
 radius = 3.0
 height = 26.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qoejl"]
-radius = 7.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qoejl"]
+radius = 6.0
+height = 14.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_qoejl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_12rfu"]
+radius = 6.0
+height = 14.0
 
 [node name="Player 1" type="Node2D" groups=["can_interact_with_water"]]
 z_index = 1
@@ -319,18 +324,25 @@ position_smoothing_enabled = true
 position_smoothing_speed = 12.0
 
 [node name="AttackHitbox" type="CharacterBody2D" parent="CharacterBody2D" groups=["PlayerAttack", "Sword"]]
-position = Vector2(13, 1000)
+position = Vector2(13.5, 0)
 collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackHitbox"]
-shape = SubResource("CircleShape2D_qoejl")
+shape = SubResource("CapsuleShape2D_qoejl")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D/AttackHitbox"]
 visible = false
 position = Vector2(9.536743e-07, 0)
 scale = Vector2(13.514741, 13.500003)
 mesh = SubResource("SphereMesh_qoejl")
+
+[node name="HitImpact" type="Area2D" parent="CharacterBody2D/AttackHitbox"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackHitbox/HitImpact"]
+shape = SubResource("CapsuleShape2D_12rfu")
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.4
@@ -343,7 +355,12 @@ one_shot = true
 wait_time = 0.25
 one_shot = true
 
+[node name="AttackImpactTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="CharacterBody2D/RightHurtbox" to="CharacterBody2D" method="_on_right_hurtbox_body_entered"]
 [connection signal="body_entered" from="CharacterBody2D/LeftHurtbox" to="CharacterBody2D" method="_on_left_hurtbox_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/AttackHitbox/HitImpact" to="CharacterBody2D" method="_on_hit_impact_body_entered"]
 [connection signal="timeout" from="DashTimer" to="CharacterBody2D" method="_on_dash_timer_timeout"]
