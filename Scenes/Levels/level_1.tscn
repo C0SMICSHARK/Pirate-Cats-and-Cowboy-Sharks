@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://djmbvvkcvt2hp" path="res://Scripts/HealthP1.gd" id="5_5f3p6"]
 [ext_resource type="Texture2D" uid="uid://7l4s5chkh6fa" path="res://Debug Assets/white.png" id="5_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://csi2k0pbl08yp" path="res://Scenes/Objects/enemy.tscn" id="6_xgxfi"]
-[ext_resource type="PackedScene" uid="uid://oqo6io1ho0yb" path="res://Scripts/coin.tscn" id="8_jv26f"]
+[ext_resource type="PackedScene" uid="uid://oqo6io1ho0yb" path="res://Scenes/Objects/coin.tscn" id="8_jv26f"]
 [ext_resource type="PackedScene" uid="uid://bvhg2nv87al38" path="res://Scenes/Misc/Scene_transition.tscn" id="9_u5ghp"]
 [ext_resource type="Script" uid="uid://dgl7oeh1llhs3" path="res://Scripts/FadeIn.gd" id="10_hwvp3"]
 [ext_resource type="PackedScene" uid="uid://wfta78sese1g" path="res://Scenes/Objects/breakableWall.tscn" id="11_hwvp3"]
