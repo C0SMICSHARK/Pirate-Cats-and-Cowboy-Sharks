@@ -1,15 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://csi2k0pbl08yp"]
+[gd_scene load_steps=5 format=3 uid="uid://csi2k0pbl08yp"]
 
 [ext_resource type="Script" uid="uid://ndxy14vqroqq" path="res://Scripts/enemy.gd" id="1_i2hje"]
-[ext_resource type="Texture2D" uid="uid://7l4s5chkh6fa" path="res://Debug Assets/white.png" id="2_i2hje"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_ne65n"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sqod"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hghv2"]
-size = Vector2(15, 36)
+size = Vector2(40, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2hje"]
-size = Vector2(20, 36)
+size = Vector2(51, 36)
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_i2hje")
@@ -18,14 +23,16 @@ script = ExtResource("1_i2hje")
 collision_layer = 64
 collision_mask = 65
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CharacterBody2D"]
-position = Vector2(0, -1)
-scale = Vector2(20, 36)
-mesh = SubResource("BoxMesh_ne65n")
-texture = ExtResource("2_i2hje")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -0.9999995)
+scale = Vector2(0.26754385, 0.26754385)
+sprite_frames = SubResource("SpriteFrames_7sqod")
+animation = &"Walk"
+frame_progress = 0.75348985
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, -1)
+visible = false
+position = Vector2(4, -1)
 shape = SubResource("RectangleShape2D_hghv2")
 
 [node name="Hurtbox" type="Area2D" parent="CharacterBody2D"]
@@ -33,7 +40,8 @@ collision_layer = 194
 collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
-position = Vector2(0, -1)
+visible = false
+position = Vector2(3.5, -1)
 shape = SubResource("RectangleShape2D_i2hje")
 
 [node name="StunTimer" type="Timer" parent="."]

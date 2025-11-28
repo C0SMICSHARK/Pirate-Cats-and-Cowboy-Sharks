@@ -6,6 +6,8 @@ extends Node2D
 func _ready() -> void:
 	add_to_group("Enemy")#Useful for collisons
 	AnimPlayer.play("EnemySideToSide")
+	$CharacterBody2D/AnimatedSprite2D.play("Walk")
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
