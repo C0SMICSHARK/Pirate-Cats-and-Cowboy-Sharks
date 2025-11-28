@@ -15,8 +15,13 @@ func _process(delta) -> void:
 	modulate = Color(1,clamp(modulate.g + delta,0,1),clamp(modulate.b + delta,0,1))
 	if $StunTimer.is_stopped():
 		AnimPlayer.play()
+		$CharacterBody2D/AnimatedSprite2D.play()
 	if EnemyHealth <= 0:
 		queue_free()
+	if AnimPlayer.get_current_animation_position() <= (AnimPlayer.get_current_animation_length() / 2) and $StunTimer.is_stopped():
+		$CharacterBody2D/AnimatedSprite2D.flip_h = true
+	elif AnimPlayer.get_current_animation_position() > (AnimPlayer.get_current_animation_length() / 2) and $StunTimer.is_stopped() :
+		$CharacterBody2D/AnimatedSprite2D.flip_h = false
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
@@ -30,6 +35,6 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 			body.queue_free()
 		AnimPlayer.pause()
 		$StunTimer.start()
-		
+		$CharacterBody2D/AnimatedSprite2D.pause()
 	
 	

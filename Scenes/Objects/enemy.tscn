@@ -1,10 +1,57 @@
-[gd_scene load_steps=5 format=3 uid="uid://csi2k0pbl08yp"]
+[gd_scene load_steps=10 format=3 uid="uid://csi2k0pbl08yp"]
 
 [ext_resource type="Script" uid="uid://ndxy14vqroqq" path="res://Scripts/enemy.gd" id="1_i2hje"]
+[ext_resource type="Texture2D" uid="uid://dem1d3uld1336" path="res://Assets/Ankylosaurus/Ankylosaurus.png" id="2_i2hje"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ink2j"]
+atlas = ExtResource("2_i2hje")
+region = Rect2(270, 36, 203, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ypxt"]
+atlas = ExtResource("2_i2hje")
+region = Rect2(726, 37, 203, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm7cc"]
+atlas = ExtResource("2_i2hje")
+region = Rect2(273, 202, 203, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osb2a"]
+atlas = ExtResource("2_i2hje")
+region = Rect2(270, 359, 203, 127)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7sqod"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ink2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ink2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ink2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ypxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ypxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm7cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm7cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm7cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osb2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osb2a")
+}],
 "loop": true,
 "name": &"Walk",
 "speed": 10.0
@@ -24,11 +71,11 @@ collision_layer = 64
 collision_mask = 65
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(0, -0.9999995)
+position = Vector2(3, -1)
 scale = Vector2(0.26754385, 0.26754385)
 sprite_frames = SubResource("SpriteFrames_7sqod")
 animation = &"Walk"
-frame_progress = 0.63569224
+frame_progress = 0.85370845
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(4, -1)
