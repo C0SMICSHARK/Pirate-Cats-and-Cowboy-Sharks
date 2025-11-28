@@ -6,6 +6,8 @@ const SPEED = 400.0
 var t = 0.0
 var KnockbackVector = Vector2(0,0)
 var KnockbackForce = Vector2(0,0)
+var Flipstuffinnit = 0
+var shooting = false
 #const JUMP_VELOCITY = -400.0
 	
 
@@ -20,14 +22,22 @@ func fire():
 	if $AnimatedSprite2D.flip_h:
 		$FiringPos.position.x = -17
 		Bullet.dir=3.14159
+		Flipstuffinnit = -1
 	else:
 		$FiringPos.position.x = 17
 		Bullet.dir=0
-	
+		Flipstuffinnit = 1
 	Bullet.pos=$FiringPos.global_position
 	Bullet.rota=global_rotation
 	get_parent().add_child(Bullet)
 	bulletCooldown.start()
+	await get_tree().create_timer(0.15).timeout
+	Knocked = true
+	$"../KnockbackTimer".start()
+	KnockbackVector.x = $"..".position.x-(30*Flipstuffinnit)
+	KnockbackVector.y = $"..".position.y-10
+	KnockbackForce = -velocity
+	KnockbackForce.x -= 500
 	#if Input.is_action_just_pressed("BREAK"):
 		#$AnimatedSprite2D.play("Shoot")
 	#else:
@@ -39,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	if Input.is_action_just_pressed("BREAK") and bulletCooldown.is_stopped() and AudioController.Shooting == false:
+	if Input.is_action_just_pressed("BREAK") and bulletCooldown.is_stopped() and AudioController.Shooting == false and is_on_floor() == true:
 		fire()
 
 	# Handle jump.
@@ -79,7 +89,7 @@ func _physics_process(delta: float) -> void:
 	
 
 	
-	if $"../KnockbackTimer".is_stopped():
+	if $"../KnockbackTimer".is_stopped() and shooting == false:
 		move_and_slide()
 		Knocked = false
 		modulate = Color(1,clamp(modulate.g+ delta,0,1),clamp(modulate.b+ delta,0,1))

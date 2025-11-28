@@ -196,16 +196,14 @@ height = 44.0
 z_index = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_mask = 83
+collision_mask = 81
 script = ExtResource("1_mkara")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(1.8125, 0.9750099)
 scale = Vector2(0.258125, 0.25812507)
 sprite_frames = SubResource("SpriteFrames_8os5a")
-animation = &"Idle"
-frame = 2
-frame_progress = 0.54315764
+animation = &"Shoot"
 
 [node name="Hitbox" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 2)
