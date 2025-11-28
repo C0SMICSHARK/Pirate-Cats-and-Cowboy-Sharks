@@ -20,8 +20,18 @@ func _process(delta) -> void:
 		queue_free()
 	if AnimPlayer.get_current_animation_position() <= (AnimPlayer.get_current_animation_length() / 2) and $StunTimer.is_stopped():
 		$CharacterBody2D/AnimatedSprite2D.play("WalkRight")
+		$CharacterBody2D/CollisionShape2D.position.x = 4
+		$CharacterBody2D/Hurtbox/CollisionShape2D.position.x = 4
+		$CharacterBody2D/CollisionShape2D.rotation_degrees += 180
+		$CharacterBody2D/Hurtbox/CollisionShape2D.rotation_degrees += 180
+		
 	elif AnimPlayer.get_current_animation_position() > (AnimPlayer.get_current_animation_length() / 2) and $StunTimer.is_stopped() :
 		$CharacterBody2D/AnimatedSprite2D.play("WalkLeft")
+		$CharacterBody2D/CollisionShape2D.position.x = -4
+		$CharacterBody2D/Hurtbox/CollisionShape2D.position.x = -4
+		$CharacterBody2D/CollisionShape2D.rotation_degrees -= 180
+		$CharacterBody2D/Hurtbox/CollisionShape2D.rotation_degrees -= 180
+		
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:

@@ -129,11 +129,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hghv2"]
-size = Vector2(40, 36)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f7nb3"]
+radius = 9.342294
+height = 29.955246
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2hje"]
-size = Vector2(51, 36)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e60kg"]
+radius = 14.088322
+height = 38.408234
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_mv6dn")
@@ -147,19 +149,20 @@ position = Vector2(0, -0.9999995)
 scale = Vector2(0.053, 0.053)
 sprite_frames = SubResource("SpriteFrames_7sqod")
 animation = &"WalkLeft"
-frame_progress = 0.24323282
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(4, -1)
-shape = SubResource("RectangleShape2D_hghv2")
+position = Vector2(-4, 1.9999996)
+rotation = 2.268928
+shape = SubResource("CapsuleShape2D_f7nb3")
 
 [node name="Hurtbox" type="Area2D" parent="CharacterBody2D"]
 collision_layer = 194
 collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
-position = Vector2(3.5, -1)
-shape = SubResource("RectangleShape2D_i2hje")
+position = Vector2(-4, 1.9999999)
+rotation = 2.268928
+shape = SubResource("CapsuleShape2D_e60kg")
 
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 0.5
