@@ -162,3 +162,11 @@ func _on_hit_impact_body_entered(_body: Node2D) -> void:
 	elif  $AnimatedSprite2D.flip_h:
 		KnockbackVector.x = $"..".position.x+20
 		KnockbackVector.y = $"..".position.y-0
+
+
+func _on_ground_impact_box_body_entered(_body: Node2D) -> void:
+	$"../AttackImpactTimer".start()
+	AttackHit = true
+	velocity.y=0
+	KnockbackVector.x = $"..".position.x-0
+	KnockbackVector.y = $"..".position.y-20

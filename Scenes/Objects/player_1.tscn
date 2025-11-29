@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dksykscfxj8rk"]
+[gd_scene load_steps=40 format=3 uid="uid://dksykscfxj8rk"]
 
 [ext_resource type="Script" uid="uid://pdp0rkxp8kog" path="res://Scripts/Player1.gd" id="1_2mvbs"]
 [ext_resource type="Texture2D" uid="uid://b5rde1hhxtymo" path="res://Assets/Cat/idle_spritesheet.png" id="2_0douk"]
@@ -280,11 +280,15 @@ height = 14.0
 radius = 6.0
 height = 14.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qoejl"]
+size = Vector2(12, 3.5)
+
 [node name="Player 1" type="Node2D" groups=["can_interact_with_water"]]
 z_index = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_mask = 17
+collision_layer = 2147483649
+collision_mask = 2147483665
 script = ExtResource("1_2mvbs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
@@ -344,6 +348,14 @@ collision_mask = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackHitbox/HitImpact"]
 shape = SubResource("CapsuleShape2D_12rfu")
 
+[node name="GroundImpactBox" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 1073741824
+collision_mask = 1073741824
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/GroundImpactBox"]
+position = Vector2(0, 12.75)
+shape = SubResource("RectangleShape2D_qoejl")
+
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.4
 
@@ -363,4 +375,5 @@ one_shot = true
 [connection signal="body_entered" from="CharacterBody2D/RightHurtbox" to="CharacterBody2D" method="_on_right_hurtbox_body_entered"]
 [connection signal="body_entered" from="CharacterBody2D/LeftHurtbox" to="CharacterBody2D" method="_on_left_hurtbox_body_entered"]
 [connection signal="body_entered" from="CharacterBody2D/AttackHitbox/HitImpact" to="CharacterBody2D" method="_on_hit_impact_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/GroundImpactBox" to="CharacterBody2D" method="_on_ground_impact_box_body_entered"]
 [connection signal="timeout" from="DashTimer" to="CharacterBody2D" method="_on_dash_timer_timeout"]

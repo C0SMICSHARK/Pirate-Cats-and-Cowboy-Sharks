@@ -234,7 +234,7 @@ scale = Vector2(1, 4.3599997)
 [node name="Enemy2" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("12_afv7b")]
 position = Vector2(234, 885)
 scale = Vector2(2.02, 2.02)
-EnemyHealth = 4
+EnemyHealth = 0
 AnimPlayer = NodePath("AnimationPlayer2")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Enemy2"]
