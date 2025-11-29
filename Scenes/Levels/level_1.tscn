@@ -245,7 +245,7 @@ libraries = {
 [node name="Enemy" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("6_xgxfi")]
 position = Vector2(375, 892)
 scale = Vector2(1.44, 1.44)
-EnemyHealth = 3
+EnemyHealth = 10
 AnimPlayer = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]

@@ -14,7 +14,13 @@ func _ready() -> void:
 func _process(delta) -> void:
 	modulate = Color(1,clamp(modulate.g + delta,0,1),clamp(modulate.b + delta,0,1))
 	if $StunTimer.is_stopped() and $AttackTimer.is_stopped():
-		AnimPlayer.play()
+		if $GroundImpactTimer.is_stopped():
+			AnimPlayer.play()
+		#if $GroundImpactTimer.time_left <= 0.1 and $GroundImpactTimer.time_left > 0:
+			#$GroundImpactTimer.paused = false
+		if $StunTimer.timeout:
+			$GroundImpactTimer.paused = false
+		
 		$CharacterBody2D/AnimatedSprite2D.play()
 	if EnemyHealth <= 0:
 		queue_free()
@@ -28,14 +34,17 @@ func _process(delta) -> void:
 	elif not $CharacterBody2D/AnimatedSprite2D.flip_h:
 		$CharacterBody2D/AttackProximity/CollisionShape2D.position.x = -20
 	
-	if $GroundImpactTimer.time_left <= 0.1 and $GroundImpactTimer.time_left > 0:
+	if $GroundImpactTimer.time_left <= 0.1 and $GroundImpactTimer.time_left > 0 and $StunTimer.timeout :
 		if $CharacterBody2D/AnimatedSprite2D.flip_h:
 			$CharacterBody2D/GroundImpactZone.position.x = 28
+			$CharacterBody2D/Hurtbox/CollisionShape2D.position.x = 6
 		elif not $CharacterBody2D/AnimatedSprite2D.flip_h:
 			$CharacterBody2D/GroundImpactZone.position.x = -28
+			$CharacterBody2D/Hurtbox/CollisionShape2D.position.x = -6
 		$CharacterBody2D/GroundImpactZone.position.y = 13
 	if $GroundImpactTimer.time_left == 0:
 		$CharacterBody2D/GroundImpactZone.position.y = -1000
+		$CharacterBody2D/Hurtbox/CollisionShape2D.position.x = 0
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
@@ -48,20 +57,23 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		if body.is_in_group("Projectile"):
 			body.queue_free()
 		AnimPlayer.pause()
+		$GroundImpactTimer.paused = true
 		$StunTimer.start()
 		$CharacterBody2D/AnimatedSprite2D.pause()
 	
 	
 func _on_attack_proximity_body_entered(_body: Node2D) -> void:
-	$CharacterBody2D/AnimatedSprite2D.play("Attack")
-	$AttackTimer.start()
-	AnimPlayer.pause()
-	$CharacterBody2D/AnimatedSprite2D.scale.x = 0.148
-	$CharacterBody2D/AnimatedSprite2D.scale.y = 0.148
-	$GroundImpactTimer.start()
+	if not $CharacterBody2D/AnimatedSprite2D.animation == "Attack":
+		$CharacterBody2D/AnimatedSprite2D.play("Attack")
+		$AttackTimer.start()
+		AnimPlayer.pause()
+		$CharacterBody2D/AnimatedSprite2D.scale.x = 0.148
+		$CharacterBody2D/AnimatedSprite2D.scale.y = 0.148
+		$GroundImpactTimer.start()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $CharacterBody2D/AnimatedSprite2D.animation == "Attack":
 		$CharacterBody2D/AnimatedSprite2D.scale.x = 0.268
 		$CharacterBody2D/AnimatedSprite2D.scale.y = 0.268
 		$CharacterBody2D/AnimatedSprite2D.play("Walk")
+		
