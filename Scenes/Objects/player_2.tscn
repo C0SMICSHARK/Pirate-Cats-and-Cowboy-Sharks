@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cg6dul6g2cnl5"]
+[gd_scene load_steps=37 format=3 uid="uid://cg6dul6g2cnl5"]
 
 [ext_resource type="Script" uid="uid://fop0iyjxa0tr" path="res://Scripts/Player2.gd" id="1_mkara"]
 [ext_resource type="Texture2D" uid="uid://b5uwq4j25mops" path="res://Assets/Shark/Idle1.png" id="2_eus2p"]
@@ -192,6 +192,9 @@ size = Vector2(20, 10.000008)
 radius = 6.0
 height = 44.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp61h"]
+size = Vector2(24, 6)
+
 [node name="Player2" type="Node2D" groups=["can_interact_with_water"]]
 z_index = 1
 
@@ -240,6 +243,15 @@ collision_mask = 64
 position = Vector2(-7, 0)
 shape = SubResource("CapsuleShape2D_ivfq8")
 
+[node name="GroundImpactbox" type="Area2D" parent="CharacterBody2D"]
+position = Vector2(0, 20)
+collision_layer = 1073741824
+collision_mask = 1073741824
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/GroundImpactbox"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_bp61h")
+
 [node name="BulletCooldown" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -248,5 +260,10 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
+[node name="AttackImpactTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="body_entered" from="CharacterBody2D/RightHurtbox" to="CharacterBody2D" method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="CharacterBody2D/LeftHurtbox" to="CharacterBody2D" method="_on_left_hurtbox_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/GroundImpactbox" to="CharacterBody2D" method="_on_ground_impactbox_body_entered"]

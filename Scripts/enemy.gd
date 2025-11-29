@@ -24,9 +24,9 @@ func _process(delta) -> void:
 		$CharacterBody2D/AnimatedSprite2D.flip_h = false
 	
 	if $CharacterBody2D/AnimatedSprite2D.flip_h:
-		$CharacterBody2D/AttackProximity/CollisionShape2D.position.x = 12
+		$CharacterBody2D/AttackProximity/CollisionShape2D.position.x = 20
 	elif not $CharacterBody2D/AnimatedSprite2D.flip_h:
-		$CharacterBody2D/AttackProximity/CollisionShape2D.position.x = -12
+		$CharacterBody2D/AttackProximity/CollisionShape2D.position.x = -20
 	
 	if $GroundImpactTimer.time_left <= 0.1 and $GroundImpactTimer.time_left > 0:
 		if $CharacterBody2D/AnimatedSprite2D.flip_h:

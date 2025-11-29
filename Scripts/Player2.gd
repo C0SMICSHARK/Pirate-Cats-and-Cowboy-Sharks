@@ -8,6 +8,7 @@ var KnockbackVector = Vector2(0,0)
 var KnockbackForce = Vector2(0,0)
 var Flipstuffinnit = 0
 var shooting = false
+var Impact = false
 #const JUMP_VELOCITY = -400.0
 	
 
@@ -82,14 +83,17 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("Shoot")
 		AudioController.play_revolver()
 		
-		
+	if Impact and not $"../AttackImpactTimer".is_stopped():
+		t += delta
+		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
 	
-	
+	if $"../AttackImpactTimer".is_stopped():
+		Impact = false
 	
 	
 
 	
-	if $"../KnockbackTimer".is_stopped() and shooting == false:
+	if $"../KnockbackTimer".is_stopped() and shooting == false and $"../AttackImpactTimer".is_stopped():
 		move_and_slide()
 		Knocked = false
 		modulate = Color(1,clamp(modulate.g+ delta,0,1),clamp(modulate.b+ delta,0,1))
@@ -119,3 +123,11 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	Global.healthp2 = Global.healthp2 - 1
 	modulate = Color(1,0,0)
 	AudioController.play_sharkouchies()
+
+
+func _on_ground_impactbox_body_entered(_body: Node2D) -> void:
+	$"../AttackImpactTimer".start()
+	Impact = true
+	velocity.y=0
+	KnockbackVector.x = $"..".position.x+0
+	KnockbackVector.y = $"..".position.y-20
