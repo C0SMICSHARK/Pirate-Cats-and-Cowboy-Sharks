@@ -85,10 +85,14 @@ func _physics_process(delta: float) -> void:
 
 	if Knocked and not $"../KnockbackTimer".is_stopped():
 		t += delta
+		velocity.x = 0
+		velocity.y = 0
 		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
 	
 	if AttackHit and not $"../AttackImpactTimer".is_stopped():
 		t += delta
+		velocity.x = 0
+		velocity.y = 0
 		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
 	
 	if $"../AttackImpactTimer".is_stopped():

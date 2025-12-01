@@ -32,11 +32,12 @@ func fire():
 	Bullet.rota=global_rotation
 	get_parent().add_child(Bullet)
 	bulletCooldown.start()
-	await get_tree().create_timer(0.15).timeout
+	#await get_tree().create_timer(0.15).timeout
 	Knocked = true
 	$"../KnockbackTimer".start()
-	KnockbackVector.x = $"..".position.x-(30*Flipstuffinnit)
-	KnockbackVector.y = $"..".position.y-10
+	KnockbackVector.x = $"..".position.x-(5*Flipstuffinnit)
+	KnockbackVector.y = $"..".position.y-2
+	velocity.x = 0
 	KnockbackForce = -velocity
 	KnockbackForce.x -= 500
 	#if Input.is_action_just_pressed("BREAK"):
@@ -85,6 +86,8 @@ func _physics_process(delta: float) -> void:
 		
 	if Impact and not $"../AttackImpactTimer".is_stopped():
 		t += delta
+		velocity.x = 0
+		velocity.y = 0
 		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
 	
 	if $"../AttackImpactTimer".is_stopped():
