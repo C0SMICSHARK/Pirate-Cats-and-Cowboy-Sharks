@@ -83,6 +83,10 @@ func _physics_process(delta: float) -> void:
 	if dashing:
 		velocity.x = direction * SPEED * DASH
 
+	if $"../HitImmunity".is_stopped():
+		$RightHurtbox.position.y = 0
+		$LeftHurtbox.position.y = 0
+
 	if Knocked and not $"../KnockbackTimer".is_stopped():
 		t += delta
 		velocity.x = 0
@@ -127,6 +131,9 @@ func _on_right_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackVector.x = $"..".position.x-30
 	KnockbackVector.y = $"..".position.y-10
 	HasJumped = true
+	$"../HitImmunity".start()
+	$RightHurtbox.position.y = -10000
+	$LeftHurtbox.position.y = -10000
 	#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
 	Global.healthp1 = Global.healthp1 - 1
 	modulate = Color(1,0,0)
@@ -138,6 +145,9 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackVector.x = $"..".position.x+30
 	KnockbackVector.y = $"..".position.y-10
 	HasJumped = true
+	$"../HitImmunity".start()
+	$RightHurtbox.position.y = -10000
+	$LeftHurtbox.position.y = -10000
 	#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
 	Global.healthp1 = Global.healthp1 - 1
 	modulate = Color(1,0,0)

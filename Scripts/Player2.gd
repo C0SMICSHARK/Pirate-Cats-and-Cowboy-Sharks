@@ -93,7 +93,9 @@ func _physics_process(delta: float) -> void:
 	if $"../AttackImpactTimer".is_stopped():
 		Impact = false
 	
-	
+	if $"../HitImmunity".is_stopped():
+		$RightHurtbox.position.y = 0
+		$LeftHurtbox.position.y = 0
 
 	
 	if $"../KnockbackTimer".is_stopped() and shooting == false and $"../AttackImpactTimer".is_stopped():
@@ -110,6 +112,9 @@ func _on_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackVector.y = $"..".position.y-10
 	KnockbackForce = -velocity
 	KnockbackForce.x -= 500
+	$"../HitImmunity".start()
+	$RightHurtbox.position.y = -20000
+	$LeftHurtbox.position.y = -20000
 		#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
 	Global.healthp2 = Global.healthp2 - 1
 	modulate = Color(1,0,0)
@@ -123,6 +128,9 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	KnockbackVector.y = $"..".position.y-10
 	KnockbackForce = velocity
 	KnockbackForce.x += 500
+	$"../HitImmunity".start()
+	$RightHurtbox.position.y = -20000
+	$LeftHurtbox.position.y = -20000
 	Global.healthp2 = Global.healthp2 - 1
 	modulate = Color(1,0,0)
 	AudioController.play_sharkouchies()

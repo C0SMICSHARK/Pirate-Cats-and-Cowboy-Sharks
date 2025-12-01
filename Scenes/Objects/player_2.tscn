@@ -200,7 +200,7 @@ z_index = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 collision_layer = 2147483649
-collision_mask = 2147483729
+collision_mask = 2147483665
 script = ExtResource("1_mkara")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
@@ -262,6 +262,10 @@ one_shot = true
 
 [node name="AttackImpactTimer" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
+
+[node name="HitImmunity" type="Timer" parent="."]
+wait_time = 1.2
 one_shot = true
 
 [connection signal="body_entered" from="CharacterBody2D/RightHurtbox" to="CharacterBody2D" method="_on_hurtbox_body_entered"]
