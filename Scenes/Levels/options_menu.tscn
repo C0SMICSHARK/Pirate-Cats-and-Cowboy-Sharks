@@ -1,20 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0f7m53obnvpa"]
+[gd_scene load_steps=6 format=3 uid="uid://d0f7m53obnvpa"]
 
 [ext_resource type="Script" uid="uid://dgmeb6wjec5jr" path="res://Scripts/optionsmenu.gd" id="1_am41c"]
 [ext_resource type="Script" uid="uid://s4s2601isl56" path="res://Scripts/controller_button.gd" id="1_xoak5"]
-[ext_resource type="Texture2D" uid="uid://lrveyfhonni3" path="res://Assets/UI/Buttons/Resume_Button.png" id="2_am41c"]
+[ext_resource type="Texture2D" uid="uid://u4thuvnkc3hu" path="res://Assets/UI/Buttons/Cross_Button_Symbol.png" id="2_am41c"]
 [ext_resource type="PackedScene" uid="uid://bvhg2nv87al38" path="res://Scenes/Misc/Scene_transition.tscn" id="3_b7rbr"]
+[ext_resource type="Texture2D" uid="uid://cana0n7l2h7sl" path="res://Assets/UI/Buttons/Cross_Button_Symbol_Tint.png" id="3_e03lk"]
 
 [node name="Options Menu" type="Node2D"]
 script = ExtResource("1_am41c")
 
+[node name="Background Tint" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(19.886623, 27.368153)
+color = Color(0, 0, 0, 0.28235295)
+
 [node name="Back" type="TextureButton" parent="."]
-offset_left = 3.0
-offset_top = 921.0
-offset_right = 903.0
-offset_bottom = 1221.0
-scale = Vector2(0.49, 0.49)
+offset_left = 29.0
+offset_top = 948.00006
+offset_right = 929.0
+offset_bottom = 1248.0
+scale = Vector2(0.34, 0.34)
 texture_normal = ExtResource("2_am41c")
+texture_hover = ExtResource("3_e03lk")
+texture_focused = ExtResource("3_e03lk")
 script = ExtResource("1_xoak5")
 
 [node name="VolumeLabel" type="Label" parent="."]
