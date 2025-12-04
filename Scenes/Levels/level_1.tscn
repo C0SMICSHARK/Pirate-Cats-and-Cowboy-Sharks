@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://chmasl8ee65ml"]
+[gd_scene load_steps=26 format=3 uid="uid://chmasl8ee65ml"]
 
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/Objects/player_1.tscn" id="2_3mqfk"]
@@ -12,6 +12,10 @@
 [ext_resource type="Script" uid="uid://dgl7oeh1llhs3" path="res://Scripts/FadeIn.gd" id="10_hwvp3"]
 [ext_resource type="PackedScene" uid="uid://wfta78sese1g" path="res://Scenes/Objects/breakableWall.tscn" id="11_hwvp3"]
 [ext_resource type="PackedScene" uid="uid://choya2sae2yu3" path="res://Scenes/Objects/enemyType2.tscn" id="12_afv7b"]
+[ext_resource type="Texture2D" uid="uid://bte03v7ek0yoo" path="res://Assets/Environment/Beach_Sky.png" id="13_7r2dd"]
+[ext_resource type="Texture2D" uid="uid://bpjhovpy5wwgc" path="res://Assets/Environment/Beach_Mountains.png" id="14_3628d"]
+[ext_resource type="Texture2D" uid="uid://brtd8la7nujfh" path="res://Assets/Environment/Beach_Main.png" id="15_irw6p"]
+[ext_resource type="Texture2D" uid="uid://dmuflcqps2d12" path="res://Assets/Environment/Beach_Foreground.png" id="16_31phq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8ffim"]
 
@@ -252,3 +256,37 @@ AnimPlayer = NodePath("AnimationPlayer")
 libraries = {
 &"": SubResource("AnimationLibrary_tjl6l")
 }
+
+[node name="Sky" type="Parallax2D" parent="."]
+z_index = -1
+repeat_size = Vector2(160, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+position = Vector2(1273, 619)
+scale = Vector2(0.586, 0.586)
+texture = ExtResource("13_7r2dd")
+
+[node name="Mountains" type="Parallax2D" parent="."]
+z_index = -1
+repeat_size = Vector2(160, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Mountains"]
+position = Vector2(1271, 625)
+scale = Vector2(0.586, 0.586)
+texture = ExtResource("14_3628d")
+
+[node name="Main" type="Parallax2D" parent="."]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="Main"]
+position = Vector2(1347.0001, 623)
+scale = Vector2(0.6192, 0.586)
+texture = ExtResource("15_irw6p")
+
+[node name="Foreground" type="Parallax2D" parent="."]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground"]
+position = Vector2(1428.9999, 623)
+scale = Vector2(0.586, 0.586)
+texture = ExtResource("16_31phq")
