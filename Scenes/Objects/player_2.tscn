@@ -199,8 +199,8 @@ size = Vector2(24, 6)
 z_index = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_layer = 2147483649
-collision_mask = 2147483665
+collision_layer = 2164260865
+collision_mask = 2164260881
 script = ExtResource("1_mkara")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]

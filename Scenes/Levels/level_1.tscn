@@ -301,6 +301,19 @@ position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_xfk5q")
 
+[node name="SandCollision2" type="MeshInstance2D" parent="."]
+position = Vector2(2932, 934)
+scale = Vector2(100, 100000000)
+mesh = SubResource("BoxMesh_8ffim")
+texture = ExtResource("1_vk57k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SandCollision2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SandCollision2/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_xfk5q")
+
 [node name="BoatCollisons" type="MeshInstance2D" parent="."]
 visible = false
 z_index = 1
@@ -670,3 +683,4 @@ position = Vector2(2736, 741.5)
 shape = SubResource("RectangleShape2D_vvknj")
 
 [connection signal="body_shape_entered" from="LevelEnd" to="LevelEnd" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="LevelEnd" to="LevelEnd" method="_on_body_shape_exited"]

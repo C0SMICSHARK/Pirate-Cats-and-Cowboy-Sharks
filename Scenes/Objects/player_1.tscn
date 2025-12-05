@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dksykscfxj8rk"]
+[gd_scene load_steps=40 format=3 uid="uid://dksykscfxj8rk"]
 
 [ext_resource type="Script" uid="uid://pdp0rkxp8kog" path="res://Scripts/Player1.gd" id="1_2mvbs"]
 [ext_resource type="Texture2D" uid="uid://b5rde1hhxtymo" path="res://Assets/Cat/idle_spritesheet.png" id="2_0douk"]
@@ -279,12 +279,15 @@ height = 14.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qoejl"]
 size = Vector2(12, 3.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12rfu"]
+size = Vector2(1296, 689)
+
 [node name="Player 1" type="Node2D" groups=["can_interact_with_water"]]
 z_index = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_layer = 2147483649
-collision_mask = 2147483665
+collision_layer = 2164260865
+collision_mask = 2164260881
 script = ExtResource("1_2mvbs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
@@ -345,10 +348,34 @@ shape = SubResource("RectangleShape2D_qoejl")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-5.9604645e-08, 0)
-zoom = Vector2(1.75, 1.75)
-limit_bottom = 920
+zoom = Vector2(2.2, 2.2)
+limit_right = 2850
+limit_bottom = 910
 limit_smoothed = true
-position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.8
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+
+[node name="CameraCollisionLeft" type="CharacterBody2D" parent="CharacterBody2D/Camera2D"]
+visible = false
+collision_layer = 16777216
+collision_mask = 16777216
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Camera2D/CameraCollisionLeft"]
+position = Vector2(-944, -6)
+shape = SubResource("RectangleShape2D_12rfu")
+
+[node name="CameraCollisionRight" type="CharacterBody2D" parent="CharacterBody2D/Camera2D"]
+visible = false
+collision_layer = 16777216
+collision_mask = 16777216
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Camera2D/CameraCollisionRight"]
+position = Vector2(944, -4)
+shape = SubResource("RectangleShape2D_12rfu")
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.4
