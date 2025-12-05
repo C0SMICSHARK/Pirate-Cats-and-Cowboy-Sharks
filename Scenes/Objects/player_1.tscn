@@ -345,7 +345,7 @@ shape = SubResource("RectangleShape2D_qoejl")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-5.9604645e-08, 0)
-zoom = Vector2(1.65, 1.65)
+zoom = Vector2(1.75, 1.75)
 limit_bottom = 920
 limit_smoothed = true
 position_smoothing_enabled = true
