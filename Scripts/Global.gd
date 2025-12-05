@@ -2,7 +2,7 @@ extends Node
 var Difficulty = 1
 var healthp1 = clamp(4 - Difficulty,0,3)
 var healthp2 = clamp(4 - Difficulty,0,3)
-var IsMuted = false
+var IsMuted = true
 var Volume = 50
 var Music = 50
 var Score = 0

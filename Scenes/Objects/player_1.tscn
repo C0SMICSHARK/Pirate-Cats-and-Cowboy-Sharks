@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dksykscfxj8rk"]
+[gd_scene load_steps=39 format=3 uid="uid://dksykscfxj8rk"]
 
 [ext_resource type="Script" uid="uid://pdp0rkxp8kog" path="res://Scripts/Player1.gd" id="1_2mvbs"]
 [ext_resource type="Texture2D" uid="uid://b5rde1hhxtymo" path="res://Assets/Cat/idle_spritesheet.png" id="2_0douk"]
@@ -45,10 +45,6 @@ region = Rect2(900, 0, 900, 900)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qoejl"]
 atlas = ExtResource("2_0douk")
 region = Rect2(1800, 0, 900, 900)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_12rfu"]
-atlas = ExtResource("2_0douk")
-region = Rect2(2700, 0, 900, 900)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0vr67"]
 atlas = ExtResource("3_kafha")
@@ -158,7 +154,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_qoejl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_12rfu")
+"texture": SubResource("AtlasTexture_qoejl")
 }],
 "loop": true,
 "name": &"Idle",
@@ -318,15 +314,6 @@ collision_mask = 64
 position = Vector2(-4, 1)
 shape = SubResource("CapsuleShape2D_50gjg")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(2.18, 2.18)
-process_callback = 0
-limit_top = -1000
-limit_bottom = 1000
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 12.0
-
 [node name="AttackHitbox" type="CharacterBody2D" parent="CharacterBody2D" groups=["PlayerAttack", "Sword"]]
 position = Vector2(13.5, 1000)
 collision_layer = 32
@@ -355,6 +342,13 @@ collision_mask = 1073741824
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/GroundImpactBox"]
 position = Vector2(0, 12.75)
 shape = SubResource("RectangleShape2D_qoejl")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-5.9604645e-08, 0)
+zoom = Vector2(1.65, 1.65)
+limit_bottom = 920
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.4

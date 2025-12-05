@@ -1,7 +1,7 @@
 extends Node2D
 
 var button_type = null
-var muted = false
+var muted = true
 var SFX = AudioServer.get_bus_index("SFX")
 var Music = AudioServer.get_bus_index("Music")
 func _ready() -> void: 
@@ -10,7 +10,7 @@ func _ready() -> void:
 	$VolumeSlider.set_value_no_signal(Global.Volume)
 	$MusicSlider.set_value_no_signal(Global.Music)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	$VolumeLabel.text = ("Audio: " + str(int(Global.Volume)))
 	$MusicLabel.text = ("Music: " + str(int(Global.Music)))
