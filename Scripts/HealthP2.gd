@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 	if Global.healthp2 > -1:
 		$P2HealthLabel.text = str(Global.healthp2)
 	for n in [0,1,2]:
-			heartarray[n].modulate = Color(Global.healthp2-n,0,0,4-Global.Difficulty-n)
+			heartarray[n].modulate = Color(Global.healthp2-n,1,1,4-Global.Difficulty-n)
  
 		
 	

@@ -8,7 +8,7 @@
 size = Vector2(48.148186, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5nch"]
-size = Vector2(21, 20)
+size = Vector2(21, 56)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_fh4lq")
@@ -36,6 +36,7 @@ scale = Vector2(0.06887755, 0.06802721)
 texture = ExtResource("3_1w5al")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_i5nch")
 
 [connection signal="body_entered" from="StaticBody2D/Area2D" to="." method="_on_area_2d_body_entered"]

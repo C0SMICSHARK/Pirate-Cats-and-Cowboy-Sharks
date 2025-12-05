@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://chmasl8ee65ml"]
+[gd_scene load_steps=46 format=3 uid="uid://chmasl8ee65ml"]
 
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/Objects/player_1.tscn" id="2_3mqfk"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://dq1vxlnxn5ir7" path="res://Assets/Misc/3195CA_600x600_crop_center.png" id="19_7hll7"]
 [ext_resource type="Shader" uid="uid://dhqurtvsx7mc0" path="res://Assets/WaterBlur.gdshader" id="19_fayjm"]
 [ext_resource type="Texture2D" uid="uid://cel07g8exdguw" path="res://Assets/Environment/water.png" id="21_nojx8"]
+[ext_resource type="PackedScene" uid="uid://b6ie0vjd084be" path="res://Scenes/Objects/button.tscn" id="22_vvknj"]
+[ext_resource type="Script" uid="uid://bqrwqfio7hldb" path="res://Scripts/level_end.gd" id="23_ad63i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8ffim"]
 
@@ -231,6 +233,49 @@ shader_parameter/blur_amount = 0.800000038
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vvknj"]
 shader = ExtResource("19_fayjm")
 shader_parameter/blur_amount = 2.000000095
+
+[sub_resource type="Animation" id="Animation_ad63i"]
+resource_name = "MovingWall"
+length = 3.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.08),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2398, 721), Vector2(2398, 1182)]
+}
+
+[sub_resource type="Animation" id="Animation_pmbdk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2398, 721)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ksf1i"]
+_data = {
+&"MovingWall": SubResource("Animation_ad63i"),
+&"RESET": SubResource("Animation_pmbdk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad63i"]
+size = Vector2(454.08795, 74.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvknj"]
+size = Vector2(157, 207)
 
 [node name="Level1" type="Node2D"]
 
@@ -594,3 +639,34 @@ visible = false
 position = Vector2(-790, 626)
 scale = Vector2(0.683, 0.574)
 texture = ExtResource("21_nojx8")
+
+[node name="MoveableWall" type="Sprite2D" parent="."]
+position = Vector2(2398, 721)
+rotation = -1.5707964
+scale = Vector2(0.795, 1)
+texture = ExtResource("17_irw6p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MoveableWall"]
+libraries = {
+&"": SubResource("AnimationLibrary_ksf1i")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MoveableWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveableWall/StaticBody2D"]
+position = Vector2(6.918213, 11.25)
+shape = SubResource("RectangleShape2D_ad63i")
+
+[node name="Button" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("22_vvknj")]
+position = Vector2(2316, 628.00006)
+scale = Vector2(0.15849312, 0.15849312)
+AnimPlayer = NodePath("../MoveableWall/AnimationPlayer")
+
+[node name="LevelEnd" type="Area2D" parent="."]
+script = ExtResource("23_ad63i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
+position = Vector2(2736, 741.5)
+shape = SubResource("RectangleShape2D_vvknj")
+
+[connection signal="body_shape_entered" from="LevelEnd" to="LevelEnd" method="_on_body_shape_entered"]
