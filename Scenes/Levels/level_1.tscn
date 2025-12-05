@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://chmasl8ee65ml"]
+[gd_scene load_steps=39 format=3 uid="uid://chmasl8ee65ml"]
 
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/Objects/player_1.tscn" id="2_3mqfk"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://brtd8la7nujfh" path="res://Assets/Environment/Beach_Main.png" id="15_irw6p"]
 [ext_resource type="Texture2D" uid="uid://dmuflcqps2d12" path="res://Assets/Environment/Beach_Foreground.png" id="16_31phq"]
 [ext_resource type="Texture2D" uid="uid://dsrk2eim0mlcb" path="res://Assets/Environment/BeachPlatform.png" id="17_irw6p"]
-[ext_resource type="Texture2D" uid="uid://chu6nase2assg" path="res://Assets/Environment/BeachBarrier.png" id="18_31phq"]
+[ext_resource type="Script" uid="uid://d4e2lu7f6fcnd" path="res://Scripts/beach_platform.gd" id="18_vvknj"]
 [ext_resource type="Texture2D" uid="uid://dq1vxlnxn5ir7" path="res://Assets/Misc/3195CA_600x600_crop_center.png" id="19_7hll7"]
 [ext_resource type="Shader" uid="uid://dhqurtvsx7mc0" path="res://Assets/WaterBlur.gdshader" id="19_fayjm"]
 [ext_resource type="Texture2D" uid="uid://cel07g8exdguw" path="res://Assets/Environment/water.png" id="21_nojx8"]
@@ -84,7 +84,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2, 4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1796, 855.795), Vector2(1925, 855.795), Vector2(1796, 855.795)]
+"values": [Vector2(2096, 627.12), Vector2(2285, 627.12), Vector2(2096, 627.12)]
 }
 
 [sub_resource type="Animation" id="Animation_k2mw1"]
@@ -110,6 +110,116 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31phq"]
 size = Vector2(441.96497, 41.50006)
+
+[sub_resource type="Animation" id="Animation_nojx8"]
+resource_name = "Drift"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Driftwood:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.01, 3.18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(472.87, 797), Vector2(472.87, 804.00006), Vector2(472.87, 791)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Driftwood2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.56),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(671, 797), Vector2(671, 792.99), Vector2(671, 802.685)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Driftwood3:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.06, 2.26),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(846, 797.00006), Vector2(846, 806.00006), Vector2(846, 797.00006)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Driftwood4:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.58, 3.17),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1077, 797.00006), Vector2(1077, 806.00006), Vector2(1077, 793)]
+}
+
+[sub_resource type="Animation" id="Animation_vvknj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Driftwood:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(472.87, 797)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Driftwood2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(671, 797)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Driftwood3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(846, 797.00006)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Driftwood4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1077, 797.00006)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ad63i"]
+_data = {
+&"Drift": SubResource("Animation_nojx8"),
+&"RESET": SubResource("Animation_vvknj")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hll7"]
 size = Vector2(1305.1772, 41.50006)
@@ -179,11 +289,13 @@ scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_3628d")
 
 [node name="Player 1" parent="." instance=ExtResource("2_3mqfk")]
+z_index = 2
 position = Vector2(312, 670)
 scale = Vector2(1.8711351, 1.8711351)
 
 [node name="Player2" parent="." instance=ExtResource("3_iixi8")]
-position = Vector2(603, 807)
+z_index = 2
+position = Vector2(603, 857)
 
 [node name="Coin" parent="." instance=ExtResource("8_jv26f")]
 z_index = 1
@@ -254,8 +366,9 @@ scale = Vector2(0.206, 0.189)
 texture = ExtResource("8_vvknj")
 
 [node name="BreakableWall" parent="." instance=ExtResource("11_hwvp3")]
-position = Vector2(2208, 817)
-scale = Vector2(1, 4.3599997)
+z_index = 1
+position = Vector2(2205, 834)
+scale = Vector2(3.77, 3.77)
 
 [node name="Enemy2" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("12_afv7b")]
 z_index = 1
@@ -318,112 +431,131 @@ position = Vector2(1428.9999, 623)
 scale = Vector2(0.586, 0.586)
 texture = ExtResource("16_31phq")
 
-[node name="BeachPlatform" type="Sprite2D" parent="."]
+[node name="Driftwood" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1667.0001, 759)
+position = Vector2(472.87, 797)
 scale = Vector2(0.28961584, 0.43373567)
 texture = ExtResource("17_irw6p")
+script = ExtResource("18_vvknj")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="BeachPlatform"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Driftwood"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeachPlatform/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Driftwood/StaticBody2D"]
 position = Vector2(0, -2.305664)
 shape = SubResource("RectangleShape2D_31phq")
 
-[node name="BeachPlatform6" type="Sprite2D" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Driftwood"]
+libraries = {
+&"": SubResource("AnimationLibrary_ad63i")
+}
+
+[node name="Driftwood2" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(494.00003, 797)
+position = Vector2(671, 797)
 scale = Vector2(0.28961584, 0.43373567)
 texture = ExtResource("17_irw6p")
+script = ExtResource("18_vvknj")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="BeachPlatform6"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Driftwood2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeachPlatform6/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Driftwood2/StaticBody2D"]
 position = Vector2(0, -2.305664)
 shape = SubResource("RectangleShape2D_31phq")
 
-[node name="BeachPlatform7" type="Sprite2D" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Driftwood2"]
+libraries = {
+&"": SubResource("AnimationLibrary_ad63i")
+}
+
+[node name="Driftwood3" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(714, 800)
+position = Vector2(846, 797.00006)
 scale = Vector2(0.28961584, 0.43373567)
 texture = ExtResource("17_irw6p")
+script = ExtResource("18_vvknj")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="BeachPlatform7"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Driftwood3"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeachPlatform7/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Driftwood3/StaticBody2D"]
 position = Vector2(0, -2.305664)
 shape = SubResource("RectangleShape2D_31phq")
 
-[node name="BeachPlatform8" type="Sprite2D" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Driftwood3"]
+libraries = {
+&"": SubResource("AnimationLibrary_ad63i")
+}
+
+[node name="Driftwood4" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(930, 795)
+position = Vector2(1077, 797.00006)
 scale = Vector2(0.28961584, 0.43373567)
 texture = ExtResource("17_irw6p")
+script = ExtResource("18_vvknj")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="BeachPlatform8"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Driftwood4"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeachPlatform8/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Driftwood4/StaticBody2D"]
 position = Vector2(0, -2.305664)
 shape = SubResource("RectangleShape2D_31phq")
 
-[node name="BeachPlatform9" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(1144, 798)
-scale = Vector2(0.28961584, 0.43373567)
-texture = ExtResource("17_irw6p")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Driftwood4"]
+libraries = {
+&"": SubResource("AnimationLibrary_ad63i")
+}
 
-[node name="StaticBody2D" type="StaticBody2D" parent="BeachPlatform9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeachPlatform9/StaticBody2D"]
-position = Vector2(0, -2.305664)
-shape = SubResource("RectangleShape2D_31phq")
-
-[node name="BeachPlatform2" type="Sprite2D" parent="."]
+[node name="platform" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1866, 703)
 scale = Vector2(0.28961584, 0.43373567)
 texture = ExtResource("17_irw6p")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="BeachPlatform2"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="platform"]
 position = Vector2(3.4523926, 2.305542)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeachPlatform2/StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform/StaticBody2D2"]
 position = Vector2(0, -2.305664)
 shape = SubResource("RectangleShape2D_31phq")
 
-[node name="BeachPlatform3" type="Sprite2D" parent="."]
+[node name="Platform" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(2064.5889, 661.08765)
 scale = Vector2(0.36961585, 0.55354565)
 texture = ExtResource("17_irw6p")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="BeachPlatform3"]
+[node name="StaticBody2D3" type="StaticBody2D" parent="Platform"]
 position = Vector2(-18.93869, 1.8064957)
 scale = Vector2(0.7835591, 0.783559)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BeachPlatform3/StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D3"]
 z_index = 1
 position = Vector2(428.1536, -9.2221775)
 shape = SubResource("RectangleShape2D_7hll7")
 
-[node name="BeachPlatform4" type="Sprite2D" parent="."]
+[node name="Platform2" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(2194.5889, 657.08765)
 rotation = 3.1415927
 scale = Vector2(0.36961585, 0.55354565)
 texture = ExtResource("17_irw6p")
 
-[node name="BeachPlatform5" type="Sprite2D" parent="."]
+[node name="Platform3" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(2295.5889, 656.0876)
 rotation = 3.1415927
 scale = Vector2(0.36961585, 0.55354565)
 texture = ExtResource("17_irw6p")
 
-[node name="BeachBarrier" type="Sprite2D" parent="."]
-position = Vector2(2197, 794)
-scale = Vector2(0.22530724, 0.25269574)
-texture = ExtResource("18_31phq")
+[node name="Platform4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1667.0001, 759)
+scale = Vector2(0.28961584, 0.43373567)
+texture = ExtResource("17_irw6p")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4/StaticBody2D"]
+position = Vector2(0, -2.305664)
+shape = SubResource("RectangleShape2D_31phq")
 
 [node name="Blur2" type="Sprite2D" parent="."]
 modulate = Color(0.10980392, 0, 0.94509804, 0.7647059)

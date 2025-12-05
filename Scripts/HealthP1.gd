@@ -16,8 +16,3 @@ func _process(_delta: float) -> void:
 	for n in [0,1,2]:
 			heartarray[n].modulate = Color(Global.healthp1-n,0,0,4-Global.Difficulty-n)
  
-	
-	
-
-		
-		
