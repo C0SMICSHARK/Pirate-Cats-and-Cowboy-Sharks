@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://niw51og2clvt"]
+
+[ext_resource type="Texture2D" uid="uid://ctmeai07kejpi" path="res://Assets/SpearDino/Dinosaur_Spear.png" id="1_i83t5"]
+[ext_resource type="Script" uid="uid://5stc825dfsnm" path="res://Scripts/spear.gd" id="1_v6pd5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6pd5"]
+radius = 2.984035
+height = 50.76421
+
+[node name="Spear" type="Node2D"]
+script = ExtResource("1_v6pd5")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 8192
+collision_mask = 8193
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, -1)
+rotation = 1.4675837
+shape = SubResource("CapsuleShape2D_v6pd5")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_i83t5")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true

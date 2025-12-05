@@ -203,7 +203,7 @@ collision_mask = 1073741824
 shape = SubResource("RectangleShape2D_ink2j")
 
 [node name="StunTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.35
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]

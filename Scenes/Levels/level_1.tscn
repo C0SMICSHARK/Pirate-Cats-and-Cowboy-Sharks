@@ -46,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2.5, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(234, 885), Vector2(300.82, 885), Vector2(234, 885)]
+"values": [Vector2(1435, 840), Vector2(1620, 840), Vector2(1435, 840)]
 }
 
 [sub_resource type="Animation" id="Animation_afv7b"]
@@ -84,7 +84,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2, 4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(375, 892), Vector2(443.175, 892), Vector2(375, 892)]
+"values": [Vector2(1796, 855.795), Vector2(1925, 855.795), Vector2(1796, 855.795)]
 }
 
 [sub_resource type="Animation" id="Animation_k2mw1"]
@@ -183,7 +183,7 @@ position = Vector2(312, 670)
 scale = Vector2(1.8711351, 1.8711351)
 
 [node name="Player2" parent="." instance=ExtResource("3_iixi8")]
-position = Vector2(664, 807)
+position = Vector2(603, 807)
 
 [node name="Coin" parent="." instance=ExtResource("8_jv26f")]
 z_index = 1
@@ -273,7 +273,7 @@ libraries = {
 z_index = 1
 position = Vector2(375, 892)
 scale = Vector2(1.44, 1.44)
-EnemyHealth = 10
+EnemyHealth = 3
 AnimPlayer = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]

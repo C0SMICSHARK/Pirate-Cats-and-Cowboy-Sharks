@@ -1,8 +1,42 @@
-[gd_scene load_steps=23 format=3 uid="uid://choya2sae2yu3"]
+[gd_scene load_steps=34 format=3 uid="uid://choya2sae2yu3"]
 
 [ext_resource type="Script" uid="uid://dpct1aygh81km" path="res://Scripts/enemyType2.gd" id="1_mv6dn"]
+[ext_resource type="Texture2D" uid="uid://biy2kib3qgty6" path="res://Assets/SpearDino/CR_dinosaur_left_attack_spritesheet.png" id="2_e80sv"]
 [ext_resource type="Texture2D" uid="uid://djgmjkq1ji5df" path="res://Assets/SpearDino/CR_dinosaur_left_walk_spritesheet.png" id="2_u0nb1"]
 [ext_resource type="Texture2D" uid="uid://b5627jb3v0cmr" path="res://Assets/SpearDino/CR_dinosaur_right_walk_spritesheet.png" id="3_f7nb3"]
+[ext_resource type="Texture2D" uid="uid://u76v3fdopula" path="res://Assets/SpearDino/CR_dinosaur_right_attack_spritesheet.png" id="3_rmdd4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t45k"]
+atlas = ExtResource("2_e80sv")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j1lc"]
+atlas = ExtResource("2_e80sv")
+region = Rect2(900, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6fg8"]
+atlas = ExtResource("2_e80sv")
+region = Rect2(1800, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onsp4"]
+atlas = ExtResource("2_e80sv")
+region = Rect2(2700, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swbmv"]
+atlas = ExtResource("3_rmdd4")
+region = Rect2(0, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsm17"]
+atlas = ExtResource("3_rmdd4")
+region = Rect2(900, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbh4x"]
+atlas = ExtResource("3_rmdd4")
+region = Rect2(1800, 0, 900, 900)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1gy4"]
+atlas = ExtResource("3_rmdd4")
+region = Rect2(2700, 0, 900, 900)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7nb3"]
 atlas = ExtResource("2_u0nb1")
@@ -71,6 +105,40 @@ region = Rect2(6300, 0, 900, 900)
 [sub_resource type="SpriteFrames" id="SpriteFrames_7sqod"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5t45k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1j1lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6fg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onsp4")
+}],
+"loop": false,
+"name": &"AttackLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swbmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsm17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbh4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1gy4")
+}],
+"loop": false,
+"name": &"AttackRight",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.5,
 "texture": SubResource("AtlasTexture_f7nb3")
 }, {
@@ -89,10 +157,10 @@ animations = [{
 "duration": 1.5,
 "texture": SubResource("AtlasTexture_2ek4q")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_yksay")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_iwkiv")
 }],
 "loop": true,
@@ -124,7 +192,7 @@ animations = [{
 "duration": 1.5,
 "texture": SubResource("AtlasTexture_c23xc")
 }],
-"loop": true,
+"loop": false,
 "name": &"WalkRight",
 "speed": 10.0
 }]
@@ -136,6 +204,9 @@ height = 29.955246
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e60kg"]
 radius = 14.088322
 height = 38.408234
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e80sv"]
+height = 124.0
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_mv6dn")
@@ -164,8 +235,21 @@ position = Vector2(-4, 1.9999999)
 rotation = 2.268928
 shape = SubResource("CapsuleShape2D_e60kg")
 
+[node name="AttackProximity" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackProximity"]
+position = Vector2(-55, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_e80sv")
+
 [node name="StunTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="CharacterBody2D/Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/AttackProximity" to="." method="_on_attack_proximity_body_entered"]

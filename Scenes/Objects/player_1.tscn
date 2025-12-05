@@ -113,22 +113,22 @@ region = Rect2(6300, 0, 900, 900)
 [sub_resource type="SpriteFrames" id="SpriteFrames_0vr67"]
 animations = [{
 "frames": [{
-"duration": 0.5,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_ot205")
 }, {
-"duration": 0.5,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_23feb")
 }, {
-"duration": 0.5,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_yabra")
 }, {
-"duration": 0.5,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_ybxvx")
 }, {
-"duration": 0.5,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_q81tf")
 }, {
-"duration": 0.5,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_qfxlm")
 }],
 "loop": false,
@@ -292,23 +292,23 @@ position = Vector2(-1, -1)
 rotation = 0.05235988
 scale = Vector2(0.03378336, 0.03378336)
 sprite_frames = SubResource("SpriteFrames_0vr67")
-animation = &"Idle"
+animation = &"Attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_r7fgb")
 
 [node name="RightHurtbox" type="Area2D" parent="CharacterBody2D"]
-collision_layer = 64
-collision_mask = 64
+collision_layer = 8256
+collision_mask = 8256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/RightHurtbox"]
 position = Vector2(4, 1)
 shape = SubResource("CapsuleShape2D_50gjg")
 
 [node name="LeftHurtbox" type="Area2D" parent="CharacterBody2D"]
-collision_layer = 64
-collision_mask = 64
+collision_layer = 8256
+collision_mask = 8256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/LeftHurtbox"]
 position = Vector2(-4, 1)
@@ -358,7 +358,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.6
 one_shot = true
 
 [node name="AttackImpactTimer" type="Timer" parent="."]
