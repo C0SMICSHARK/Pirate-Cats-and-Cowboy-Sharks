@@ -469,9 +469,8 @@ libraries = {
 
 [node name="Sky" type="Parallax2D" parent="."]
 z_index = -1
-scroll_scale = Vector2(0.4, 0.4)
+scroll_scale = Vector2(0.1, 0.1)
 scroll_offset = Vector2(-16, 3)
-repeat_size = Vector2(160, 0)
 autoscroll = Vector2(0.2, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sky"]
@@ -480,7 +479,6 @@ scale = Vector2(0.586, 0.586)
 texture = ExtResource("13_7r2dd")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sky"]
-visible = false
 position = Vector2(1271, 48)
 rotation = -3.1415927
 scale = Vector2(0.586, 0.586)
@@ -488,9 +486,8 @@ texture = ExtResource("13_7r2dd")
 
 [node name="Mountains" type="Parallax2D" parent="."]
 z_index = -1
-scroll_scale = Vector2(0.1, 0.1)
-scroll_offset = Vector2(-10, 2)
-repeat_size = Vector2(160, 0)
+scroll_scale = Vector2(0.5, 0.1)
+scroll_offset = Vector2(-500, 2)
 autoscroll = Vector2(0.2, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Mountains"]
