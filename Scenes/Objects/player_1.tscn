@@ -280,7 +280,7 @@ height = 14.0
 size = Vector2(12, 3.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12rfu"]
-size = Vector2(1296, 689)
+size = Vector2(1358, 689)
 
 [node name="Player 1" type="Node2D" groups=["can_interact_with_water"]]
 z_index = 1
@@ -365,7 +365,7 @@ collision_layer = 16777216
 collision_mask = 16777216
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Camera2D/CameraCollisionLeft"]
-position = Vector2(-944, -6)
+position = Vector2(-913, -6)
 shape = SubResource("RectangleShape2D_12rfu")
 
 [node name="CameraCollisionRight" type="CharacterBody2D" parent="CharacterBody2D/Camera2D"]
@@ -374,7 +374,7 @@ collision_layer = 16777216
 collision_mask = 16777216
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Camera2D/CameraCollisionRight"]
-position = Vector2(944, -4)
+position = Vector2(913, -4)
 shape = SubResource("RectangleShape2D_12rfu")
 
 [node name="DashTimer" type="Timer" parent="."]

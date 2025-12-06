@@ -26,6 +26,9 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		
+	$Camera2D/CameraCollisionLeft.global_position = $Camera2D.get_target_position()
+	$Camera2D/CameraCollisionRight.global_position = $Camera2D.get_target_position()
 
 	# Handle jump.
 	#if Input.is_action_just_pressed("JUMP_P1") and is_on_floor():
