@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://chmasl8ee65ml"]
+[gd_scene load_steps=49 format=3 uid="uid://chmasl8ee65ml"]
 
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/Objects/player_1.tscn" id="2_3mqfk"]
@@ -8,13 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://csi2k0pbl08yp" path="res://Scenes/Objects/enemy.tscn" id="6_xgxfi"]
 [ext_resource type="PackedScene" uid="uid://oqo6io1ho0yb" path="res://Scenes/Objects/coin.tscn" id="8_jv26f"]
 [ext_resource type="Texture2D" uid="uid://d0wj0vqj6md5v" path="res://Assets/Misc/Heart.png" id="8_vvknj"]
+[ext_resource type="Texture2D" uid="uid://cgte8oqxjruap" path="res://Assets/Cat/CatPortrait.png" id="9_ksf1i"]
 [ext_resource type="PackedScene" uid="uid://bvhg2nv87al38" path="res://Scenes/Misc/Scene_transition.tscn" id="9_u5ghp"]
 [ext_resource type="Script" uid="uid://dgl7oeh1llhs3" path="res://Scripts/FadeIn.gd" id="10_hwvp3"]
 [ext_resource type="PackedScene" uid="uid://wfta78sese1g" path="res://Scenes/Objects/breakableWall.tscn" id="11_hwvp3"]
+[ext_resource type="Texture2D" uid="uid://dj8n1f6aqraei" path="res://Assets/Shark/SharkPortrait.png" id="11_vif5h"]
 [ext_resource type="PackedScene" uid="uid://choya2sae2yu3" path="res://Scenes/Objects/enemyType2.tscn" id="12_afv7b"]
 [ext_resource type="Texture2D" uid="uid://bte03v7ek0yoo" path="res://Assets/Environment/Beach_Sky.png" id="13_7r2dd"]
 [ext_resource type="Texture2D" uid="uid://bpjhovpy5wwgc" path="res://Assets/Environment/Beach_Mountains.png" id="14_3628d"]
-[ext_resource type="Texture2D" uid="uid://brtd8la7nujfh" path="res://Assets/Environment/Beach_Main.png" id="15_irw6p"]
+[ext_resource type="Texture2D" uid="uid://cfut1w6wrt2ha" path="res://Assets/Environment/BeachNoPortal.png" id="15_pmbdk"]
 [ext_resource type="Texture2D" uid="uid://dmuflcqps2d12" path="res://Assets/Environment/Beach_Foreground.png" id="16_31phq"]
 [ext_resource type="Texture2D" uid="uid://dsrk2eim0mlcb" path="res://Assets/Environment/BeachPlatform.png" id="17_irw6p"]
 [ext_resource type="Script" uid="uid://d4e2lu7f6fcnd" path="res://Scripts/beach_platform.gd" id="18_vvknj"]
@@ -23,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cel07g8exdguw" path="res://Assets/Environment/water.png" id="21_nojx8"]
 [ext_resource type="PackedScene" uid="uid://b6ie0vjd084be" path="res://Scenes/Objects/button.tscn" id="22_vvknj"]
 [ext_resource type="Script" uid="uid://bqrwqfio7hldb" path="res://Scripts/level_end.gd" id="23_ad63i"]
+[ext_resource type="Texture2D" uid="uid://dnqe4318n52pj" path="res://Assets/Environment/BeachPortal.png" id="24_ksf1i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8ffim"]
 
@@ -275,7 +278,7 @@ _data = {
 size = Vector2(454.08795, 74.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvknj"]
-size = Vector2(157, 207)
+size = Vector2(109, 207)
 
 [node name="Level1" type="Node2D"]
 
@@ -384,6 +387,12 @@ position = Vector2(266.90698, 864.31396)
 scale = Vector2(0.20591965, 0.18875968)
 texture = ExtResource("8_vvknj")
 
+[node name="CatPortrait" type="Sprite2D" parent="CanvasLayer/HealthBarP1"]
+texture_filter = 1
+position = Vector2(58, 850)
+scale = Vector2(0.21833324, 0.21833324)
+texture = ExtResource("9_ksf1i")
+
 [node name="P1HealthLabel" type="Label" parent="CanvasLayer/HealthBarP1"]
 visible = false
 offset_left = 9.000002
@@ -423,6 +432,12 @@ position = Vector2(268, 904.35)
 scale = Vector2(0.206, 0.189)
 texture = ExtResource("8_vvknj")
 
+[node name="SharkPortrait" type="Sprite2D" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+texture_filter = 1
+position = Vector2(48, 900.99994)
+scale = Vector2(0.81999964, 0.81999964)
+texture = ExtResource("11_vif5h")
+
 [node name="BreakableWall" parent="." instance=ExtResource("11_hwvp3")]
 z_index = 1
 position = Vector2(2205, 834)
@@ -454,8 +469,10 @@ libraries = {
 
 [node name="Sky" type="Parallax2D" parent="."]
 z_index = -1
+scroll_scale = Vector2(0.4, 0.4)
 scroll_offset = Vector2(-16, 3)
 repeat_size = Vector2(160, 0)
+autoscroll = Vector2(0.2, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sky"]
 position = Vector2(1273, 619)
@@ -463,6 +480,7 @@ scale = Vector2(0.586, 0.586)
 texture = ExtResource("13_7r2dd")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sky"]
+visible = false
 position = Vector2(1271, 48)
 rotation = -3.1415927
 scale = Vector2(0.586, 0.586)
@@ -470,18 +488,20 @@ texture = ExtResource("13_7r2dd")
 
 [node name="Mountains" type="Parallax2D" parent="."]
 z_index = -1
-scroll_offset = Vector2(-10, 7)
+scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-10, 2)
 repeat_size = Vector2(160, 0)
+autoscroll = Vector2(0.2, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Mountains"]
-position = Vector2(1271, 625)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1261, 627)
 scale = Vector2(0.586, 0.586)
 texture = ExtResource("14_3628d")
 
 [node name="Main" type="Sprite2D" parent="."]
 position = Vector2(1347.0002, 623)
 scale = Vector2(0.6192, 0.5860001)
-texture = ExtResource("15_irw6p")
+texture = ExtResource("15_pmbdk")
 
 [node name="Foreground" type="Sprite2D" parent="."]
 z_index = 3
@@ -679,8 +699,13 @@ AnimPlayer = NodePath("../MoveableWall/AnimationPlayer")
 script = ExtResource("23_ad63i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
-position = Vector2(2736, 741.5)
+position = Vector2(2601.5, 759)
 shape = SubResource("RectangleShape2D_vvknj")
+
+[node name="BeachPortal" type="Sprite2D" parent="."]
+position = Vector2(2602, 756)
+scale = Vector2(0.57929516, 0.57929516)
+texture = ExtResource("24_ksf1i")
 
 [connection signal="body_shape_entered" from="LevelEnd" to="LevelEnd" method="_on_body_shape_entered"]
 [connection signal="body_shape_exited" from="LevelEnd" to="LevelEnd" method="_on_body_shape_exited"]
