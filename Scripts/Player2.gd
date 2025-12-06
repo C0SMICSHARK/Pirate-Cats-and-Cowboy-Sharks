@@ -9,6 +9,7 @@ var KnockbackForce = Vector2(0,0)
 var Flipstuffinnit = 0
 var shooting = false
 var Impact = false
+var Swimming = false
 #const JUMP_VELOCITY = -400.0
 	
 
@@ -51,7 +52,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	if Input.is_action_just_pressed("BREAK") and bulletCooldown.is_stopped() and AudioController.Shooting == false and is_on_floor() == true:
+	if Input.is_action_just_pressed("BREAK") and bulletCooldown.is_stopped() and AudioController.Shooting == false and is_on_floor() == true and not Swimming:
 		fire()
 
 	# Handle jump.
@@ -68,10 +69,12 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("LEFT_P2", "RIGHT_P2")
 	if direction and bulletCooldown.is_stopped():
 		velocity.x = direction * SPEED
-		$AnimatedSprite2D.play("Run")
+		if not Swimming:
+			$AnimatedSprite2D.play("Run")
 	elif bulletCooldown.is_stopped():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		$AnimatedSprite2D.play("Idle")
+		if not Swimming:
+			$AnimatedSprite2D.play("Idle")
 		
 		
 	if Input.is_action_just_pressed("LEFT_P2"):
@@ -80,7 +83,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("RIGHT_P2"):
 		$AnimatedSprite2D.flip_h = false
 		
-	if Input.is_action_just_pressed("BREAK") and AudioController.Shooting == false:
+	if Input.is_action_just_pressed("BREAK") and AudioController.Shooting == false and not Swimming:
 		$AnimatedSprite2D.play("Shoot")
 		AudioController.play_revolver()
 		
@@ -97,6 +100,8 @@ func _physics_process(delta: float) -> void:
 		$RightHurtbox.position.y = 0
 		$LeftHurtbox.position.y = 0
 
+	#if Swimming:
+		#$AnimatedSprite2D.play("Swim")
 	
 	if $"../KnockbackTimer".is_stopped() and shooting == false and $"../AttackImpactTimer".is_stopped():
 		move_and_slide()
@@ -142,3 +147,11 @@ func _on_ground_impactbox_body_entered(_body: Node2D) -> void:
 	velocity.y=0
 	KnockbackVector.x = $"..".position.x+0
 	KnockbackVector.y = $"..".position.y-20
+
+
+func _on_swim_box_body_entered(_body: Node2D) -> void:
+	Swimming = true
+	$AnimatedSprite2D.play("Swim")
+
+func _on_swim_box_body_exited(_body: Node2D) -> void:
+	Swimming = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cg6dul6g2cnl5"]
+[gd_scene load_steps=34 format=3 uid="uid://cg6dul6g2cnl5"]
 
 [ext_resource type="Script" uid="uid://fop0iyjxa0tr" path="res://Scripts/Player2.gd" id="1_mkara"]
 [ext_resource type="Texture2D" uid="uid://b5uwq4j25mops" path="res://Assets/Shark/Idle1.png" id="2_eus2p"]
@@ -42,37 +42,21 @@ region = Rect2(664, 0, 166, 230)
 atlas = ExtResource("16_iet35")
 region = Rect2(830, 0, 166, 230)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sg5fg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivfq8"]
 atlas = ExtResource("17_mxbqu")
-region = Rect2(0, 0, 250, 135)
+region = Rect2(251, 21, 220, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_064nc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp61h"]
 atlas = ExtResource("17_mxbqu")
-region = Rect2(250, 0, 250, 135)
+region = Rect2(503, 21, 220, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_utg3y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7u61"]
 atlas = ExtResource("17_mxbqu")
-region = Rect2(500, 0, 250, 135)
+region = Rect2(232, 164, 220, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yb6qd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g1uu"]
 atlas = ExtResource("17_mxbqu")
-region = Rect2(750, 0, 250, 135)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kmca1"]
-atlas = ExtResource("17_mxbqu")
-region = Rect2(0, 135, 250, 135)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kgtdn"]
-atlas = ExtResource("17_mxbqu")
-region = Rect2(250, 135, 250, 135)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s081i"]
-atlas = ExtResource("17_mxbqu")
-region = Rect2(500, 135, 250, 135)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_achxb"]
-atlas = ExtResource("17_mxbqu")
-region = Rect2(750, 135, 250, 135)
+region = Rect2(503, 166, 220, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8os5a"]
 animations = [{
@@ -153,32 +137,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sg5fg")
+"texture": SubResource("AtlasTexture_ivfq8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_064nc")
+"texture": SubResource("AtlasTexture_ivfq8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_utg3y")
+"texture": SubResource("AtlasTexture_bp61h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yb6qd")
+"texture": SubResource("AtlasTexture_bp61h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kmca1")
+"texture": SubResource("AtlasTexture_p7u61")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kgtdn")
+"texture": SubResource("AtlasTexture_p7u61")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s081i")
+"texture": SubResource("AtlasTexture_1g1uu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_achxb")
+"texture": SubResource("AtlasTexture_1g1uu")
 }],
 "loop": true,
 "name": &"Swim",
-"speed": 15.0
+"speed": 7.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3adp"]
@@ -195,6 +179,10 @@ height = 44.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp61h"]
 size = Vector2(24, 6)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bp61h"]
+radius = 12.0
+height = 44.0
+
 [node name="Player2" type="Node2D" groups=["can_interact_with_water"]]
 z_index = 1
 
@@ -207,7 +195,8 @@ script = ExtResource("1_mkara")
 position = Vector2(1.8125, 0.9750099)
 scale = Vector2(0.258125, 0.25812507)
 sprite_frames = SubResource("SpriteFrames_8os5a")
-animation = &"Shoot"
+animation = &"Idle"
+frame_progress = 0.61915135
 
 [node name="Hitbox" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 2)
@@ -252,6 +241,14 @@ collision_mask = 1073741824
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_bp61h")
 
+[node name="SwimBox" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/SwimBox"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_bp61h")
+
 [node name="BulletCooldown" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -271,3 +268,5 @@ one_shot = true
 [connection signal="body_entered" from="CharacterBody2D/RightHurtbox" to="CharacterBody2D" method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="CharacterBody2D/LeftHurtbox" to="CharacterBody2D" method="_on_left_hurtbox_body_entered"]
 [connection signal="body_entered" from="CharacterBody2D/GroundImpactbox" to="CharacterBody2D" method="_on_ground_impactbox_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/SwimBox" to="CharacterBody2D" method="_on_swim_box_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/SwimBox" to="CharacterBody2D" method="_on_swim_box_body_exited"]

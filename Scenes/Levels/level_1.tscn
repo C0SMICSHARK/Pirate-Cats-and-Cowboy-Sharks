@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://chmasl8ee65ml"]
+[gd_scene load_steps=50 format=3 uid="uid://chmasl8ee65ml"]
 
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/Objects/player_1.tscn" id="2_3mqfk"]
@@ -34,6 +34,9 @@ size = Vector2(0.99978405, 1.0044043)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3628d"]
 size = Vector2(0.18691845, 1.0044043)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vif5h"]
+size = Vector2(1063, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5f3p6"]
 
@@ -349,6 +352,16 @@ position = Vector2(-0.00042482093, 0.008808136)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_3628d")
 
+[node name="SwimBox" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(603, 862)
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwimBox"]
+position = Vector2(89.5, 0)
+shape = SubResource("RectangleShape2D_vif5h")
+
 [node name="Player 1" parent="." instance=ExtResource("2_3mqfk")]
 z_index = 2
 position = Vector2(312, 670)
@@ -356,7 +369,7 @@ scale = Vector2(1.8711351, 1.8711351)
 
 [node name="Player2" parent="." instance=ExtResource("3_iixi8")]
 z_index = 2
-position = Vector2(603, 857)
+position = Vector2(313, 825)
 
 [node name="Coin" parent="." instance=ExtResource("8_jv26f")]
 z_index = 1
