@@ -14,6 +14,6 @@ func _ready():
 func _physics_process(_delta):
 	velocity=Vector2(speed,0).rotated(dir)
 	move_and_slide()
-	if velocity.x < 1:
+	if velocity.x < 1 and velocity.x > -1:
 		queue_free()
 		

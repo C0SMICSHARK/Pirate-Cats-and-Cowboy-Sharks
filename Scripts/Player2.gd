@@ -22,11 +22,11 @@ func fire():
 	var Bullet=bullet_path.instantiate()
 	#Makes the bullet travel the direction the player is facing
 	if $AnimatedSprite2D.flip_h:
-		$FiringPos.position.x = -17
+		$FiringPos.position.x = -20
 		Bullet.dir=3.14159
 		Flipstuffinnit = -1
-	else:
-		$FiringPos.position.x = 17
+	elif not $AnimatedSprite2D.flip_h:
+		$FiringPos.position.x = 20
 		Bullet.dir=0
 		Flipstuffinnit = 1
 	Bullet.pos=$FiringPos.global_position
@@ -36,8 +36,8 @@ func fire():
 	#await get_tree().create_timer(0.15).timeout
 	Knocked = true
 	$"../KnockbackTimer".start()
-	KnockbackVector.x = $"..".position.x-(5*Flipstuffinnit)
-	KnockbackVector.y = $"..".position.y-2
+	KnockbackVector.x = $"..".position.x-(0*Flipstuffinnit)
+	KnockbackVector.y = $"..".position.y-0
 	velocity.x = 0
 	KnockbackForce = -velocity
 	KnockbackForce.x -= 500

@@ -1,10 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://cg6dul6g2cnl5"]
+[gd_scene load_steps=31 format=3 uid="uid://cg6dul6g2cnl5"]
 
 [ext_resource type="Script" uid="uid://fop0iyjxa0tr" path="res://Scripts/Player2.gd" id="1_mkara"]
 [ext_resource type="Texture2D" uid="uid://b5uwq4j25mops" path="res://Assets/Shark/Idle1.png" id="2_eus2p"]
-[ext_resource type="Texture2D" uid="uid://w4a6aq1xis7j" path="res://Assets/Shark/Idle2.png" id="3_6cafw"]
 [ext_resource type="Texture2D" uid="uid://5uecp16w65ve" path="res://Assets/Shark/Idle3.png" id="4_mtyrt"]
-[ext_resource type="Texture2D" uid="uid://1oya0touyf5" path="res://Assets/Shark/Idle4.png" id="5_bth63"]
 [ext_resource type="Texture2D" uid="uid://bywdxmkyud2bi" path="res://Assets/Shark/Run0.png" id="6_c6poq"]
 [ext_resource type="Texture2D" uid="uid://dudn1ls71eaap" path="res://Assets/Shark/Run1.png" id="7_gsfwq"]
 [ext_resource type="Texture2D" uid="uid://bn4bijlbkgh8k" path="res://Assets/Shark/Run2.png" id="8_iet35"]
@@ -18,29 +16,25 @@
 [ext_resource type="Texture2D" uid="uid://deannimnnf0el" path="res://Assets/Shark/ShootAnim.png" id="16_iet35"]
 [ext_resource type="Texture2D" uid="uid://cl6sj1sficr6e" path="res://Assets/Shark/SwimAnim.png" id="17_mxbqu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0l2yj"]
-atlas = ExtResource("16_iet35")
-region = Rect2(0, 0, 166, 230)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjjot"]
+atlas = ExtResource("2_eus2p")
+region = Rect2(0, 0, 189, 240)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x8cua"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4lfd"]
+atlas = ExtResource("4_mtyrt")
+region = Rect2(0, 0, 182, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sukt"]
 atlas = ExtResource("16_iet35")
 region = Rect2(166, 0, 166, 230)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s3tad"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1dcy"]
 atlas = ExtResource("16_iet35")
-region = Rect2(332, 0, 166, 230)
+region = Rect2(324, 0, 166, 230)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ne8t6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxlt5"]
 atlas = ExtResource("16_iet35")
-region = Rect2(498, 0, 166, 230)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sc7t3"]
-atlas = ExtResource("16_iet35")
-region = Rect2(664, 0, 166, 230)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mcfkd"]
-atlas = ExtResource("16_iet35")
-region = Rect2(830, 0, 166, 230)
+region = Rect2(666, 0, 166, 230)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ivfq8"]
 atlas = ExtResource("17_mxbqu")
@@ -62,16 +56,16 @@ region = Rect2(503, 166, 220, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_eus2p")
+"texture": SubResource("AtlasTexture_gjjot")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_6cafw")
+"texture": SubResource("AtlasTexture_gjjot")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_mtyrt")
+"texture": SubResource("AtlasTexture_q4lfd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_bth63")
+"texture": SubResource("AtlasTexture_q4lfd")
 }],
 "loop": true,
 "name": &"Idle",
@@ -114,24 +108,24 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0l2yj")
+"texture": SubResource("AtlasTexture_2sukt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x8cua")
+"texture": SubResource("AtlasTexture_2sukt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s3tad")
+"texture": SubResource("AtlasTexture_l1dcy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ne8t6")
+"texture": SubResource("AtlasTexture_l1dcy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sc7t3")
+"texture": SubResource("AtlasTexture_sxlt5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mcfkd")
+"texture": SubResource("AtlasTexture_2sukt")
 }],
-"loop": true,
+"loop": false,
 "name": &"Shoot",
 "speed": 15.0
 }, {
@@ -192,18 +186,17 @@ collision_mask = 2164260881
 script = ExtResource("1_mkara")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(1.8125, 0.9750099)
+position = Vector2(0, 0.9750099)
 scale = Vector2(0.258125, 0.25812507)
 sprite_frames = SubResource("SpriteFrames_8os5a")
 animation = &"Idle"
-frame_progress = 0.61915135
 
 [node name="Hitbox" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_a3adp")
 
 [node name="FiringPos" type="Node2D" parent="CharacterBody2D"]
-position = Vector2(17, -4)
+position = Vector2(17, -8)
 
 [node name="CatPlatform" type="CharacterBody2D" parent="CharacterBody2D"]
 position = Vector2(0, 4)
