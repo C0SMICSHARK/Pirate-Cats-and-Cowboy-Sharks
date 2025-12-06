@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsrk2eim0mlcb"
-path="res://.godot/imported/BeachPlatform.png-6f5ff4a5672e49c0d2f3d2467599d549.ctex"
+uid="uid://bte03v7ek0yoo"
+path="res://.godot/imported/Beach_Sky.png-da0b2af25a16ee9498210807aea0b8d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/BeachPlatform.png"
-dest_files=["res://.godot/imported/BeachPlatform.png-6f5ff4a5672e49c0d2f3d2467599d549.ctex"]
+source_file="res://Assets/Environment/Beach/Beach_Sky.png"
+dest_files=["res://.godot/imported/Beach_Sky.png-da0b2af25a16ee9498210807aea0b8d2.ctex"]
 
 [params]
 

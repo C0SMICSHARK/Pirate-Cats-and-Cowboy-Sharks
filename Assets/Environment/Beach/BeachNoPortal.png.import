@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chu6nase2assg"
-path="res://.godot/imported/BeachBarrier.png-1b44a95a2eb169d8667a815876a162ca.ctex"
+uid="uid://cfut1w6wrt2ha"
+path="res://.godot/imported/BeachNoPortal.png-2500593b3788714430edc22b23ed5aa7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/BeachBarrier.png"
-dest_files=["res://.godot/imported/BeachBarrier.png-1b44a95a2eb169d8667a815876a162ca.ctex"]
+source_file="res://Assets/Environment/Beach/BeachNoPortal.png"
+dest_files=["res://.godot/imported/BeachNoPortal.png-2500593b3788714430edc22b23ed5aa7.ctex"]
 
 [params]
 

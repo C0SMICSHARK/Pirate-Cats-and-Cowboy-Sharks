@@ -14,18 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://wfta78sese1g" path="res://Scenes/Objects/breakableWall.tscn" id="11_hwvp3"]
 [ext_resource type="Texture2D" uid="uid://dj8n1f6aqraei" path="res://Assets/Shark/SharkPortrait.png" id="11_vif5h"]
 [ext_resource type="PackedScene" uid="uid://choya2sae2yu3" path="res://Scenes/Objects/enemyType2.tscn" id="12_afv7b"]
-[ext_resource type="Texture2D" uid="uid://bte03v7ek0yoo" path="res://Assets/Environment/Beach_Sky.png" id="13_7r2dd"]
-[ext_resource type="Texture2D" uid="uid://bpjhovpy5wwgc" path="res://Assets/Environment/Beach_Mountains.png" id="14_3628d"]
-[ext_resource type="Texture2D" uid="uid://cfut1w6wrt2ha" path="res://Assets/Environment/BeachNoPortal.png" id="15_pmbdk"]
-[ext_resource type="Texture2D" uid="uid://dmuflcqps2d12" path="res://Assets/Environment/Beach_Foreground.png" id="16_31phq"]
-[ext_resource type="Texture2D" uid="uid://dsrk2eim0mlcb" path="res://Assets/Environment/BeachPlatform.png" id="17_irw6p"]
+[ext_resource type="Texture2D" uid="uid://bte03v7ek0yoo" path="res://Assets/Environment/Beach/Beach_Sky.png" id="13_7r2dd"]
+[ext_resource type="Texture2D" uid="uid://bpjhovpy5wwgc" path="res://Assets/Environment/Beach/Beach_Mountains.png" id="14_3628d"]
+[ext_resource type="Texture2D" uid="uid://cfut1w6wrt2ha" path="res://Assets/Environment/Beach/BeachNoPortal.png" id="15_pmbdk"]
+[ext_resource type="Texture2D" uid="uid://dmuflcqps2d12" path="res://Assets/Environment/Beach/Beach_Foreground.png" id="16_31phq"]
+[ext_resource type="Texture2D" uid="uid://dsrk2eim0mlcb" path="res://Assets/Environment/Beach/BeachPlatform.png" id="17_irw6p"]
 [ext_resource type="Script" uid="uid://d4e2lu7f6fcnd" path="res://Scripts/beach_platform.gd" id="18_vvknj"]
 [ext_resource type="Texture2D" uid="uid://dq1vxlnxn5ir7" path="res://Assets/Misc/3195CA_600x600_crop_center.png" id="19_7hll7"]
 [ext_resource type="Shader" uid="uid://dhqurtvsx7mc0" path="res://Assets/WaterBlur.gdshader" id="19_fayjm"]
 [ext_resource type="Texture2D" uid="uid://cel07g8exdguw" path="res://Assets/Environment/water.png" id="21_nojx8"]
 [ext_resource type="PackedScene" uid="uid://b6ie0vjd084be" path="res://Scenes/Objects/button.tscn" id="22_vvknj"]
 [ext_resource type="Script" uid="uid://bqrwqfio7hldb" path="res://Scripts/level_end.gd" id="23_ad63i"]
-[ext_resource type="Texture2D" uid="uid://dnqe4318n52pj" path="res://Assets/Environment/BeachPortal.png" id="24_ksf1i"]
+[ext_resource type="Texture2D" uid="uid://dnqe4318n52pj" path="res://Assets/Environment/Beach/BeachPortal.png" id="24_ksf1i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8ffim"]
 
@@ -488,13 +488,13 @@ texture = ExtResource("13_7r2dd")
 
 [node name="Mountains" type="Parallax2D" parent="."]
 z_index = -1
-scroll_scale = Vector2(0.2, 0.2)
+scroll_scale = Vector2(0.1, 0.1)
 scroll_offset = Vector2(-10, 2)
 repeat_size = Vector2(160, 0)
 autoscroll = Vector2(0.2, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1261, 627)
+[node name="Sprite2D" type="Sprite2D" parent="Mountains"]
+position = Vector2(1271, 625)
 scale = Vector2(0.586, 0.586)
 texture = ExtResource("14_3628d")
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://wfta78sese1g"]
 
 [ext_resource type="Script" uid="uid://mjjt7815bf2y" path="res://Scripts/breakableWall.gd" id="1_fh4lq"]
-[ext_resource type="Texture2D" uid="uid://chu6nase2assg" path="res://Assets/Environment/BeachBarrier.png" id="2_fh4lq"]
-[ext_resource type="Texture2D" uid="uid://cgqfx0vl5mna0" path="res://Assets/Environment/BrokenBeachBarrier.png" id="3_1w5al"]
+[ext_resource type="Texture2D" uid="uid://chu6nase2assg" path="res://Assets/Environment/Beach/BeachBarrier.png" id="2_fh4lq"]
+[ext_resource type="Texture2D" uid="uid://cgqfx0vl5mna0" path="res://Assets/Environment/Beach/BrokenBeachBarrier.png" id="3_1w5al"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrqbg"]
 size = Vector2(48.148186, 20)

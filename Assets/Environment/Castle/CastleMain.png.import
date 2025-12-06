@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpjhovpy5wwgc"
-path="res://.godot/imported/Beach_Mountains.png-5fe6a92c4a0a79f27bffcc4f6fcdb883.ctex"
+uid="uid://dn1x6anr1jnh1"
+path="res://.godot/imported/CastleMain.png-cb6b3909fdc3f3132e9cea5279b04270.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/Beach_Mountains.png"
-dest_files=["res://.godot/imported/Beach_Mountains.png-5fe6a92c4a0a79f27bffcc4f6fcdb883.ctex"]
+source_file="res://Assets/Environment/Castle/CastleMain.png"
+dest_files=["res://.godot/imported/CastleMain.png-cb6b3909fdc3f3132e9cea5279b04270.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmuflcqps2d12"
-path="res://.godot/imported/Beach_Foreground.png-815cffe67b6512a73f67b6d24e32db3c.ctex"
+uid="uid://nm8vshtnxo8m"
+path="res://.godot/imported/CastleBridgeDown.png-0ae32a00341126d93803300a080b8439.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/Beach_Foreground.png"
-dest_files=["res://.godot/imported/Beach_Foreground.png-815cffe67b6512a73f67b6d24e32db3c.ctex"]
+source_file="res://Assets/Environment/Castle/CastleBridgeDown.png"
+dest_files=["res://.godot/imported/CastleBridgeDown.png-0ae32a00341126d93803300a080b8439.ctex"]
 
 [params]
 

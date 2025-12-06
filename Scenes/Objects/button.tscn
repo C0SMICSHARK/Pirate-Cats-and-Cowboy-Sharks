@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6ie0vjd084be"]
 
-[ext_resource type="Texture2D" uid="uid://dsrk2eim0mlcb" path="res://Assets/Environment/BeachPlatform.png" id="1_54bc2"]
+[ext_resource type="Texture2D" uid="uid://dsrk2eim0mlcb" path="res://Assets/Environment/Beach/BeachPlatform.png" id="1_54bc2"]
 [ext_resource type="Script" uid="uid://6ai1g8v18wkl" path="res://Scripts/Button.gd" id="1_f6l7x"]
 [ext_resource type="Texture2D" uid="uid://ie1d1xwpyv88" path="res://icon.svg" id="2_3ug5e"]
 

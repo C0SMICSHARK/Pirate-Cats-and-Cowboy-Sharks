@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bte03v7ek0yoo"
-path="res://.godot/imported/Beach_Sky.png-466b288324b9454a688306ae71eb19e8.ctex"
+uid="uid://cgqfx0vl5mna0"
+path="res://.godot/imported/BrokenBeachBarrier.png-0a41c6674a4645c055948b1677c270b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/Beach_Sky.png"
-dest_files=["res://.godot/imported/Beach_Sky.png-466b288324b9454a688306ae71eb19e8.ctex"]
+source_file="res://Assets/Environment/Beach/BrokenBeachBarrier.png"
+dest_files=["res://.godot/imported/BrokenBeachBarrier.png-0a41c6674a4645c055948b1677c270b4.ctex"]
 
 [params]
 
