@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://bha808le4oygv"]
+
+[ext_resource type="Texture2D" uid="uid://h3i12n8x0rhy" path="res://Assets/Environment/BossRoom/Boss_BG.png" id="1_2634h"]
+[ext_resource type="Texture2D" uid="uid://cbomeho3nd0d2" path="res://Assets/Environment/BossRoom/Boss_Arrows.png" id="2_wakwf"]
+[ext_resource type="Texture2D" uid="uid://dd66bvjgbun6o" path="res://Assets/Environment/BossRoom/Boss_Flames.png" id="3_reooa"]
+[ext_resource type="Texture2D" uid="uid://dukryqglxopuv" path="res://Assets/Environment/BossRoom/Boss_Flag.png" id="4_doouk"]
+[ext_resource type="Texture2D" uid="uid://csaq6yrysipr5" path="res://Assets/Environment/BossRoom/Boss_Button.png" id="5_0fyhm"]
+[ext_resource type="Texture2D" uid="uid://yg2qs8i1opvu" path="res://Assets/Environment/BossRoom/Boss_Throne.png" id="6_evokg"]
+[ext_resource type="PackedScene" uid="uid://b0rluatdrpaqc" path="res://Scenes/Objects/BigBoss.tscn" id="7_wakwf"]
+[ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/Objects/player_1.tscn" id="8_doouk"]
+[ext_resource type="PackedScene" uid="uid://cg6dul6g2cnl5" path="res://Scenes/Objects/player_2.tscn" id="9_0fyhm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evokg"]
+
+[node name="Level5" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(662.9119, 655.1626)
+scale = Vector2(0.5243252, 0.5243252)
+texture = ExtResource("1_2634h")
+
+[node name="Arrows" type="Sprite2D" parent="Background"]
+texture = ExtResource("2_wakwf")
+
+[node name="Flames" type="Sprite2D" parent="Background"]
+texture = ExtResource("3_reooa")
+
+[node name="Flag" type="Sprite2D" parent="Background"]
+texture = ExtResource("4_doouk")
+
+[node name="Button" type="Sprite2D" parent="Background"]
+z_index = -1
+texture = ExtResource("5_0fyhm")
+
+[node name="Throne1" type="Sprite2D" parent="Background"]
+position = Vector2(-500, 238)
+texture = ExtResource("6_evokg")
+
+[node name="Throne2" type="Sprite2D" parent="Background"]
+position = Vector2(500, 238)
+texture = ExtResource("6_evokg")
+
+[node name="BigBoss" parent="." instance=ExtResource("7_wakwf")]
+position = Vector2(663, 736)
+scale = Vector2(0.27895355, 0.27895355)
+
+[node name="Player 1" parent="." instance=ExtResource("8_doouk")]
+z_index = 2
+position = Vector2(312, 617)
+scale = Vector2(1.8711351, 1.8711351)
+
+[node name="Player2" parent="." instance=ExtResource("9_0fyhm")]
+z_index = 2
+position = Vector2(313, 772)
+
+[node name="FloorCollision" type="StaticBody2D" parent="."]
+position = Vector2(955, 962)
+scale = Vector2(1.44, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollision"]
+scale = Vector2(93.7019, -5.5114613)
+shape = SubResource("RectangleShape2D_evokg")

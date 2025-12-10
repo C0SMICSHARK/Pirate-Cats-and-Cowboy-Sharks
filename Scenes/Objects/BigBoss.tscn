@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0rluatdrpaqc"]
+
+[ext_resource type="Texture2D" uid="uid://blhpgyu8f0sja" path="res://Assets/Boss/boss_idle_spritesheet_1.png" id="1_cyep7"]
+[ext_resource type="Script" uid="uid://6ka57e5d20li" path="res://Scripts/Boss_Temp.gd" id="1_k20df"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k20df"]
+atlas = ExtResource("1_cyep7")
+region = Rect2(0, 0, 1502, 1502)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25nh7"]
+atlas = ExtResource("1_cyep7")
+region = Rect2(1502, 0, 1502, 1502)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7kh1"]
+atlas = ExtResource("1_cyep7")
+region = Rect2(3004, 0, 1502, 1502)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwkm4"]
+atlas = ExtResource("1_cyep7")
+region = Rect2(4506, 0, 1502, 1502)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7hec"]
+atlas = ExtResource("1_cyep7")
+region = Rect2(6008, 0, 1502, 1502)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytikq"]
+atlas = ExtResource("1_cyep7")
+region = Rect2(7510, 0, 1502, 1502)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r4rga"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k20df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25nh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7kh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwkm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7hec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytikq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="BigBoss" type="Node2D"]
+scale = Vector2(0.53203326, 0.53203326)
+script = ExtResource("1_k20df")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r4rga")
+animation = &"Idle"
+frame_progress = 0.34048203
