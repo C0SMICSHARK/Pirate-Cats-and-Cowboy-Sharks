@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bha808le4oygv"]
+[gd_scene load_steps=11 format=3 uid="uid://bha808le4oygv"]
 
 [ext_resource type="Texture2D" uid="uid://h3i12n8x0rhy" path="res://Assets/Environment/BossRoom/Boss_BG.png" id="1_2634h"]
 [ext_resource type="Texture2D" uid="uid://cbomeho3nd0d2" path="res://Assets/Environment/BossRoom/Boss_Arrows.png" id="2_wakwf"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://b0rluatdrpaqc" path="res://Scenes/Objects/BigBoss.tscn" id="7_wakwf"]
 [ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/Objects/player_1.tscn" id="8_doouk"]
 [ext_resource type="PackedScene" uid="uid://cg6dul6g2cnl5" path="res://Scenes/Objects/player_2.tscn" id="9_0fyhm"]
-[ext_resource type="PackedScene" uid="uid://c65uvmj18ok5u" path="res://Scenes/Objects/FireBall.tscn" id="10_0fyhm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evokg"]
 
@@ -47,12 +46,12 @@ scale = Vector2(0.27895355, 0.27895355)
 
 [node name="Player 1" parent="." instance=ExtResource("8_doouk")]
 z_index = 2
-position = Vector2(356.00003, 771)
+position = Vector2(688, 874)
 scale = Vector2(1.8711351, 1.8711351)
 
 [node name="Player2" parent="." instance=ExtResource("9_0fyhm")]
 z_index = 2
-position = Vector2(313, 772)
+position = Vector2(645, 875)
 
 [node name="FloorCollision" type="StaticBody2D" parent="."]
 position = Vector2(955, 962)
@@ -61,24 +60,3 @@ scale = Vector2(1.44, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollision"]
 scale = Vector2(93.7019, -5.5114613)
 shape = SubResource("RectangleShape2D_evokg")
-
-[node name="FireBall" parent="." instance=ExtResource("10_0fyhm")]
-position = Vector2(491, 507.00006)
-
-[node name="FireBall2" parent="." instance=ExtResource("10_0fyhm")]
-position = Vector2(557, 484)
-
-[node name="FireBall3" parent="." instance=ExtResource("10_0fyhm")]
-position = Vector2(409, 444)
-
-[node name="FireBall4" parent="." instance=ExtResource("10_0fyhm")]
-position = Vector2(283, 453)
-
-[node name="FireBall5" parent="." instance=ExtResource("10_0fyhm")]
-position = Vector2(335, 500)
-
-[node name="FireBall6" parent="." instance=ExtResource("10_0fyhm")]
-position = Vector2(356, 422)
-
-[node name="FireBall7" parent="." instance=ExtResource("10_0fyhm")]
-position = Vector2(705, 484)
