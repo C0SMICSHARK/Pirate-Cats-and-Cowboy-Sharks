@@ -1,0 +1,119 @@
+[gd_scene load_steps=12 format=3 uid="uid://c65uvmj18ok5u"]
+
+[ext_resource type="Script" uid="uid://bxihddi4on501" path="res://Scripts/fire_ball.gd" id="1_5fedr"]
+[ext_resource type="Texture2D" uid="uid://dcwmknlkjpdw1" path="res://Assets/Boss/fireball_spritesheet.png" id="1_174jm"]
+[ext_resource type="Texture2D" uid="uid://bdj3uhn4kjrtw" path="res://Assets/Boss/fire_impact_spritesheet.png" id="2_y88i2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y88i2"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fedr"]
+atlas = ExtResource("1_174jm")
+region = Rect2(0, 0, 1202, 1202)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51ydx"]
+atlas = ExtResource("1_174jm")
+region = Rect2(1202, 0, 1202, 1202)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u331n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fedr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51ydx")
+}],
+"loop": true,
+"name": &"Ball",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Hidden",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u331n"]
+atlas = ExtResource("2_y88i2")
+region = Rect2(0, 0, 1202, 1202)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1p0u"]
+atlas = ExtResource("2_y88i2")
+region = Rect2(1202, 0, 1202, 1202)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pt67"]
+atlas = ExtResource("2_y88i2")
+region = Rect2(2404, 0, 1202, 1202)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pwjw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Hidden",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u331n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1p0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pt67")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Impact",
+"speed": 5.0
+}]
+
+[node name="FireBall" type="Node2D"]
+script = ExtResource("1_5fedr")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+z_index = 1
+position = Vector2(0, 18)
+collision_layer = 64
+collision_mask = 65
+gravity_scale = 0.0
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 5
+constant_force = Vector2(0, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+z_index = 2
+position = Vector2(0, 19)
+shape = SubResource("CircleShape2D_y88i2")
+
+[node name="MainBall" type="AnimatedSprite2D" parent="RigidBody2D"]
+position = Vector2(0, -18)
+scale = Vector2(0.136, 0.136)
+sprite_frames = SubResource("SpriteFrames_u331n")
+animation = &"Ball"
+autoplay = "Ball"
+
+[node name="Impact" type="AnimatedSprite2D" parent="RigidBody2D"]
+position = Vector2(5, -7.000002)
+scale = Vector2(0.08477778, 0.08477778)
+sprite_frames = SubResource("SpriteFrames_0pwjw")
+animation = &"Impact"
+
+[node name="ImpactTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
+[connection signal="animation_finished" from="RigidBody2D/Impact" to="." method="_on_impact_animation_finished"]
