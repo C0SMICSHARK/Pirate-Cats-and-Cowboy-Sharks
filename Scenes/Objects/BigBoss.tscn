@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://b0rluatdrpaqc"]
+[gd_scene load_steps=43 format=3 uid="uid://b0rluatdrpaqc"]
 
 [ext_resource type="Texture2D" uid="uid://blhpgyu8f0sja" path="res://Assets/Boss/boss_idle_spritesheet_1.png" id="1_cyep7"]
 [ext_resource type="Script" uid="uid://6ka57e5d20li" path="res://Scripts/Boss_Temp.gd" id="1_k20df"]
 [ext_resource type="Texture2D" uid="uid://60acnp54qwsd" path="res://Assets/Boss/boss_dizzy_spritesheet.png" id="2_jwkm4"]
 [ext_resource type="Texture2D" uid="uid://c37055lhqgpxr" path="res://Assets/Boss/boss_low_idle_spritesheet_3.png" id="4_v7hec"]
 [ext_resource type="Texture2D" uid="uid://b3crxnfuob4ax" path="res://Assets/Boss/boss_roar_spritesheet_2.png" id="5_ytikq"]
+[ext_resource type="Texture2D" uid="uid://bdj3uhn4kjrtw" path="res://Assets/Boss/fire_impact_spritesheet.png" id="6_v7hec"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r4rga"]
 atlas = ExtResource("2_jwkm4")
@@ -239,16 +240,120 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jwkm4"]
+radius = 161.0
+height = 711.7007
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwp0u"]
+atlas = ExtResource("6_v7hec")
+region = Rect2(0, 0, 1202, 1202)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6di5h"]
+atlas = ExtResource("6_v7hec")
+region = Rect2(1202, 0, 1202, 1202)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee878"]
+atlas = ExtResource("6_v7hec")
+region = Rect2(2404, 0, 1202, 1202)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m3sbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwp0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6di5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6di5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee878")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6di5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee878")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6di5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwp0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee878")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6di5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee878")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6di5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwp0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee878")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6di5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee878")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6di5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee878")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6di5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee878")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwp0u")
+}],
+"loop": false,
+"name": &"Explode",
+"speed": 5.0
+}]
+
 [node name="BigBoss" type="Node2D"]
 scale = Vector2(0.53203326, 0.53203326)
 script = ExtResource("1_k20df")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r4rga")
-animation = &"Roar"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 11
-frame_progress = 1.0
+
+[node name="Hurtbox" type="Area2D" parent="AnimatedSprite2D"]
+visible = false
+position = Vector2(11.277, 4500)
+scale = Vector2(1.8795818, 1.8795818)
+collision_layer = 194
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hurtbox"]
+shape = SubResource("CapsuleShape2D_jwkm4")
+
+[node name="DeathExplosion" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+position = Vector2(171.04193, -749.95306)
+scale = Vector2(2.5344634, 2.5344634)
+sprite_frames = SubResource("SpriteFrames_m3sbx")
+animation = &"Explode"
 
 [node name="TiredTimer" type="Timer" parent="."]
 wait_time = 10.0
@@ -267,6 +372,14 @@ one_shot = true
 
 [node name="Kickstart" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
+
+[node name="DizzyStart" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="DizzyTotalTimer" type="Timer" parent="."]
+wait_time = 4.0
 one_shot = true
 
 [node name="FirePosTest" type="Node2D" parent="."]
@@ -317,8 +430,12 @@ position = Vector2(1881.4613, -3710.2944)
 [node name="FirePosTest16" type="Node2D" parent="."]
 position = Vector2(-2189.713, -3208.4463)
 
+[connection signal="body_entered" from="AnimatedSprite2D/Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D/DeathExplosion" to="." method="_on_death_explosion_animation_finished"]
 [connection signal="timeout" from="TiredTimer" to="." method="_on_tired_timer_timeout"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="FireLaunchTimer" to="." method="_on_fire_launch_timer_timeout"]
 [connection signal="timeout" from="CanAttackTimer" to="." method="_on_can_attack_timer_timeout"]
 [connection signal="timeout" from="Kickstart" to="." method="_on_kickstart_timeout"]
+[connection signal="timeout" from="DizzyStart" to="." method="_on_dizzy_start_timeout"]
+[connection signal="timeout" from="DizzyTotalTimer" to="." method="_on_dizzy_total_timer_timeout"]

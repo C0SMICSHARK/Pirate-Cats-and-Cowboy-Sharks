@@ -24,7 +24,8 @@ z_index = 2
 texture = ExtResource("4_doouk")
 
 [node name="Button" type="Sprite2D" parent="Background"]
-z_index = -1
+visible = false
+z_index = 1
 texture = ExtResource("5_0fyhm")
 
 [node name="Throne1" type="Sprite2D" parent="Background"]
@@ -54,10 +55,13 @@ scroll_offset = Vector2(-150, 0)
 scale = Vector2(1.205, 1)
 texture = ExtResource("2_wakwf")
 
-[node name="BigBoss" parent="." instance=ExtResource("7_wakwf")]
+[node name="BigBoss" parent="." node_paths=PackedStringArray("Flag", "RedButton") instance=ExtResource("7_wakwf")]
 z_index = 2
 position = Vector2(663, 736)
 scale = Vector2(0.27895355, 0.27895355)
+HealthNumber = 40
+Flag = NodePath("../Background/Flag")
+RedButton = NodePath("../Background/Button")
 
 [node name="Player 1" parent="." instance=ExtResource("8_doouk")]
 z_index = 2

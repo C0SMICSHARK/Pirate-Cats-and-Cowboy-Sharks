@@ -19,6 +19,9 @@ var FireBallPath15 = preload("res://Scenes/Objects/FireBall.tscn")
 var FireBallPath16 = preload("res://Scenes/Objects/FireBall.tscn")
 var Tired = false
 var CanAttack = true
+@export var HealthNumber = 30
+@export var Flag = Node
+@export var RedButton = Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,8 +31,8 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	CooldownLength = randf_range(0.5,1)
+func _process(delta: float) -> void:
+	CooldownLength = randf_range(0.1,0.3)
 	$FirePosTest.position.x = randf_range(-2000,2000)
 	$FirePosTest2.position.x = randf_range(-2000,2000)
 	$FirePosTest3.position.x = randf_range(-2000,2000)
@@ -47,6 +50,20 @@ func _process(_delta: float) -> void:
 	$FirePosTest15.position.x = randf_range(-2000,2000)
 	$FirePosTest16.position.x = randf_range(-2000,2000)
 
+	modulate = Color(1,clamp(modulate.g + delta,0,1),clamp(modulate.b + delta,0,1))
+	if HealthNumber == 0:
+		$AnimatedSprite2D/DeathExplosion.play("Explode")
+		$TiredTimer.paused = true
+		$CooldownTimer.paused = true
+		$FireLaunchTimer.paused = true
+		$CanAttackTimer.paused = true
+		$Kickstart.paused = true
+		$DizzyStart.paused = true
+		$DizzyTotalTimer.paused = true
+		$AnimatedSprite2D.pause()
+		$AnimatedSprite2D/Hurtbox.position.y = 4500
+		HealthNumber -= 1
+		
 
 func _on_cooldown_timer_timeout() -> void:
 	#$AnimatedSprite2D.play("Roar")
@@ -148,8 +165,7 @@ func _on_can_attack_timer_timeout() -> void:
 	CanAttack = false
 	$TiredTimer.start()
 	Tired = true
-	$AnimatedSprite2D.play("Dizzy")
-	$AnimatedSprite2D.position.y = 50
+	$DizzyStart.start()
 
 
 func _on_tired_timer_timeout() -> void:
@@ -157,3 +173,28 @@ func _on_tired_timer_timeout() -> void:
 	$Kickstart.start(0.5)
 	Tired = false
 	CanAttack = true
+
+
+func _on_dizzy_start_timeout() -> void:
+	$AnimatedSprite2D.play("Dizzy")
+	$AnimatedSprite2D.position.y = 50
+	$DizzyTotalTimer.start()
+	$AnimatedSprite2D/Hurtbox.position.y = 0
+
+
+func _on_dizzy_total_timer_timeout() -> void:
+	$AnimatedSprite2D.play("Idle_Low")
+	$AnimatedSprite2D/Hurtbox.position.y = 4500
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	modulate = Color(1,0,0)
+	HealthNumber -= 1
+	if body.is_in_group("Projectile"):
+			body.queue_free()
+
+
+func _on_death_explosion_animation_finished() -> void:
+	Flag.visible = false
+	RedButton.visible = true
+	queue_free()
