@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://dksykscfxj8rk"]
+[gd_scene load_steps=46 format=3 uid="uid://dksykscfxj8rk"]
 
 [ext_resource type="Script" uid="uid://pdp0rkxp8kog" path="res://Scripts/Player1.gd" id="1_2mvbs"]
 [ext_resource type="Texture2D" uid="uid://b5rde1hhxtymo" path="res://Assets/Cat/idle_spritesheet.png" id="2_0douk"]
 [ext_resource type="Texture2D" uid="uid://c6bk8pbdiuki3" path="res://Assets/Cat/right_lunge_attack_spritesheet_fixed.png" id="2_qoejl"]
 [ext_resource type="Texture2D" uid="uid://ff31qakjksyp" path="res://Assets/Cat/right_jump_spritesheet.png" id="3_kafha"]
 [ext_resource type="Texture2D" uid="uid://lvcbmpt2a15c" path="res://Assets/Cat/right_walk_spritesheet.png" id="4_8nnth"]
+[ext_resource type="Texture2D" uid="uid://by85b3oy05q1c" path="res://Assets/Cat/cat_swing_spritesheet.png" id="6_12rfu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ot205"]
 atlas = ExtResource("2_qoejl")
@@ -276,6 +277,48 @@ height = 14.0
 radius = 6.0
 height = 14.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fu3jb"]
+atlas = ExtResource("6_12rfu")
+region = Rect2(902, 0, 902, 902)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvkrp"]
+atlas = ExtResource("6_12rfu")
+region = Rect2(1804, 0, 902, 902)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lffhe"]
+atlas = ExtResource("6_12rfu")
+region = Rect2(2706, 0, 902, 902)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xg04"]
+atlas = ExtResource("6_12rfu")
+region = Rect2(3608, 0, 902, 902)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sbu63"]
+animations = [{
+"frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_fu3jb")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_hvkrp")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_lffhe")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_2xg04")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_lffhe")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_hvkrp")
+}],
+"loop": false,
+"name": &"Swing",
+"speed": 10.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qoejl"]
 size = Vector2(12, 3.5)
 
@@ -295,8 +338,7 @@ position = Vector2(-1, -1)
 rotation = 0.05235988
 scale = Vector2(0.03378336, 0.03378336)
 sprite_frames = SubResource("SpriteFrames_0vr67")
-animation = &"Idle"
-frame_progress = 0.10999624
+animation = &"Attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
@@ -338,6 +380,14 @@ collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/AttackHitbox/HitImpact"]
 shape = SubResource("CapsuleShape2D_12rfu")
+
+[node name="SwingAnimation" type="AnimatedSprite2D" parent="CharacterBody2D/AttackHitbox"]
+position = Vector2(-13.5, 4)
+scale = Vector2(0.05800122, 0.018)
+sprite_frames = SubResource("SpriteFrames_sbu63")
+animation = &"Swing"
+frame = 3
+frame_progress = 1.0
 
 [node name="GroundImpactBox" type="Area2D" parent="CharacterBody2D"]
 collision_layer = 1073741824

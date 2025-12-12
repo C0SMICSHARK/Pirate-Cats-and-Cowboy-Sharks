@@ -68,10 +68,13 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("LEFT_P1"):
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.rotation_degrees = -3
+		$AttackHitbox/SwingAnimation.flip_h = true
 		
 	if Input.is_action_just_pressed("RIGHT_P1"):
 		$AnimatedSprite2D.flip_h = false
 		$AnimatedSprite2D.rotation_degrees = 3
+		$AttackHitbox/SwingAnimation.flip_h = false
+		
 		
 	if Input.is_action_just_pressed("JUMP_P1") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -121,12 +124,15 @@ func _physics_process(delta: float) -> void:
 		$"../AttackTimer".start()
 		$AnimatedSprite2D.position.y = 1.5
 		$AnimatedSprite2D.play("Attack")
+		$AttackHitbox/SwingAnimation.play("Swing")
 		if not $AnimatedSprite2D.flip_h:
 			$AttackHitbox.position.x = 13.5
 			$AttackHitbox.position.y = 0
+			$AttackHitbox/SwingAnimation.position.x = -13.5
 		elif $AnimatedSprite2D.flip_h:
 			$AttackHitbox.position.x = -13.5
 			$AttackHitbox.position.y = 0
+			$AttackHitbox/SwingAnimation.position.x = 13.5
 			AudioController.play_SwordSwing()
 # Dashing Cooldown Mechanic:
 func _on_dash_timer_timeout() -> void:
