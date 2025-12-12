@@ -250,11 +250,23 @@ autoplay = "Idle"
 frame = 11
 frame_progress = 1.0
 
+[node name="TiredTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [node name="CooldownTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="FireLaunchTimer" type="Timer" parent="."]
 wait_time = 5.0
+one_shot = true
+
+[node name="CanAttackTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Kickstart" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="FirePosTest" type="Node2D" parent="."]
@@ -305,5 +317,8 @@ position = Vector2(1881.4613, -3710.2944)
 [node name="FirePosTest16" type="Node2D" parent="."]
 position = Vector2(-2189.713, -3208.4463)
 
+[connection signal="timeout" from="TiredTimer" to="." method="_on_tired_timer_timeout"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="FireLaunchTimer" to="." method="_on_fire_launch_timer_timeout"]
+[connection signal="timeout" from="CanAttackTimer" to="." method="_on_can_attack_timer_timeout"]
+[connection signal="timeout" from="Kickstart" to="." method="_on_kickstart_timeout"]

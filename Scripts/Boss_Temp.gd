@@ -17,11 +17,14 @@ var FireBallPath13 = preload("res://Scenes/Objects/FireBall.tscn")
 var FireBallPath14 = preload("res://Scenes/Objects/FireBall.tscn")
 var FireBallPath15 = preload("res://Scenes/Objects/FireBall.tscn")
 var FireBallPath16 = preload("res://Scenes/Objects/FireBall.tscn")
+var Tired = false
+var CanAttack = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#$CooldownTimer.start(CooldownLength)
 	$FireLaunchTimer.start(2)
+	$Kickstart.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,7 +49,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_cooldown_timer_timeout() -> void:
-	$AnimatedSprite2D.play("Roar")
+	#$AnimatedSprite2D.play("Roar")
 	var FireBall1 = FireBallPath1.instantiate()
 	FireBall1.pos = $FirePosTest.global_position
 	FireBall1.rota = global_rotation
@@ -129,5 +132,28 @@ func _on_cooldown_timer_timeout() -> void:
 
 
 func _on_fire_launch_timer_timeout() -> void:
-	$CooldownTimer.start(CooldownLength)
-	$FireLaunchTimer.start(CooldownLength + 1)
+	if not Tired and CanAttack:
+		$AnimatedSprite2D.position.y = 0
+		$AnimatedSprite2D.play("Roar")
+		$CooldownTimer.start(CooldownLength)
+		$FireLaunchTimer.start(CooldownLength + 1)
+
+
+func _on_kickstart_timeout() -> void:
+	$CanAttackTimer.start()
+	CanAttack = true
+
+
+func _on_can_attack_timer_timeout() -> void:
+	CanAttack = false
+	$TiredTimer.start()
+	Tired = true
+	$AnimatedSprite2D.play("Dizzy")
+	$AnimatedSprite2D.position.y = 50
+
+
+func _on_tired_timer_timeout() -> void:
+	$FireLaunchTimer.start(0.5)
+	$Kickstart.start(0.5)
+	Tired = false
+	CanAttack = true
