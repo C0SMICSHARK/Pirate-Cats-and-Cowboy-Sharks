@@ -1,8 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4jiogafjmomb"]
+[gd_scene load_steps=21 format=3 uid="uid://b4jiogafjmomb"]
 
 [ext_resource type="Texture2D" uid="uid://c1tucrqjlwnnn" path="res://Assets/Environment/Castle/CastleSky.png" id="1_8rnd2"]
 [ext_resource type="Texture2D" uid="uid://b0k25jrmy41y1" path="res://Assets/Environment/Castle/CastleMountains.png" id="2_xq0e5"]
 [ext_resource type="Texture2D" uid="uid://dn1x6anr1jnh1" path="res://Assets/Environment/Castle/CastleMain.png" id="3_6grq2"]
+[ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="4_vwhew"]
+[ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/Objects/player_1.tscn" id="5_jqrsn"]
+[ext_resource type="PackedScene" uid="uid://cg6dul6g2cnl5" path="res://Scenes/Objects/player_2.tscn" id="6_t74h0"]
+[ext_resource type="Texture2D" uid="uid://cjgqdcv61d8xg" path="res://Assets/Environment/Castle/CastleBridgeUp.png" id="7_i4hbv"]
+[ext_resource type="Texture2D" uid="uid://nm8vshtnxo8m" path="res://Assets/Environment/Castle/CastleBridgeDown.png" id="8_gsxik"]
+[ext_resource type="Texture2D" uid="uid://cc1wllnyo3vay" path="res://Assets/Environment/Castle/CastlePlatforms (1).png" id="8_h0uxt"]
+[ext_resource type="Texture2D" uid="uid://dugyb61fbw1hf" path="res://Assets/Environment/Castle/CastlePlatforms.png" id="9_keyqw"]
+[ext_resource type="PackedScene" uid="uid://du2gljmg8dmu1" path="res://Scenes/Objects/buttonDrawBridge.tscn" id="11_3asqb"]
+[ext_resource type="Texture2D" uid="uid://catlm0m7sm7ao" path="res://Assets/Environment/Castle/door.png" id="12_slbhm"]
+[ext_resource type="Script" uid="uid://dk3y8mva3o7yv" path="res://Scripts/CastleLevelEnd.gd" id="13_3osng"]
+[ext_resource type="Texture2D" uid="uid://bnt4u3eceb74e" path="res://Assets/Environment/CastlePortal.png" id="13_i5g5g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jqrsn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t74h0"]
+size = Vector2(0.99978405, 1.0044043)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsxik"]
+size = Vector2(404.22867, 46.273804)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3asqb"]
+size = Vector2(260, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_keyqw"]
+size = Vector2(250.00275, 35.13974)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5g5g"]
+size = Vector2(100, 112.5)
 
 [node name="Level4" type="Node2D"]
 
@@ -23,3 +51,223 @@ texture = ExtResource("2_xq0e5")
 [node name="Main" type="Sprite2D" parent="."]
 position = Vector2(2028, 580)
 texture = ExtResource("3_6grq2")
+
+[node name="Floor" type="MeshInstance2D" parent="."]
+position = Vector2(81, 657.99994)
+scale = Vector2(194.00032, -57.361214)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor2" type="MeshInstance2D" parent="."]
+position = Vector2(756.00006, 807)
+scale = Vector2(169.76031, -57.361214)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor8" type="MeshInstance2D" parent="."]
+position = Vector2(2131, 767)
+scale = Vector2(169.76031, -72.12121)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor8/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor3" type="MeshInstance2D" parent="."]
+position = Vector2(2533, 375)
+scale = Vector2(595.477, 56.64343)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor4" type="MeshInstance2D" parent="."]
+position = Vector2(3536, 368.00003)
+scale = Vector2(595.477, 56.64343)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor4/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor7" type="MeshInstance2D" parent="."]
+position = Vector2(3100, 775)
+scale = Vector2(1493.1971, 43.123425)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor7/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor9" type="MeshInstance2D" parent="."]
+position = Vector2(3296.9998, 939)
+scale = Vector2(1493.1971, 29.403427)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor9/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor6" type="MeshInstance2D" parent="."]
+position = Vector2(254.00003, 918.00006)
+rotation = 1.0775754
+scale = Vector2(595.477, 56.64343)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor6/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor5" type="MeshInstance2D" parent="."]
+position = Vector2(2128.0002, 1088.0001)
+scale = Vector2(3842.8767, 56.64343)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor5/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Player 1" parent="." instance=ExtResource("5_jqrsn")]
+position = Vector2(37, 602.00006)
+scale = Vector2(1.871, 1.871)
+
+[node name="Player2" parent="." instance=ExtResource("6_t74h0")]
+position = Vector2(79, 604)
+
+[node name="CastleBridgeUp" type="Sprite2D" parent="."]
+position = Vector2(2042, 586)
+texture = ExtResource("7_i4hbv")
+
+[node name="Floor10" type="MeshInstance2D" parent="CastleBridgeUp"]
+visible = false
+position = Vector2(-1426.9999, -170)
+rotation = 1.589217
+scale = Vector2(612.3204, -87.18911)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CastleBridgeUp/Floor10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastleBridgeUp/Floor10/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="CastleBridgeDown" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2042, 591)
+texture = ExtResource("8_gsxik")
+
+[node name="Floor9" type="MeshInstance2D" parent="CastleBridgeDown"]
+visible = false
+position = Vector2(-1688, 385)
+scale = Vector2(612.3204, -57.361214)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CastleBridgeDown/Floor9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastleBridgeDown/Floor9/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="CastlePlatforms(1)" type="Sprite2D" parent="."]
+position = Vector2(2034, 647)
+texture = ExtResource("8_h0uxt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CastlePlatforms(1)"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastlePlatforms(1)/StaticBody2D"]
+position = Vector2(-934.09045, 23.04663)
+rotation = 0.12914811
+shape = SubResource("RectangleShape2D_gsxik")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CastlePlatforms(1)/StaticBody2D"]
+position = Vector2(1004, -337)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastlePlatforms(1)/StaticBody2D/StaticBody2D"]
+position = Vector2(6, 2)
+rotation = -0.107870944
+shape = SubResource("RectangleShape2D_3asqb")
+
+[node name="CastlePlatforms" type="Sprite2D" parent="."]
+position = Vector2(1606, 386)
+scale = Vector2(1.3240448, 1.8440448)
+texture = ExtResource("9_keyqw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CastlePlatforms"]
+position = Vector2(323.25195, 141.53667)
+scale = Vector2(0.7552614, 0.54228616)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CastlePlatforms/StaticBody2D"]
+z_index = 1
+position = Vector2(-422.97168, -84.6814)
+rotation = 0.1557681
+shape = SubResource("RectangleShape2D_keyqw")
+
+[node name="Button" parent="." node_paths=PackedStringArray("DrawBridgeUp", "DrawBridgeDown", "DrawBridgeUpCol", "DrawBridgeDownCol") instance=ExtResource("11_3asqb")]
+position = Vector2(2119, 705)
+scale = Vector2(0.23400368, 0.23400368)
+DrawBridgeUp = NodePath("../CastleBridgeUp")
+DrawBridgeDown = NodePath("../CastleBridgeDown")
+DrawBridgeUpCol = NodePath("../CastleBridgeUp/Floor10")
+DrawBridgeDownCol = NodePath("../CastleBridgeDown/Floor9")
+
+[node name="Door" type="Sprite2D" parent="."]
+position = Vector2(3819, 663)
+texture = ExtResource("12_slbhm")
+
+[node name="LevelEnd" type="Area2D" parent="."]
+position = Vector2(2021, 575)
+script = ExtResource("13_3osng")
+
+[node name="CastlePortal" type="Sprite2D" parent="LevelEnd"]
+texture = ExtResource("13_i5g5g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
+position = Vector2(1987, 413)
+shape = SubResource("RectangleShape2D_i5g5g")
