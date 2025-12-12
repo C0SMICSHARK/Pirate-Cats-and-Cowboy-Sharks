@@ -197,4 +197,9 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 func _on_death_explosion_animation_finished() -> void:
 	Flag.visible = false
 	RedButton.visible = true
-	queue_free()
+	$".".position.y = 23000
+	$EndSceneTransition.start()
+
+
+func _on_end_scene_transition_timeout() -> void:
+	get_tree().change_scene_to_file("res://Assets/Misc/End.tscn")
