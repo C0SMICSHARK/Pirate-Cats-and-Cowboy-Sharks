@@ -245,8 +245,10 @@ script = ExtResource("1_k20df")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_r4rga")
-animation = &"Idle"
+animation = &"Roar"
 autoplay = "Idle"
+frame = 11
+frame_progress = 1.0
 
 [node name="CooldownTimer" type="Timer" parent="."]
 one_shot = true

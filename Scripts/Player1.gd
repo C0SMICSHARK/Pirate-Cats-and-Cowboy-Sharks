@@ -20,6 +20,11 @@ func _ready() -> void:
 	add_to_group("can_interact_with_water")
 	add_to_group("Cat")
 	add_to_group("Player")
+	if get_tree().current_scene.name == "Level5":
+		$Camera2D.limit_top = -10000000
+		$Camera2D.limit_bottom = 910
+		$Camera2D.limit_left = 10
+		$Camera2D.limit_right = 1320
 
 
 func _physics_process(delta: float) -> void:

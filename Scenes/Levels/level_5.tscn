@@ -19,13 +19,8 @@ position = Vector2(662.9119, 655.1626)
 scale = Vector2(0.5243252, 0.5243252)
 texture = ExtResource("1_2634h")
 
-[node name="Arrows" type="Sprite2D" parent="Background"]
-texture = ExtResource("2_wakwf")
-
-[node name="Flames" type="Sprite2D" parent="Background"]
-texture = ExtResource("3_reooa")
-
 [node name="Flag" type="Sprite2D" parent="Background"]
+z_index = 2
 texture = ExtResource("4_doouk")
 
 [node name="Button" type="Sprite2D" parent="Background"]
@@ -33,28 +28,48 @@ z_index = -1
 texture = ExtResource("5_0fyhm")
 
 [node name="Throne1" type="Sprite2D" parent="Background"]
+z_index = 2
 position = Vector2(-500, 238)
 texture = ExtResource("6_evokg")
 
 [node name="Throne2" type="Sprite2D" parent="Background"]
+z_index = 2
 position = Vector2(500, 238)
 texture = ExtResource("6_evokg")
 
+[node name="Parallax2D" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(1.2, 1)
+scroll_offset = Vector2(-100, 0)
+
+[node name="Flames" type="Sprite2D" parent="Background/Parallax2D"]
+z_index = 1
+scale = Vector2(1.205, 1)
+texture = ExtResource("3_reooa")
+
+[node name="Parallax2D" type="Parallax2D" parent="Background/Parallax2D"]
+scroll_scale = Vector2(1.4, 1)
+scroll_offset = Vector2(-150, 0)
+
+[node name="Arrows" type="Sprite2D" parent="Background/Parallax2D/Parallax2D"]
+scale = Vector2(1.205, 1)
+texture = ExtResource("2_wakwf")
+
 [node name="BigBoss" parent="." instance=ExtResource("7_wakwf")]
+z_index = 2
 position = Vector2(663, 736)
 scale = Vector2(0.27895355, 0.27895355)
 
 [node name="Player 1" parent="." instance=ExtResource("8_doouk")]
 z_index = 2
-position = Vector2(688, 874)
+position = Vector2(688, 869)
 scale = Vector2(1.8711351, 1.8711351)
 
 [node name="Player2" parent="." instance=ExtResource("9_0fyhm")]
 z_index = 2
-position = Vector2(645, 875)
+position = Vector2(645, 870)
 
 [node name="FloorCollision" type="StaticBody2D" parent="."]
-position = Vector2(955, 962)
+position = Vector2(955, 953)
 scale = Vector2(1.44, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollision"]

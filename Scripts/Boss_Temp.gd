@@ -26,7 +26,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	CooldownLength = randf_range(1,3)
+	CooldownLength = randf_range(0.5,1)
+	$FirePosTest.position.x = randf_range(-2000,2000)
+	$FirePosTest2.position.x = randf_range(-2000,2000)
+	$FirePosTest3.position.x = randf_range(-2000,2000)
+	$FirePosTest4.position.x = randf_range(-2000,2000)
+	$FirePosTest5.position.x = randf_range(-2000,2000)
+	$FirePosTest6.position.x = randf_range(-2000,2000)
+	$FirePosTest7.position.x = randf_range(-2000,2000)
+	$FirePosTest8.position.x = randf_range(-2000,2000)
+	$FirePosTest9.position.x = randf_range(-2000,2000)
+	$FirePosTest10.position.x = randf_range(-2000,2000)
+	$FirePosTest11.position.x = randf_range(-2000,2000)
+	$FirePosTest12.position.x = randf_range(-2000,2000)
+	$FirePosTest13.position.x = randf_range(-2000,2000)
+	$FirePosTest14.position.x = randf_range(-2000,2000)
+	$FirePosTest15.position.x = randf_range(-2000,2000)
+	$FirePosTest16.position.x = randf_range(-2000,2000)
 
 
 func _on_cooldown_timer_timeout() -> void:
