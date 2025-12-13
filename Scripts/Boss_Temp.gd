@@ -30,7 +30,7 @@ func _ready() -> void:
 	$Kickstart.start()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Randomize the time between fireball waves, and randoomize spawn positions of fireballs
 func _process(delta: float) -> void:
 	CooldownLength = randf_range(0.1,0.3)
 	$FirePosTest.position.x = randf_range(-2000,2000)
@@ -51,6 +51,8 @@ func _process(delta: float) -> void:
 	$FirePosTest16.position.x = randf_range(-2000,2000)
 
 	modulate = Color(1,clamp(modulate.g + delta,0,1),clamp(modulate.b + delta,0,1))
+	
+	# When Health reaches 0 puases all processes and playes explosion animation
 	if HealthNumber == 0:
 		$AnimatedSprite2D/DeathExplosion.play("Explode")
 		$TiredTimer.paused = true
@@ -64,7 +66,7 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D/Hurtbox.position.y = 4500
 		HealthNumber -= 1
 		
-
+# Responsible for instantiating all the fireballs
 func _on_cooldown_timer_timeout() -> void:
 	#$AnimatedSprite2D.play("Roar")
 	var FireBall1 = FireBallPath1.instantiate()
@@ -147,7 +149,7 @@ func _on_cooldown_timer_timeout() -> void:
 	FireBall16.rota = global_rotation
 	get_parent().add_child(FireBall16)
 
-
+# Responsible for starting a wave of fireballs and repeats as long as its not tired
 func _on_fire_launch_timer_timeout() -> void:
 	if not Tired and CanAttack:
 		$AnimatedSprite2D.position.y = 0
@@ -155,51 +157,52 @@ func _on_fire_launch_timer_timeout() -> void:
 		$CooldownTimer.start(CooldownLength)
 		$FireLaunchTimer.start(CooldownLength + 1)
 
-
+# Responsible for starting the chain of functions that makes phases work
 func _on_kickstart_timeout() -> void:
 	$CanAttackTimer.start()
 	CanAttack = true
 
-
+# Responsible for making it tired and unable to attack
 func _on_can_attack_timer_timeout() -> void:
 	CanAttack = false
 	$TiredTimer.start()
 	Tired = true
 	$DizzyStart.start()
 
-
+# Resets the Boss back to being able to attack again
 func _on_tired_timer_timeout() -> void:
 	$FireLaunchTimer.start(0.5)
 	$Kickstart.start(0.5)
 	Tired = false
 	CanAttack = true
 
-
+# Starts the dizzy animation and sets the time you can attack it for: "DizzyTotalTimer"
 func _on_dizzy_start_timeout() -> void:
 	$AnimatedSprite2D.play("Dizzy")
 	$AnimatedSprite2D.position.y = 50
 	$DizzyTotalTimer.start()
 	$AnimatedSprite2D/Hurtbox.position.y = 0
 
-
+# Makes the dizzy animation change to a tired one for a few seconds
+# during this period you can't attack the boss
 func _on_dizzy_total_timer_timeout() -> void:
 	$AnimatedSprite2D.play("Idle_Low")
 	$AnimatedSprite2D/Hurtbox.position.y = 4500
 
-
+# When hurt the boss will turn red and health number is decremented
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	modulate = Color(1,0,0)
 	HealthNumber -= 1
 	if body.is_in_group("Projectile"):
 			body.queue_free()
 
-
+# When the death animation ends the BIG RED BUTTON is made visible
 func _on_death_explosion_animation_finished() -> void:
 	Flag.visible = false
 	RedButton.visible = true
 	$".".position.y = 23000
 	$EndSceneTransition.start()
 
-
+# A few seconds after the boss has dissappeared the scene changes to the end
 func _on_end_scene_transition_timeout() -> void:
 	get_tree().change_scene_to_file("res://Assets/Misc/End.tscn")

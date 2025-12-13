@@ -4,12 +4,11 @@ extends Node2D
 @export var DrawBridgeUpCol = Node
 @export var DrawBridgeDownCol = Node
 var used = 0
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	pass 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Uses the public node variables to swap assets and collisions for the drawbridge up/down
 func _process(_delta: float) -> void:
 	if used == 1:
 		DrawBridgeDown.visible = true
@@ -21,5 +20,3 @@ func _process(_delta: float) -> void:
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	used += 1
-	
-	

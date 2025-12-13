@@ -18,6 +18,7 @@ func _ready() -> void:
 	add_to_group("Shark")
 	add_to_group("Player")
 
+# Fires a bullet when the function is called
 func fire():
 	var Bullet=bullet_path.instantiate()
 	#Makes the bullet travel the direction the player is facing
@@ -33,7 +34,6 @@ func fire():
 	Bullet.rota=global_rotation
 	get_parent().add_child(Bullet)
 	bulletCooldown.start()
-	#await get_tree().create_timer(0.15).timeout
 	Knocked = true
 	$"../KnockbackTimer".start()
 	KnockbackVector.x = $"..".position.x-(0*Flipstuffinnit)
@@ -48,25 +48,26 @@ func fire():
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
+	# Allows shooting to happen when actions is pressed and other actions aren't happening
 	if Input.is_action_just_pressed("BREAK") and bulletCooldown.is_stopped() and AudioController.Shooting == false and is_on_floor() == true and not Swimming:
 		fire()
 
 	# Handle jump.
 	#if Input.is_action_just_pressed("JUMP_P2") and is_on_floor():
 	#	velocity.y = JUMP_VELOCITY
+	
 	#Responsible for knockback action
 	if Knocked and not $"../KnockbackTimer".is_stopped():
 		t += delta
 		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
-		#velocity = KnockbackForce 
 	
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("LEFT_P2", "RIGHT_P2")
+	
+	# Plays either Run or Idle if the player is not swimming
 	if direction and bulletCooldown.is_stopped():
 		velocity.x = direction * SPEED
 		if not Swimming:
@@ -76,33 +77,32 @@ func _physics_process(delta: float) -> void:
 		if not Swimming:
 			$AnimatedSprite2D.play("Idle")
 		
-		
+	# Flips sprite direction based on movement direction
 	if Input.is_action_just_pressed("LEFT_P2"):
 		$AnimatedSprite2D.flip_h = true
-	
 	if Input.is_action_just_pressed("RIGHT_P2"):
 		$AnimatedSprite2D.flip_h = false
 		
+	# Allows shooting to happen when actions is pressed and other actions aren't happening
 	if Input.is_action_just_pressed("BREAK") and AudioController.Shooting == false and not Swimming:
 		$AnimatedSprite2D.play("Shoot")
 		AudioController.play_revolver()
 		
+	# Happens after ground impact kickstart (Line 144)
 	if Impact and not $"../AttackImpactTimer".is_stopped():
 		t += delta
 		velocity.x = 0
 		velocity.y = 0
 		$"..".position = $"..".position.lerp(KnockbackVector, delta*10)
-	
 	if $"../AttackImpactTimer".is_stopped():
 		Impact = false
 	
+	# Puts the hitboxes in the correct positions after invincibility window
 	if $"../HitImmunity".is_stopped():
 		$RightHurtbox.position.y = 0
 		$LeftHurtbox.position.y = 0
 
-	#if Swimming:
-		#$AnimatedSprite2D.play("Swim")
-	
+	# Allows the player to move as long as other actions aren't happening
 	if $"../KnockbackTimer".is_stopped() and shooting == false and $"../AttackImpactTimer".is_stopped():
 		move_and_slide()
 		Knocked = false
@@ -140,7 +140,7 @@ func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
 	modulate = Color(1,0,0)
 	AudioController.play_sharkouchies()
 
-
+# Kickstarts bouncing the player upwards after a ground impact
 func _on_ground_impactbox_body_entered(_body: Node2D) -> void:
 	$"../AttackImpactTimer".start()
 	Impact = true
@@ -148,10 +148,9 @@ func _on_ground_impactbox_body_entered(_body: Node2D) -> void:
 	KnockbackVector.x = $"..".position.x+0
 	KnockbackVector.y = $"..".position.y-20
 
-
+# Plays swim animation if the player is inside a swim zone
 func _on_swim_box_body_entered(_body: Node2D) -> void:
 	Swimming = true
 	$AnimatedSprite2D.play("Swim")
-
 func _on_swim_box_body_exited(_body: Node2D) -> void:
 	Swimming = false
