@@ -18,6 +18,12 @@ func _ready() -> void:
 	add_to_group("Shark")
 	add_to_group("Player")
 
+	if get_tree().current_scene.name == "Level4":
+		$Camera2D.enabled = true
+		
+	if not get_tree().current_scene.name == "Level4":
+		$Camera2D.queue_free()
+	$Camera2D/CameraCollisionRight.global_position = $Camera2D.get_target_position()
 # Fires a bullet when the function is called
 func fire():
 	var Bullet=bullet_path.instantiate()
@@ -73,6 +79,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	# Plays either Run or Idle if the player is not swimming
+	# Also changes movement type if they are swimming
 	if direction and not Swimming and bulletCooldown.is_stopped():
 		velocity.x = direction * SPEED
 		if not Swimming:

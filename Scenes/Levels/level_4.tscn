@@ -19,7 +19,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_jqrsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t74h0"]
-size = Vector2(0.99978405, 1.0044043)
+size = Vector2(0.9734834, 0.9886403)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsxik"]
 size = Vector2(404.22867, 46.273804)
@@ -71,6 +71,20 @@ position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
+[node name="Floor11" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(-17, 658)
+scale = Vector2(-39.54998, -6598.2773)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor11/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
 [node name="Floor2" type="MeshInstance2D" parent="."]
 visible = false
 position = Vector2(756.00006, 807)
@@ -100,6 +114,7 @@ scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
 [node name="Floor3" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2(2533, 375)
 scale = Vector2(595.477, 56.64343)
 mesh = SubResource("BoxMesh_jqrsn")
@@ -113,6 +128,7 @@ scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
 [node name="Floor4" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2(3536, 368.00003)
 scale = Vector2(595.477, 56.64343)
 mesh = SubResource("BoxMesh_jqrsn")
@@ -192,16 +208,16 @@ texture = ExtResource("4_vwhew")
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor5/StaticBody2D"]
-position = Vector2(0.00010830164, 0.00880909)
-scale = Vector2(1, 0.9999997)
+position = Vector2(0.00010830164, -1.9073486e-06)
+scale = Vector2(0.9999998, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
 [node name="Player 1" parent="." instance=ExtResource("5_jqrsn")]
-position = Vector2(37, 602.00006)
+position = Vector2(84, 591)
 scale = Vector2(1.871, 1.871)
 
 [node name="Player2" parent="." instance=ExtResource("6_t74h0")]
-position = Vector2(79, 604)
+position = Vector2(126, 592.99994)
 
 [node name="CastleBridgeUp" type="Sprite2D" parent="."]
 position = Vector2(2042, 586)

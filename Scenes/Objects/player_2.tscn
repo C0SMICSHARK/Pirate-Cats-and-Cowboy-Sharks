@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cg6dul6g2cnl5"]
+[gd_scene load_steps=32 format=3 uid="uid://cg6dul6g2cnl5"]
 
 [ext_resource type="Script" uid="uid://fop0iyjxa0tr" path="res://Scripts/Player2.gd" id="1_mkara"]
 [ext_resource type="Texture2D" uid="uid://b5uwq4j25mops" path="res://Assets/Shark/Idle1.png" id="2_eus2p"]
@@ -177,6 +177,9 @@ size = Vector2(24, 6)
 radius = 12.0
 height = 44.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xor6t"]
+size = Vector2(1358, 689)
+
 [node name="Player2" type="Node2D" groups=["can_interact_with_water"]]
 z_index = 1
 
@@ -241,6 +244,30 @@ collision_mask = 4096
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/SwimBox"]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_bp61h")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-5.9604645e-08, 0)
+enabled = false
+zoom = Vector2(2.2, 2.2)
+limit_left = 10
+limit_right = 2850
+limit_bottom = 910
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.8
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+
+[node name="CameraCollisionRight" type="CharacterBody2D" parent="CharacterBody2D/Camera2D"]
+visible = false
+collision_layer = 16777216
+collision_mask = 16777216
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Camera2D/CameraCollisionRight"]
+position = Vector2(1116, -4)
+shape = SubResource("RectangleShape2D_xor6t")
 
 [node name="BulletCooldown" type="Timer" parent="."]
 wait_time = 0.5
