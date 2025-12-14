@@ -51,7 +51,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
-		
+	
+	
 	
 	# Allows shooting to happen when actions is pressed and other actions aren't happening
 	if Input.is_action_just_pressed("BREAK") and bulletCooldown.is_stopped() and AudioController.Shooting == false and is_on_floor() == true and not Swimming:
@@ -72,17 +73,17 @@ func _physics_process(delta: float) -> void:
 	
 	
 	# Plays either Run or Idle if the player is not swimming
-	if direction and bulletCooldown.is_stopped():
+	if direction and not Swimming and bulletCooldown.is_stopped():
 		velocity.x = direction * SPEED
 		if not Swimming:
 			$AnimatedSprite2D.play("Run")
 	elif direction_swim and Swimming and bulletCooldown.is_stopped():
 		velocity = direction_swim * SPEED
 		
-		
 	elif bulletCooldown.is_stopped():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		if Swimming:
+			velocity.y = move_toward(velocity.y, 0, SPEED)
 		if not Swimming:
 			$AnimatedSprite2D.play("Idle")
 		
@@ -161,8 +162,8 @@ func _on_ground_impactbox_body_entered(_body: Node2D) -> void:
 func _on_swim_box_body_entered(_body: Node2D) -> void:
 	Swimming = true
 	$AnimatedSprite2D.play("Swim")
-	if Input.is_action_just_pressed("Up_P2"):
-		motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	#if Input.is_action_just_pressed("Up_P2"):
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	
 	
 func _on_swim_box_body_exited(_body: Node2D) -> void:
