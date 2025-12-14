@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://b4jiogafjmomb"]
+[gd_scene load_steps=23 format=3 uid="uid://b4jiogafjmomb"]
 
 [ext_resource type="Texture2D" uid="uid://c1tucrqjlwnnn" path="res://Assets/Environment/Castle/CastleSky.png" id="1_8rnd2"]
+[ext_resource type="Script" uid="uid://mkcf31j8jfxf" path="res://Scripts/level_4.gd" id="1_eb4ip"]
 [ext_resource type="Texture2D" uid="uid://b0k25jrmy41y1" path="res://Assets/Environment/Castle/CastleMountains.png" id="2_xq0e5"]
 [ext_resource type="Texture2D" uid="uid://dn1x6anr1jnh1" path="res://Assets/Environment/Castle/CastleMain.png" id="3_6grq2"]
 [ext_resource type="Texture2D" uid="uid://t33wovey36on" path="res://Debug Assets/DebugFloor.png" id="4_vwhew"]
@@ -32,7 +33,11 @@ size = Vector2(250.00275, 35.13974)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5g5g"]
 size = Vector2(100, 112.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3osng"]
+size = Vector2(1063, 20)
+
 [node name="Level4" type="Node2D"]
+script = ExtResource("1_eb4ip")
 
 [node name="Sky" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.2, 0.2)
@@ -53,6 +58,7 @@ position = Vector2(2028, 580)
 texture = ExtResource("3_6grq2")
 
 [node name="Floor" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2(81, 657.99994)
 scale = Vector2(194.00032, -57.361214)
 mesh = SubResource("BoxMesh_jqrsn")
@@ -66,6 +72,7 @@ scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
 [node name="Floor2" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2(756.00006, 807)
 scale = Vector2(169.76031, -57.361214)
 mesh = SubResource("BoxMesh_jqrsn")
@@ -79,6 +86,7 @@ scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
 [node name="Floor8" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2(2131, 767)
 scale = Vector2(169.76031, -72.12121)
 mesh = SubResource("BoxMesh_jqrsn")
@@ -118,6 +126,7 @@ scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
 [node name="Floor7" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2(3100, 775)
 scale = Vector2(1493.1971, 43.123425)
 mesh = SubResource("BoxMesh_jqrsn")
@@ -130,7 +139,22 @@ position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
+[node name="Floor10" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(1437, 857.99994)
+scale = Vector2(1493.1971, 111.003426)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor10/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
 [node name="Floor9" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2(3296.9998, 939)
 scale = Vector2(1493.1971, 29.403427)
 mesh = SubResource("BoxMesh_jqrsn")
@@ -144,6 +168,7 @@ scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
 [node name="Floor6" type="MeshInstance2D" parent="."]
+visible = false
 position = Vector2(254.00003, 918.00006)
 rotation = 1.0775754
 scale = Vector2(595.477, 56.64343)
@@ -158,7 +183,8 @@ scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
 [node name="Floor5" type="MeshInstance2D" parent="."]
-position = Vector2(2128.0002, 1088.0001)
+visible = false
+position = Vector2(2128.0002, 1104.0001)
 scale = Vector2(3842.8767, 56.64343)
 mesh = SubResource("BoxMesh_jqrsn")
 texture = ExtResource("4_vwhew")
@@ -202,8 +228,7 @@ position = Vector2(2042, 591)
 texture = ExtResource("8_gsxik")
 
 [node name="Floor9" type="MeshInstance2D" parent="CastleBridgeDown"]
-visible = false
-position = Vector2(-1688, 385)
+position = Vector2(-1688, 651)
 scale = Vector2(612.3204, -57.361214)
 mesh = SubResource("BoxMesh_jqrsn")
 texture = ExtResource("4_vwhew")
@@ -271,3 +296,14 @@ texture = ExtResource("13_i5g5g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
 position = Vector2(1987, 413)
 shape = SubResource("RectangleShape2D_i5g5g")
+
+[node name="SwimBox2" type="CharacterBody2D" parent="."]
+z_index = 1
+position = Vector2(921, 974.99994)
+scale = Vector2(2.3992748, 25.184484)
+collision_layer = 4096
+collision_mask = 4096
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwimBox2"]
+position = Vector2(89.5, 0)
+shape = SubResource("RectangleShape2D_3osng")

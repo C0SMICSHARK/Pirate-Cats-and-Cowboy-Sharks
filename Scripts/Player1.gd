@@ -27,7 +27,11 @@ func _ready() -> void:
 		$Camera2D.limit_bottom = 910
 		$Camera2D.limit_left = 10
 		$Camera2D.limit_right = 1320
-
+	
+	if get_tree().current_scene.name == "Level4":
+		$Camera2D.enabled = false
+		$Camera2D/CameraCollisionLeft.queue_free()
+		$Camera2D/CameraCollisionRight.queue_free()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -35,8 +39,9 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	# Moves camera edge collisions accurate to camera edges
-	$Camera2D/CameraCollisionLeft.global_position = $Camera2D.get_target_position()
-	$Camera2D/CameraCollisionRight.global_position = $Camera2D.get_target_position()
+	if not get_tree().current_scene.name == "Level4":
+		$Camera2D/CameraCollisionLeft.global_position = $Camera2D.get_target_position()
+		$Camera2D/CameraCollisionRight.global_position = $Camera2D.get_target_position()
 
 	# Handle jump.
 	#if Input.is_action_just_pressed("JUMP_P1") and is_on_floor():

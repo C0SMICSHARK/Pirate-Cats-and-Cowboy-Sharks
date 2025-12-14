@@ -36,7 +36,7 @@ size = Vector2(0.99978405, 1.0044043)
 size = Vector2(0.18691845, 1.0044043)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vif5h"]
-size = Vector2(1063, 20)
+size = Vector2(1063, 99)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5f3p6"]
 
@@ -359,7 +359,7 @@ collision_layer = 4096
 collision_mask = 4096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwimBox"]
-position = Vector2(89.5, 0)
+position = Vector2(89.5, 1.5)
 shape = SubResource("RectangleShape2D_vif5h")
 
 [node name="Player 1" parent="." instance=ExtResource("2_3mqfk")]
