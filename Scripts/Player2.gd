@@ -23,7 +23,7 @@ func _ready() -> void:
 		
 	if not get_tree().current_scene.name == "Level4":
 		$Camera2D.queue_free()
-	$Camera2D/CameraCollisionRight.global_position = $Camera2D.get_target_position()
+
 # Fires a bullet when the function is called
 func fire():
 	var Bullet=bullet_path.instantiate()
@@ -57,7 +57,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
-	
+	if get_tree().current_scene.name == "Level4":
+		$Camera2D/CameraCollisionRight.global_position = $Camera2D.get_target_position()
 	
 	
 	# Allows shooting to happen when actions is pressed and other actions aren't happening

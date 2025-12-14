@@ -16,6 +16,7 @@ func _process(_delta: float) -> void:
 		DrawBridgeUpCol.position.y = 2000
 		DrawBridgeDownCol.position.y = 67.0
 		used += 1
+		print(used)
 
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:

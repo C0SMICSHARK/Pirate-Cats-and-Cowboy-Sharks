@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b4jiogafjmomb"]
+[gd_scene load_steps=26 format=3 uid="uid://b4jiogafjmomb"]
 
 [ext_resource type="Texture2D" uid="uid://c1tucrqjlwnnn" path="res://Assets/Environment/Castle/CastleSky.png" id="1_8rnd2"]
 [ext_resource type="Script" uid="uid://mkcf31j8jfxf" path="res://Scripts/level_4.gd" id="1_eb4ip"]
@@ -15,26 +15,58 @@
 [ext_resource type="Texture2D" uid="uid://catlm0m7sm7ao" path="res://Assets/Environment/Castle/door.png" id="12_slbhm"]
 [ext_resource type="Script" uid="uid://dk3y8mva3o7yv" path="res://Scripts/CastleLevelEnd.gd" id="13_3osng"]
 [ext_resource type="Texture2D" uid="uid://bnt4u3eceb74e" path="res://Assets/Environment/CastlePortal.png" id="13_i5g5g"]
+[ext_resource type="Texture2D" uid="uid://dsrk2eim0mlcb" path="res://Assets/Environment/Beach/BeachPlatform.png" id="16_xpmn3"]
+[ext_resource type="PackedScene" uid="uid://b6ie0vjd084be" path="res://Scenes/Objects/button.tscn" id="17_33y7k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jqrsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t74h0"]
 size = Vector2(0.9734834, 0.9886403)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsxik"]
-size = Vector2(404.22867, 46.273804)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3asqb"]
-size = Vector2(260, 26)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_keyqw"]
-size = Vector2(250.00275, 35.13974)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5g5g"]
 size = Vector2(100, 112.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3osng"]
 size = Vector2(1063, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khr6i"]
+size = Vector2(454.08795, 74.5)
+
+[sub_resource type="Animation" id="Animation_xpmn3"]
+resource_name = "MovingWall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MoveableWall:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2681.936, 624.101), Vector2(2681.936, 1714)]
+}
+
+[sub_resource type="Animation" id="Animation_33y7k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MoveableWall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2681.936, 624.101)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_khr6i"]
+_data = {
+&"MovingWall": SubResource("Animation_xpmn3"),
+&"RESET": SubResource("Animation_33y7k")
+}
 
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_eb4ip")
@@ -71,6 +103,66 @@ position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
+[node name="Floor21" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(825, 595)
+rotation = -0.10921784
+scale = Vector2(243.75356, -21.74746)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor21"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor21/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor22" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(1101, 666)
+rotation = 0.106653
+scale = Vector2(396.135, -21.74746)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor22"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor22/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor23" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(1537.0001, 690.00006)
+rotation = -0.10921784
+scale = Vector2(319.72595, -21.74746)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor23"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor23/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor24" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(3043.0002, 312)
+rotation = -0.10921784
+scale = Vector2(251.64551, -21.74746)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor24"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor24/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
 [node name="Floor11" type="MeshInstance2D" parent="."]
 visible = false
 position = Vector2(-17, 658)
@@ -85,10 +177,40 @@ position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
+[node name="Floor12" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(2376, 1215.0001)
+rotation = 0.040341068
+scale = Vector2(130.56569, -904.8982)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor12"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor12/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor18" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(2018.0001, 582)
+rotation = 0.852766
+scale = Vector2(135.14906, -608.0446)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor18"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor18/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
 [node name="Floor2" type="MeshInstance2D" parent="."]
 visible = false
-position = Vector2(756.00006, 807)
-scale = Vector2(169.76031, -57.361214)
+position = Vector2(742, 806)
+scale = Vector2(179.32031, -113.121216)
 mesh = SubResource("BoxMesh_jqrsn")
 texture = ExtResource("4_vwhew")
 
@@ -99,10 +221,25 @@ position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
+[node name="Floor20" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(714.00006, 760)
+scale = Vector2(179.32031, -113.121216)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor20"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor20/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
 [node name="Floor8" type="MeshInstance2D" parent="."]
 visible = false
-position = Vector2(2131, 767)
-scale = Vector2(169.76031, -72.12121)
+position = Vector2(2142, 748.99994)
+rotation = -0.42642573
+scale = Vector2(169.76031, -41.56301)
 mesh = SubResource("BoxMesh_jqrsn")
 texture = ExtResource("4_vwhew")
 
@@ -113,10 +250,97 @@ position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
+[node name="Floor17" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(2130, 781.99994)
+scale = Vector2(169.76031, -92.834045)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor17"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor17/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor27" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(2092, 757)
+scale = Vector2(169.76031, -92.834045)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor27"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor27/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor19" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(1984, 729)
+scale = Vector2(169.76031, -217.63406)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor19"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor19/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor16" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(2391, 748.99994)
+rotation = 0.47086295
+scale = Vector2(164.70174, -28.681643)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor16"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor16/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor14" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(2212, 728)
+rotation = 0.68057257
+scale = Vector2(43.676105, -50.074047)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor14"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor14/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor15" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(2328, 730)
+rotation = 2.4212866
+scale = Vector2(38.53179, -50.074047)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor15"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor15/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
 [node name="Floor3" type="MeshInstance2D" parent="."]
 visible = false
-position = Vector2(2533, 375)
-scale = Vector2(595.477, 56.64343)
+position = Vector2(2526.0002, 360)
+scale = Vector2(660.237, 56.64343)
 mesh = SubResource("BoxMesh_jqrsn")
 texture = ExtResource("4_vwhew")
 
@@ -127,10 +351,38 @@ position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
+[node name="Floor25" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(3037, 406)
+scale = Vector2(660.237, 56.64343)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor25"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor25/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
+[node name="Floor26" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(4089, 599)
+scale = Vector2(101.93573, 1128.7094)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor26"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor26/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
 [node name="Floor4" type="MeshInstance2D" parent="."]
 visible = false
-position = Vector2(3536, 368.00003)
-scale = Vector2(595.477, 56.64343)
+position = Vector2(3515.0002, 347.00003)
+scale = Vector2(689.357, 56.64343)
 mesh = SubResource("BoxMesh_jqrsn")
 texture = ExtResource("4_vwhew")
 
@@ -143,8 +395,8 @@ shape = SubResource("RectangleShape2D_t74h0")
 
 [node name="Floor7" type="MeshInstance2D" parent="."]
 visible = false
-position = Vector2(3100, 775)
-scale = Vector2(1493.1971, 43.123425)
+position = Vector2(3095, 775)
+scale = Vector2(1515.9572, 43.123425)
 mesh = SubResource("BoxMesh_jqrsn")
 texture = ExtResource("4_vwhew")
 
@@ -158,7 +410,7 @@ shape = SubResource("RectangleShape2D_t74h0")
 [node name="Floor10" type="MeshInstance2D" parent="."]
 visible = false
 position = Vector2(1437, 857.99994)
-scale = Vector2(1493.1971, 111.003426)
+scale = Vector2(1597.1171, 111.003426)
 mesh = SubResource("BoxMesh_jqrsn")
 texture = ExtResource("4_vwhew")
 
@@ -183,6 +435,20 @@ position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
+[node name="Floor28" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(2447, 939.00006)
+scale = Vector2(-37.919353, -289.52304)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor28"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor28/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
 [node name="Floor6" type="MeshInstance2D" parent="."]
 visible = false
 position = Vector2(254.00003, 918.00006)
@@ -198,10 +464,25 @@ position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
+[node name="Floor13" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(615, 774)
+rotation = 1.0775754
+scale = Vector2(-268.34033, 88.02282)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor13"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor13/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
 [node name="Floor5" type="MeshInstance2D" parent="."]
 visible = false
-position = Vector2(2128.0002, 1104.0001)
-scale = Vector2(3842.8767, 56.64343)
+position = Vector2(2128.0002, 1077)
+scale = Vector2(4036.9966, 56.64343)
 mesh = SubResource("BoxMesh_jqrsn")
 texture = ExtResource("4_vwhew")
 
@@ -260,38 +541,19 @@ shape = SubResource("RectangleShape2D_t74h0")
 position = Vector2(2034, 647)
 texture = ExtResource("8_h0uxt")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="CastlePlatforms(1)"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CastlePlatforms(1)/StaticBody2D"]
-position = Vector2(-934.09045, 23.04663)
-rotation = 0.12914811
-shape = SubResource("RectangleShape2D_gsxik")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="CastlePlatforms(1)/StaticBody2D"]
-position = Vector2(1004, -337)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CastlePlatforms(1)/StaticBody2D/StaticBody2D"]
-position = Vector2(6, 2)
-rotation = -0.107870944
-shape = SubResource("RectangleShape2D_3asqb")
-
 [node name="CastlePlatforms" type="Sprite2D" parent="."]
-position = Vector2(1606, 386)
-scale = Vector2(1.3240448, 1.8440448)
+position = Vector2(1539.9999, 518.99994)
+scale = Vector2(-1.7159504, 1.8440448)
 texture = ExtResource("9_keyqw")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="CastlePlatforms"]
-position = Vector2(323.25195, 141.53667)
-scale = Vector2(0.7552614, 0.54228616)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CastlePlatforms/StaticBody2D"]
-z_index = 1
-position = Vector2(-422.97168, -84.6814)
-rotation = 0.1557681
-shape = SubResource("RectangleShape2D_keyqw")
+[node name="CastlePlatforms2" type="Sprite2D" parent="."]
+position = Vector2(830, 484)
+scale = Vector2(-1.3159553, 1.1640472)
+texture = ExtResource("9_keyqw")
 
 [node name="Button" parent="." node_paths=PackedStringArray("DrawBridgeUp", "DrawBridgeDown", "DrawBridgeUpCol", "DrawBridgeDownCol") instance=ExtResource("11_3asqb")]
-position = Vector2(2119, 705)
+position = Vector2(2205.0002, 653)
+rotation = -0.4077505
 scale = Vector2(0.23400368, 0.23400368)
 DrawBridgeUp = NodePath("../CastleBridgeUp")
 DrawBridgeDown = NodePath("../CastleBridgeDown")
@@ -303,7 +565,7 @@ position = Vector2(3819, 663)
 texture = ExtResource("12_slbhm")
 
 [node name="LevelEnd" type="Area2D" parent="."]
-position = Vector2(2021, 575)
+position = Vector2(1988, 575)
 script = ExtResource("13_3osng")
 
 [node name="CastlePortal" type="Sprite2D" parent="LevelEnd"]
@@ -315,7 +577,7 @@ shape = SubResource("RectangleShape2D_i5g5g")
 
 [node name="SwimBox2" type="CharacterBody2D" parent="."]
 z_index = 1
-position = Vector2(921, 974.99994)
+position = Vector2(847, 974.99994)
 scale = Vector2(2.3992748, 25.184484)
 collision_layer = 4096
 collision_mask = 4096
@@ -323,3 +585,25 @@ collision_mask = 4096
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwimBox2"]
 position = Vector2(89.5, 0)
 shape = SubResource("RectangleShape2D_3osng")
+
+[node name="MoveableWall" type="Sprite2D" parent="."]
+position = Vector2(2681.936, 624.101)
+rotation = -1.5707964
+scale = Vector2(0.70573527, 0.88771737)
+texture = ExtResource("16_xpmn3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MoveableWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveableWall/StaticBody2D"]
+position = Vector2(6.918213, 11.25)
+shape = SubResource("RectangleShape2D_khr6i")
+
+[node name="Button2" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("17_33y7k")]
+position = Vector2(2271, 295)
+scale = Vector2(0.29923227, 0.29923227)
+AnimPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Button2"]
+libraries = {
+&"": SubResource("AnimationLibrary_khr6i")
+}
