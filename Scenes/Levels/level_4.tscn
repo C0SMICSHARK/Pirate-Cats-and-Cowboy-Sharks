@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b4jiogafjmomb"]
+[gd_scene load_steps=56 format=3 uid="uid://b4jiogafjmomb"]
 
 [ext_resource type="Texture2D" uid="uid://c1tucrqjlwnnn" path="res://Assets/Environment/Castle/CastleSky.png" id="1_8rnd2"]
 [ext_resource type="Script" uid="uid://mkcf31j8jfxf" path="res://Scripts/level_4.gd" id="1_eb4ip"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://bnt4u3eceb74e" path="res://Assets/Environment/CastlePortal.png" id="13_i5g5g"]
 [ext_resource type="Texture2D" uid="uid://dsrk2eim0mlcb" path="res://Assets/Environment/Beach/BeachPlatform.png" id="16_xpmn3"]
 [ext_resource type="PackedScene" uid="uid://b6ie0vjd084be" path="res://Scenes/Objects/button.tscn" id="17_33y7k"]
+[ext_resource type="PackedScene" uid="uid://choya2sae2yu3" path="res://Scenes/Objects/enemyType2.tscn" id="18_33y7k"]
+[ext_resource type="PackedScene" uid="uid://csi2k0pbl08yp" path="res://Scenes/Objects/enemy.tscn" id="19_khr6i"]
+[ext_resource type="PackedScene" uid="uid://oqo6io1ho0yb" path="res://Scenes/Objects/coin.tscn" id="20_mnmct"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jqrsn"]
 
@@ -24,13 +27,51 @@
 size = Vector2(0.9734834, 0.9886403)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5g5g"]
-size = Vector2(100, 112.5)
+size = Vector2(95, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3osng"]
 size = Vector2(1063, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khr6i"]
 size = Vector2(454.08795, 74.5)
+
+[sub_resource type="Animation" id="Animation_khr6i"]
+resource_name = "EnemySideToSide"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3295, 290.00003), Vector2(3623, 290.00003), Vector2(3295, 290.00003)]
+}
+
+[sub_resource type="Animation" id="Animation_mnmct"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3295, 290.00003)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_31yle"]
+_data = {
+&"EnemySideToSide": SubResource("Animation_khr6i"),
+&"RESET": SubResource("Animation_mnmct")
+}
 
 [sub_resource type="Animation" id="Animation_xpmn3"]
 resource_name = "MovingWall"
@@ -66,6 +107,310 @@ tracks/0/keys = {
 _data = {
 &"MovingWall": SubResource("Animation_xpmn3"),
 &"RESET": SubResource("Animation_33y7k")
+}
+
+[sub_resource type="Animation" id="Animation_31yle"]
+resource_name = "EnemySideToSide"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2424, 308), Vector2(2691, 308), Vector2(2424, 308)]
+}
+
+[sub_resource type="Animation" id="Animation_dnyrp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2424, 308)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_061ob"]
+_data = {
+&"EnemySideToSide": SubResource("Animation_31yle"),
+&"RESET": SubResource("Animation_dnyrp")
+}
+
+[sub_resource type="Animation" id="Animation_061ob"]
+resource_name = "EnemySideToSide"
+length = 7.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.75, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3225, 740), Vector2(3315, 740), Vector2(3225, 740)]
+}
+
+[sub_resource type="Animation" id="Animation_eb5oh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3225, 740)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7hmo"]
+_data = {
+&"EnemySideToSide": SubResource("Animation_061ob"),
+&"RESET": SubResource("Animation_eb5oh")
+}
+
+[sub_resource type="Animation" id="Animation_legg8"]
+resource_name = "EnemySideToSide"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2607, 1013), Vector2(2791, 1013), Vector2(2607, 1013)]
+}
+
+[sub_resource type="Animation" id="Animation_roffe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2607, 1013)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d51q7"]
+_data = {
+&"EnemySideToSide": SubResource("Animation_legg8"),
+&"RESET": SubResource("Animation_roffe")
+}
+
+[sub_resource type="Animation" id="Animation_lapqw"]
+resource_name = "EnemySideToSide"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2948.32, 1013), Vector2(3309, 1013), Vector2(2948.32, 1013)]
+}
+
+[sub_resource type="Animation" id="Animation_oteb1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3309, 1013)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k8nfc"]
+_data = {
+&"EnemySideToSide": SubResource("Animation_lapqw"),
+&"RESET": SubResource("Animation_oteb1")
+}
+
+[sub_resource type="Animation" id="Animation_ep717"]
+resource_name = "EnemySideToSide"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2938, 739), Vector2(3099.0002, 739), Vector2(2938, 739)]
+}
+
+[sub_resource type="Animation" id="Animation_x7vre"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2938, 739)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lhrhx"]
+_data = {
+&"EnemySideToSide": SubResource("Animation_ep717"),
+&"RESET": SubResource("Animation_x7vre")
+}
+
+[sub_resource type="Animation" id="Animation_iw2e1"]
+resource_name = "EnemySideToSide"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3708, 893.00006), Vector2(3851, 893.00006), Vector2(3708, 893.00006)]
+}
+
+[sub_resource type="Animation" id="Animation_p0l4d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3708, 893.00006)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ipr37"]
+_data = {
+&"EnemySideToSide": SubResource("Animation_iw2e1"),
+&"RESET": SubResource("Animation_p0l4d")
+}
+
+[sub_resource type="Animation" id="Animation_hckno"]
+resource_name = "EnemySideToSide"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3676, 1012), Vector2(3870.0002, 1012), Vector2(3676, 1012)]
+}
+
+[sub_resource type="Animation" id="Animation_d12sp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3676, 1012)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mypyk"]
+_data = {
+&"EnemySideToSide": SubResource("Animation_hckno"),
+&"RESET": SubResource("Animation_d12sp")
+}
+
+[sub_resource type="Animation" id="Animation_oada6"]
+resource_name = "EnemySideToSide"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5, 9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3002.0002, 893.00006), Vector2(3308.0002, 893.00006), Vector2(3002.0002, 893.00006)]
+}
+
+[sub_resource type="Animation" id="Animation_u2c58"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3002.0002, 893.00006)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0r2h"]
+_data = {
+&"EnemySideToSide": SubResource("Animation_oada6"),
+&"RESET": SubResource("Animation_u2c58")
 }
 
 [node name="Level4" type="Node2D"]
@@ -525,6 +870,7 @@ position = Vector2(2042, 591)
 texture = ExtResource("8_gsxik")
 
 [node name="Floor9" type="MeshInstance2D" parent="CastleBridgeDown"]
+visible = false
 position = Vector2(-1688, 651)
 scale = Vector2(612.3204, -57.361214)
 mesh = SubResource("BoxMesh_jqrsn")
@@ -572,7 +918,7 @@ script = ExtResource("13_3osng")
 texture = ExtResource("13_i5g5g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
-position = Vector2(1987, 413)
+position = Vector2(1980.5, 417)
 shape = SubResource("RectangleShape2D_i5g5g")
 
 [node name="SwimBox2" type="CharacterBody2D" parent="."]
@@ -598,6 +944,18 @@ texture = ExtResource("16_xpmn3")
 position = Vector2(6.918213, 11.25)
 shape = SubResource("RectangleShape2D_khr6i")
 
+[node name="Enemy" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("18_33y7k")]
+position = Vector2(3295, 290.00003)
+scale = Vector2(2.1855607, 2.1855607)
+EnemyHealth = 4
+AnimPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_31yle")
+}
+
 [node name="Button2" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("17_33y7k")]
 position = Vector2(2271, 295)
 scale = Vector2(0.29923227, 0.29923227)
@@ -607,3 +965,106 @@ AnimPlayer = NodePath("AnimationPlayer")
 libraries = {
 &"": SubResource("AnimationLibrary_khr6i")
 }
+
+[node name="Enemy2" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("19_khr6i")]
+position = Vector2(2424, 308)
+scale = Vector2(2.0000439, 2.0000439)
+EnemyHealth = 4
+AnimPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy2"]
+libraries = {
+&"": SubResource("AnimationLibrary_061ob")
+}
+
+[node name="Enemy4" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("19_khr6i")]
+position = Vector2(3225, 740)
+scale = Vector2(2.0000439, 2.0000439)
+EnemyHealth = 4
+AnimPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy4"]
+libraries = {
+&"": SubResource("AnimationLibrary_e7hmo")
+}
+
+[node name="Enemy7" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("19_khr6i")]
+position = Vector2(2607, 1013)
+scale = Vector2(2.0000439, 2.0000439)
+EnemyHealth = 4
+AnimPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy7"]
+libraries = {
+&"": SubResource("AnimationLibrary_d51q7")
+}
+
+[node name="Enemy9" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("19_khr6i")]
+position = Vector2(3309, 1013)
+scale = Vector2(2.0000439, 2.0000439)
+EnemyHealth = 4
+AnimPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy9"]
+libraries = {
+&"": SubResource("AnimationLibrary_k8nfc")
+}
+
+[node name="Enemy3" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("18_33y7k")]
+position = Vector2(2938, 739)
+scale = Vector2(2.186, 2.186)
+EnemyHealth = 4
+AnimPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy3"]
+libraries = {
+&"": SubResource("AnimationLibrary_lhrhx")
+}
+
+[node name="Enemy5" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("18_33y7k")]
+position = Vector2(3708, 893.00006)
+scale = Vector2(2.186, 2.186)
+EnemyHealth = 4
+AnimPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy5"]
+libraries = {
+&"": SubResource("AnimationLibrary_ipr37")
+}
+
+[node name="Enemy8" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("18_33y7k")]
+position = Vector2(3676, 1012)
+scale = Vector2(2.186, 2.186)
+EnemyHealth = 4
+AnimPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy8"]
+libraries = {
+&"": SubResource("AnimationLibrary_mypyk")
+}
+
+[node name="Enemy6" parent="." node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("18_33y7k")]
+position = Vector2(3002.0002, 893.00006)
+scale = Vector2(2.186, 2.186)
+EnemyHealth = 4
+AnimPlayer = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy6"]
+libraries = {
+&"": SubResource("AnimationLibrary_t0r2h")
+}
+
+[node name="Coin" parent="." instance=ExtResource("20_mnmct")]
+position = Vector2(3221, 681)
+
+[node name="Coin2" parent="." instance=ExtResource("20_mnmct")]
+position = Vector2(3037, 253.00009)
+
+[node name="Coin3" parent="." instance=ExtResource("20_mnmct")]
+position = Vector2(1444, 603)
+
+[node name="Coin4" parent="." instance=ExtResource("20_mnmct")]
+position = Vector2(2001, 1025)
+
+[connection signal="body_shape_entered" from="LevelEnd" to="LevelEnd" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="LevelEnd" to="LevelEnd" method="_on_body_shape_exited"]
