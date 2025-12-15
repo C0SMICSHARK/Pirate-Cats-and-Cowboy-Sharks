@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bha808le4oygv"]
+[gd_scene load_steps=17 format=3 uid="uid://bha808le4oygv"]
 
 [ext_resource type="Texture2D" uid="uid://h3i12n8x0rhy" path="res://Assets/Environment/BossRoom/Boss_BG.png" id="1_2634h"]
 [ext_resource type="Texture2D" uid="uid://cbomeho3nd0d2" path="res://Assets/Environment/BossRoom/Boss_Arrows.png" id="2_wakwf"]
@@ -9,8 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://b0rluatdrpaqc" path="res://Scenes/Objects/BigBoss.tscn" id="7_wakwf"]
 [ext_resource type="PackedScene" uid="uid://dksykscfxj8rk" path="res://Scenes/Objects/player_1.tscn" id="8_doouk"]
 [ext_resource type="PackedScene" uid="uid://cg6dul6g2cnl5" path="res://Scenes/Objects/player_2.tscn" id="9_0fyhm"]
+[ext_resource type="Script" uid="uid://djmbvvkcvt2hp" path="res://Scripts/HealthP1.gd" id="10_gqyih"]
+[ext_resource type="Texture2D" uid="uid://d0wj0vqj6md5v" path="res://Assets/Misc/Heart.png" id="11_srugb"]
+[ext_resource type="Texture2D" uid="uid://cgte8oqxjruap" path="res://Assets/Cat/CatPortrait.png" id="12_vdq4f"]
+[ext_resource type="Script" uid="uid://k1ixb18rffp5" path="res://Scripts/HealthP2.gd" id="13_633d5"]
+[ext_resource type="Texture2D" uid="uid://dj8n1f6aqraei" path="res://Assets/Shark/SharkPortrait.png" id="14_rw7sn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evokg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_27vqw"]
 
 [node name="Level5" type="Node2D"]
 
@@ -79,3 +86,91 @@ scale = Vector2(1.44, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollision"]
 scale = Vector2(93.7019, -5.5114613)
 shape = SubResource("RectangleShape2D_evokg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBarP1" type="Node2D" parent="CanvasLayer"]
+position = Vector2(7, 39)
+script = ExtResource("10_gqyih")
+
+[node name="p1heart1" type="Sprite2D" parent="CanvasLayer/HealthBarP1"]
+position = Vector2(132.90697, 865.31396)
+scale = Vector2(0.20604646, 0.1887126)
+texture = ExtResource("11_srugb")
+
+[node name="p1heart2" type="Sprite2D" parent="CanvasLayer/HealthBarP1"]
+position = Vector2(197.90698, 864.31396)
+scale = Vector2(0.20591965, 0.18875968)
+texture = ExtResource("11_srugb")
+
+[node name="p1heart3" type="Sprite2D" parent="CanvasLayer/HealthBarP1"]
+position = Vector2(266.90698, 864.31396)
+scale = Vector2(0.20591965, 0.18875968)
+texture = ExtResource("11_srugb")
+
+[node name="Label" type="Label" parent="CanvasLayer/HealthBarP1"]
+offset_left = 109.0
+offset_top = 817.0
+offset_right = 141.0
+offset_bottom = 840.0
+text = "5.455"
+clip_text = true
+
+[node name="CatPortrait" type="Sprite2D" parent="CanvasLayer/HealthBarP1"]
+texture_filter = 1
+position = Vector2(58, 850)
+scale = Vector2(0.21833324, 0.21833324)
+texture = ExtResource("12_vdq4f")
+
+[node name="P1HealthLabel" type="Label" parent="CanvasLayer/HealthBarP1"]
+visible = false
+offset_left = 9.000002
+offset_top = -41.0
+offset_right = 33.0
+offset_bottom = -18.0
+text = "1"
+label_settings = SubResource("LabelSettings_27vqw")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBarP2" type="Node2D" parent="CanvasLayer/HealthBarP1"]
+position = Vector2(1.9073486e-06, 49)
+script = ExtResource("13_633d5")
+
+[node name="P2HealthLabel" type="Label" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+visible = false
+offset_left = 11.000002
+offset_top = -43.0
+offset_right = 35.0
+offset_bottom = -20.0
+text = "1"
+label_settings = SubResource("LabelSettings_27vqw")
+metadata/_edit_use_anchors_ = true
+
+[node name="p2heart1" type="Sprite2D" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+position = Vector2(133, 904.35)
+scale = Vector2(0.206, 0.189)
+texture = ExtResource("11_srugb")
+
+[node name="p2heart2" type="Sprite2D" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+position = Vector2(198, 904.35)
+scale = Vector2(0.206, 0.189)
+texture = ExtResource("11_srugb")
+
+[node name="p2heart3" type="Sprite2D" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+position = Vector2(268, 904.35)
+scale = Vector2(0.206, 0.189)
+texture = ExtResource("11_srugb")
+
+[node name="SharkPortrait" type="Sprite2D" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+texture_filter = 1
+position = Vector2(48, 900.99994)
+scale = Vector2(0.81999964, 0.81999964)
+texture = ExtResource("14_rw7sn")
+
+[node name="Label" type="Label" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+offset_left = 109.0
+offset_top = 860.0
+offset_right = 141.0
+offset_bottom = 883.0
+text = "5.455"
+clip_text = true

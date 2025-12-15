@@ -407,6 +407,14 @@ position = Vector2(58, 850)
 scale = Vector2(0.21833324, 0.21833324)
 texture = ExtResource("9_ksf1i")
 
+[node name="Label" type="Label" parent="CanvasLayer/HealthBarP1"]
+offset_left = 109.0
+offset_top = 817.0
+offset_right = 141.0
+offset_bottom = 840.0
+text = "5.455"
+clip_text = true
+
 [node name="P1HealthLabel" type="Label" parent="CanvasLayer/HealthBarP1"]
 visible = false
 offset_left = 9.000002
@@ -451,6 +459,14 @@ texture_filter = 1
 position = Vector2(48, 900.99994)
 scale = Vector2(0.81999964, 0.81999964)
 texture = ExtResource("11_vif5h")
+
+[node name="Label" type="Label" parent="CanvasLayer/HealthBarP1/HealthBarP2"]
+offset_left = 109.0
+offset_top = 860.0
+offset_right = 141.0
+offset_bottom = 883.0
+text = "5.455"
+clip_text = true
 
 [node name="BreakableWall" parent="." instance=ExtResource("11_hwvp3")]
 z_index = 1

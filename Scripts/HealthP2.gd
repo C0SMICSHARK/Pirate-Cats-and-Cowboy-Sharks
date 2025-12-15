@@ -12,6 +12,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var heartarray = [$p2heart1,$p2heart2,$p2heart3]
+	$Label.text = str(Global.RespawnTimeP2)
+	if Global.healthp2 > 0:
+		$Label.visible = false
+	else:
+		$Label.visible = true
 	if Global.healthp2 > -1:
 		$P2HealthLabel.text = str(Global.healthp2)
 	for n in [0,1,2]:

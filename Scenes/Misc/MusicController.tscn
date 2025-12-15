@@ -1,17 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bij8l10015arq"]
+[gd_scene load_steps=4 format=3 uid="uid://bij8l10015arq"]
 
 [ext_resource type="Script" uid="uid://c5jjexyqb67ic" path="res://Scripts/musiccontroller.gd" id="1_b68va"]
 [ext_resource type="AudioStream" uid="uid://cm1tgi0om3362" path="res://Assets/SFX/SharkHurt.wav" id="2_1wygo"]
-[ext_resource type="AudioStream" uid="uid://dww3ee4mj4dy2" path="res://Assets/SFX/whip-02-242215.mp3" id="3_uecfm"]
-[ext_resource type="AudioStream" uid="uid://dcvsm3d3kx1mj" path="res://Assets/SFX/whip-04-252032.mp3" id="4_5gbr5"]
-[ext_resource type="AudioStream" uid="uid://boiv13wspgqd" path="res://Assets/SFX/whip-123738.mp3" id="5_dnxf3"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gqg2j"]
-random_pitch = 1.35
-streams_count = 3
-stream_0/stream = ExtResource("3_uecfm")
-stream_1/stream = ExtResource("4_5gbr5")
-stream_2/stream = ExtResource("5_dnxf3")
+[ext_resource type="AudioStream" uid="uid://b0nr522u0vh22" path="res://Assets/SFX/Adventure3.mp3" id="3_u8vwi"]
 
 [node name="MusicController" type="Node2D"]
 script = ExtResource("1_b68va")
@@ -23,7 +14,8 @@ mix_target = 2
 bus = &"Music"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_gqg2j")
+stream = ExtResource("3_u8vwi")
 volume_db = -75.0
+autoplay = true
 mix_target = 2
 bus = &"Music"

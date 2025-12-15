@@ -57,6 +57,18 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
+	if Global.healthp2 > 0:
+		Global.posbeforedeathPlayer2 = $"..".position
+		
+	if Global.healthp2 <= 0:
+		visible = false
+		Knocked = true
+	if Global.RespawnP2 == true:
+		$"..".position.y = Global.posbeforedeathPlayer2.y
+		visible = true
+		Knocked = false
+		Global.RespawnP2 = false
+		
 	if get_tree().current_scene.name == "Level4":
 		$Camera2D/CameraCollisionRight.global_position = $Camera2D.get_target_position()
 	
@@ -96,13 +108,13 @@ func _physics_process(delta: float) -> void:
 			$AnimatedSprite2D.play("Idle")
 		
 	# Flips sprite direction based on movement direction
-	if Input.is_action_just_pressed("LEFT_P2"):
+	if Input.is_action_just_pressed("LEFT_P2") and Global.healthp2 > 0:
 		$AnimatedSprite2D.flip_h = true
-	if Input.is_action_just_pressed("RIGHT_P2"):
+	if Input.is_action_just_pressed("RIGHT_P2") and Global.healthp2 > 0:
 		$AnimatedSprite2D.flip_h = false
 		
 	# Allows shooting to happen when actions is pressed and other actions aren't happening
-	if Input.is_action_just_pressed("BREAK") and AudioController.Shooting == false and not Swimming:
+	if Input.is_action_just_pressed("BREAK") and AudioController.Shooting == false and not Swimming and Global.healthp2 > 0:
 		$AnimatedSprite2D.play("Shoot")
 		AudioController.play_revolver()
 		
@@ -129,34 +141,37 @@ func _physics_process(delta: float) -> void:
 
 #Makes the shark specifically bounce LEFT when hurt
 func _on_hurtbox_body_entered(_body: Node2D) -> void:
-	Knocked = true
-	$"../KnockbackTimer".start()
-	KnockbackVector.x = $"..".position.x-30
-	KnockbackVector.y = $"..".position.y-10
-	KnockbackForce = -velocity
-	KnockbackForce.x -= 500
-	$"../HitImmunity".start()
-	$RightHurtbox.position.y = -20000
-	$LeftHurtbox.position.y = -20000
+	if Global.healthp2 > 0:
+		Knocked = true
+		$"../KnockbackTimer".start()
+		KnockbackVector.x = $"..".position.x-30
+		KnockbackVector.y = $"..".position.y-10
+		KnockbackForce = -velocity
+		KnockbackForce.x -= 500
+		$"../HitImmunity".start()
+		$RightHurtbox.position.y = -20000
+		$LeftHurtbox.position.y = -20000
 		#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
-	Global.healthp2 = Global.healthp2 - 1
-	modulate = Color(1,0,0)
-	AudioController.play_sharkouchies()
+		Global.healthp2 = Global.healthp2 - 1
+		modulate = Color(1,0,0)
+		AudioController.play_sharkouchies()
 
 #Makes the shark specifically bounce RIGHT when hurt
 func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
-	Knocked = true
-	$"../KnockbackTimer".start()
-	KnockbackVector.x = $"..".position.x+30
-	KnockbackVector.y = $"..".position.y-10
-	KnockbackForce = velocity
-	KnockbackForce.x += 500
-	$"../HitImmunity".start()
-	$RightHurtbox.position.y = -20000
-	$LeftHurtbox.position.y = -20000
-	Global.healthp2 = Global.healthp2 - 1
-	modulate = Color(1,0,0)
-	AudioController.play_sharkouchies()
+	if Global.healthp2 > 0:
+	
+		Knocked = true
+		$"../KnockbackTimer".start()
+		KnockbackVector.x = $"..".position.x+30
+		KnockbackVector.y = $"..".position.y-10
+		KnockbackForce = velocity
+		KnockbackForce.x += 500
+		$"../HitImmunity".start()
+		$RightHurtbox.position.y = -20000
+		$LeftHurtbox.position.y = -20000
+		Global.healthp2 = Global.healthp2 - 1
+		modulate = Color(1,0,0)
+		AudioController.play_sharkouchies()
 
 # Kickstarts bouncing the player upwards after a ground impact
 func _on_ground_impactbox_body_entered(_body: Node2D) -> void:

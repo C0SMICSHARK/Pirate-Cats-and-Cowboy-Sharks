@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b4jiogafjmomb"]
+[gd_scene load_steps=62 format=3 uid="uid://b4jiogafjmomb"]
 
 [ext_resource type="Texture2D" uid="uid://c1tucrqjlwnnn" path="res://Assets/Environment/Castle/CastleSky.png" id="1_8rnd2"]
 [ext_resource type="Script" uid="uid://mkcf31j8jfxf" path="res://Scripts/level_4.gd" id="1_eb4ip"]
@@ -14,9 +14,14 @@
 [ext_resource type="PackedScene" uid="uid://du2gljmg8dmu1" path="res://Scenes/Objects/buttonDrawBridge.tscn" id="11_3asqb"]
 [ext_resource type="Texture2D" uid="uid://catlm0m7sm7ao" path="res://Assets/Environment/Castle/door.png" id="12_slbhm"]
 [ext_resource type="Script" uid="uid://dk3y8mva3o7yv" path="res://Scripts/CastleLevelEnd.gd" id="13_3osng"]
+[ext_resource type="Script" uid="uid://djmbvvkcvt2hp" path="res://Scripts/HealthP1.gd" id="13_e7hmo"]
 [ext_resource type="Texture2D" uid="uid://bnt4u3eceb74e" path="res://Assets/Environment/CastlePortal.png" id="13_i5g5g"]
+[ext_resource type="Texture2D" uid="uid://d0wj0vqj6md5v" path="res://Assets/Misc/Heart.png" id="14_legg8"]
+[ext_resource type="Texture2D" uid="uid://cgte8oqxjruap" path="res://Assets/Cat/CatPortrait.png" id="15_roffe"]
+[ext_resource type="Script" uid="uid://k1ixb18rffp5" path="res://Scripts/HealthP2.gd" id="16_d51q7"]
 [ext_resource type="Texture2D" uid="uid://dsrk2eim0mlcb" path="res://Assets/Environment/Beach/BeachPlatform.png" id="16_xpmn3"]
 [ext_resource type="PackedScene" uid="uid://b6ie0vjd084be" path="res://Scenes/Objects/button.tscn" id="17_33y7k"]
+[ext_resource type="Texture2D" uid="uid://dj8n1f6aqraei" path="res://Assets/Shark/SharkPortrait.png" id="17_lapqw"]
 [ext_resource type="PackedScene" uid="uid://choya2sae2yu3" path="res://Scenes/Objects/enemyType2.tscn" id="18_33y7k"]
 [ext_resource type="PackedScene" uid="uid://csi2k0pbl08yp" path="res://Scenes/Objects/enemy.tscn" id="19_khr6i"]
 [ext_resource type="PackedScene" uid="uid://oqo6io1ho0yb" path="res://Scenes/Objects/coin.tscn" id="20_mnmct"]
@@ -25,6 +30,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t74h0"]
 size = Vector2(0.9734834, 0.9886403)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oteb1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5g5g"]
 size = Vector2(95, 76)
@@ -905,6 +912,94 @@ DrawBridgeUp = NodePath("../CastleBridgeUp")
 DrawBridgeDown = NodePath("../CastleBridgeDown")
 DrawBridgeUpCol = NodePath("../CastleBridgeUp/Floor10")
 DrawBridgeDownCol = NodePath("../CastleBridgeDown/Floor9")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Button"]
+
+[node name="HealthBarP1" type="Node2D" parent="Button/CanvasLayer"]
+position = Vector2(7, 39)
+script = ExtResource("13_e7hmo")
+
+[node name="p1heart1" type="Sprite2D" parent="Button/CanvasLayer/HealthBarP1"]
+position = Vector2(132.90697, 865.31396)
+scale = Vector2(0.20604646, 0.1887126)
+texture = ExtResource("14_legg8")
+
+[node name="p1heart2" type="Sprite2D" parent="Button/CanvasLayer/HealthBarP1"]
+position = Vector2(197.90698, 864.31396)
+scale = Vector2(0.20591965, 0.18875968)
+texture = ExtResource("14_legg8")
+
+[node name="p1heart3" type="Sprite2D" parent="Button/CanvasLayer/HealthBarP1"]
+position = Vector2(266.90698, 864.31396)
+scale = Vector2(0.20591965, 0.18875968)
+texture = ExtResource("14_legg8")
+
+[node name="CatPortrait" type="Sprite2D" parent="Button/CanvasLayer/HealthBarP1"]
+texture_filter = 1
+position = Vector2(58, 850)
+scale = Vector2(0.21833324, 0.21833324)
+texture = ExtResource("15_roffe")
+
+[node name="Label" type="Label" parent="Button/CanvasLayer/HealthBarP1"]
+offset_left = 109.0
+offset_top = 817.0
+offset_right = 141.0
+offset_bottom = 840.0
+text = "5.455"
+clip_text = true
+
+[node name="P1HealthLabel" type="Label" parent="Button/CanvasLayer/HealthBarP1"]
+visible = false
+offset_left = 9.000002
+offset_top = -41.0
+offset_right = 33.0
+offset_bottom = -18.0
+text = "1"
+label_settings = SubResource("LabelSettings_oteb1")
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBarP2" type="Node2D" parent="Button/CanvasLayer/HealthBarP1"]
+position = Vector2(1.9073486e-06, 49)
+script = ExtResource("16_d51q7")
+
+[node name="P2HealthLabel" type="Label" parent="Button/CanvasLayer/HealthBarP1/HealthBarP2"]
+visible = false
+offset_left = 11.000002
+offset_top = -43.0
+offset_right = 35.0
+offset_bottom = -20.0
+text = "1"
+label_settings = SubResource("LabelSettings_oteb1")
+metadata/_edit_use_anchors_ = true
+
+[node name="p2heart1" type="Sprite2D" parent="Button/CanvasLayer/HealthBarP1/HealthBarP2"]
+position = Vector2(133, 904.35)
+scale = Vector2(0.206, 0.189)
+texture = ExtResource("14_legg8")
+
+[node name="p2heart2" type="Sprite2D" parent="Button/CanvasLayer/HealthBarP1/HealthBarP2"]
+position = Vector2(198, 904.35)
+scale = Vector2(0.206, 0.189)
+texture = ExtResource("14_legg8")
+
+[node name="p2heart3" type="Sprite2D" parent="Button/CanvasLayer/HealthBarP1/HealthBarP2"]
+position = Vector2(268, 904.35)
+scale = Vector2(0.206, 0.189)
+texture = ExtResource("14_legg8")
+
+[node name="SharkPortrait" type="Sprite2D" parent="Button/CanvasLayer/HealthBarP1/HealthBarP2"]
+texture_filter = 1
+position = Vector2(48, 900.99994)
+scale = Vector2(0.81999964, 0.81999964)
+texture = ExtResource("17_lapqw")
+
+[node name="Label" type="Label" parent="Button/CanvasLayer/HealthBarP1/HealthBarP2"]
+offset_left = 109.0
+offset_top = 860.0
+offset_right = 141.0
+offset_bottom = 883.0
+text = "5.455"
+clip_text = true
 
 [node name="Door" type="Sprite2D" parent="."]
 position = Vector2(3819, 663)

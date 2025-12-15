@@ -37,6 +37,17 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		
+	if Global.healthp1 <= 0:
+		visible = false
+		Knocked = true
+	if Global.RespawnP1 == true:
+		$"..".position.y = Global.posbeforedeathPlayer1.y
+		visible = true
+		Knocked = false
+		Global.RespawnP1 = false
+		
+
 	
 	# Moves camera edge collisions accurate to camera edges
 	if not get_tree().current_scene.name == "Level4":
@@ -58,6 +69,14 @@ func _physics_process(delta: float) -> void:
 		HasJumped = false
 		if JumpApex:
 			$AnimatedSprite2D.play("JumpLand")
+		
+			
+		
+		
+	
+	if Global.healthp1 > 0 and HasJumped == false:
+		Global.posbeforedeathPlayer1 = $"..".position
+
 
 	#Movement
 	var direction := Input.get_axis("LEFT_P1", "RIGHT_P1")
@@ -78,7 +97,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.position.y = -1
 	
 	# Flips the sprite to be left/right depending on movement direction
-	if Input.is_action_just_pressed("LEFT_P1"):
+	if Input.is_action_just_pressed("LEFT_P1") and Global.healthp1 > 0:
 		$AnimatedSprite2D.flip_h = true
 		$AnimatedSprite2D.rotation_degrees = -3
 		$AttackHitbox/SwingAnimation.flip_h = true
@@ -88,7 +107,7 @@ func _physics_process(delta: float) -> void:
 		$AttackHitbox/SwingAnimation.flip_h = false
 		
 	# Makes jump and jump animation play
-	if Input.is_action_just_pressed("JUMP_P1") and is_on_floor():
+	if Input.is_action_just_pressed("JUMP_P1") and is_on_floor() and Global.healthp1 > 0:
 		velocity.y = JUMP_VELOCITY
 		HasJumped = true
 		$AnimatedSprite2D.play("JumpStart")
@@ -96,11 +115,11 @@ func _physics_process(delta: float) -> void:
 		AudioController.play_Jump()
 	
 	#Dash Mechanic:
-	if Input.is_action_just_pressed("DASH") and not dashing:
+	if Input.is_action_just_pressed("DASH") and not dashing and Global.healthp1 > 0:
 		dashing = true
 		AudioController.Dash()
 		DashTimer.start()
-	elif Input.is_action_just_pressed("DASH") and dashing :
+	elif Input.is_action_just_pressed("DASH") and dashing and Global.healthp1 > 0:
 		dashing = false
 	if dashing:
 		velocity.x = direction * SPEED * DASH
@@ -134,7 +153,7 @@ func _physics_process(delta: float) -> void:
 		modulate = Color(1,clamp(modulate.g+ delta,0,1),clamp(modulate.b+ delta,0,1))
 		
 	# Responsible for playing attack animation and putting hitboxes in the correct places
-	if Input.is_action_just_pressed("CatAttack") and $"../AttackTimer".is_stopped() == true:
+	if Input.is_action_just_pressed("CatAttack") and $"../AttackTimer".is_stopped() == true and Global.healthp1 > 0:
 		AudioController.play_SwordSwing()
 		$"../AttackTimer".start()
 		$AnimatedSprite2D.position.y = 1.5
@@ -156,33 +175,35 @@ func _on_dash_timer_timeout() -> void:
 
 #Makes the Cat specifically bounce LEFT when hurt
 func _on_right_hurtbox_body_entered(_body: Node2D) -> void:
-	Knocked = true
-	$"../KnockbackTimer".start()
-	KnockbackVector.x = $"..".position.x-30
-	KnockbackVector.y = $"..".position.y-10
-	HasJumped = true
-	$"../HitImmunity".start()
-	$RightHurtbox.position.y = -10000
-	$LeftHurtbox.position.y = -10000
-	#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
-	Global.healthp1 = Global.healthp1 - 1
-	modulate = Color(1,0,0)
-	AudioController.play_catmeowchies()
+	if Global.healthp1 > 0:
+		Knocked = true
+		$"../KnockbackTimer".start()
+		KnockbackVector.x = $"..".position.x-30
+		KnockbackVector.y = $"..".position.y-10
+		HasJumped = true
+		$"../HitImmunity".start()
+		$RightHurtbox.position.y = -10000
+		$LeftHurtbox.position.y = -10000
+		#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
+		Global.healthp1 = Global.healthp1 - 1
+		modulate = Color(1,0,0)
+		AudioController.play_catmeowchies()
 
 #Makes the Cat specifically bounce RIGHT when hurt
 func _on_left_hurtbox_body_entered(_body: Node2D) -> void:
-	Knocked = true
-	$"../KnockbackTimer".start()
-	KnockbackVector.x = $"..".position.x+30
-	KnockbackVector.y = $"..".position.y-10
-	HasJumped = true
-	$"../HitImmunity".start()
-	$RightHurtbox.position.y = -10000
-	$LeftHurtbox.position.y = -10000
-	#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
-	Global.healthp1 = Global.healthp1 - 1
-	modulate = Color(1,0,0)
-	AudioController.play_catmeowchies()
+	if Global.healthp1 > 0:
+		Knocked = true
+		$"../KnockbackTimer".start()
+		KnockbackVector.x = $"..".position.x+30
+		KnockbackVector.y = $"..".position.y-10
+		HasJumped = true
+		$"../HitImmunity".start()
+		$RightHurtbox.position.y = -10000
+		$LeftHurtbox.position.y = -10000
+		#You would probably want to figure out which enemy is damaging you then use a variable instead of 10 but I dont know how to do that - Macie
+		Global.healthp1 = Global.healthp1 - 1
+		modulate = Color(1,0,0)
+		AudioController.play_catmeowchies()
 
 # Plays different animations based on what part of the jump they are at
 func _on_animated_sprite_2d_animation_finished() -> void:
