@@ -31,12 +31,12 @@ func _process(_delta: float) -> void:
 			RespawnP1 = true
 			RespawnTimeP1 = 5 + BossRespawnPenalty
 			
-	if get_tree().current_scene.name == "Level5":
-		BossRespawnPenalty = 5
+	#if get_tree().current_scene.name == "Level5":
+		#BossRespawnPenalty = 5
 		
-	else:
-		BossRespawnPenalty = 0
-		BossPenaltyAdded = false
+	#else:
+	BossRespawnPenalty = 0
+	BossPenaltyAdded = false
 		
 	if BossRespawnPenalty > 0 and BossPenaltyAdded == false:
 		BossPenaltyAdded = true

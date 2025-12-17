@@ -455,6 +455,22 @@ position = Vector2(0.00010830164, 0.00880909)
 scale = Vector2(1, 0.9999997)
 shape = SubResource("RectangleShape2D_t74h0")
 
+[node name="CatWall" type="MeshInstance2D" parent="."]
+visible = false
+position = Vector2(211, 362.00003)
+scale = Vector2(-79.61034, -663.61444)
+mesh = SubResource("BoxMesh_jqrsn")
+texture = ExtResource("4_vwhew")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CatWall"]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatWall/StaticBody2D"]
+position = Vector2(0.00010830164, 0.00880909)
+scale = Vector2(1, 0.9999997)
+shape = SubResource("RectangleShape2D_t74h0")
+
 [node name="Floor21" type="MeshInstance2D" parent="."]
 visible = false
 position = Vector2(825, 595)
@@ -546,9 +562,9 @@ shape = SubResource("RectangleShape2D_t74h0")
 
 [node name="Floor18" type="MeshInstance2D" parent="."]
 visible = false
-position = Vector2(2018.0001, 582)
+position = Vector2(2040.0002, 565)
 rotation = 0.852766
-scale = Vector2(135.14906, -608.0446)
+scale = Vector2(135.14906, -551.1269)
 mesh = SubResource("BoxMesh_jqrsn")
 texture = ExtResource("4_vwhew")
 
@@ -904,7 +920,7 @@ position = Vector2(830, 484)
 scale = Vector2(-1.3159553, 1.1640472)
 texture = ExtResource("9_keyqw")
 
-[node name="Button" parent="." node_paths=PackedStringArray("DrawBridgeUp", "DrawBridgeDown", "DrawBridgeUpCol", "DrawBridgeDownCol") instance=ExtResource("11_3asqb")]
+[node name="Button" parent="." node_paths=PackedStringArray("DrawBridgeUp", "DrawBridgeDown", "DrawBridgeUpCol", "DrawBridgeDownCol", "CatCollision") instance=ExtResource("11_3asqb")]
 position = Vector2(2205.0002, 653)
 rotation = -0.4077505
 scale = Vector2(0.23400368, 0.23400368)
@@ -912,6 +928,7 @@ DrawBridgeUp = NodePath("../CastleBridgeUp")
 DrawBridgeDown = NodePath("../CastleBridgeDown")
 DrawBridgeUpCol = NodePath("../CastleBridgeUp/Floor10")
 DrawBridgeDownCol = NodePath("../CastleBridgeDown/Floor9")
+CatCollision = NodePath("../CatWall")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Button"]
 
@@ -1150,7 +1167,7 @@ libraries = {
 }
 
 [node name="Coin" parent="." instance=ExtResource("20_mnmct")]
-position = Vector2(3221, 681)
+position = Vector2(3596, 739)
 
 [node name="Coin2" parent="." instance=ExtResource("20_mnmct")]
 position = Vector2(3037, 253.00009)

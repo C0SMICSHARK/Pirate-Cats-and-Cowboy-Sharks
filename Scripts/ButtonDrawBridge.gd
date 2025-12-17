@@ -3,6 +3,7 @@ extends Node2D
 @export var DrawBridgeDown = Node
 @export var DrawBridgeUpCol = Node
 @export var DrawBridgeDownCol = Node
+@export var CatCollision = Node
 var used = 0
 
 func _ready() -> void:
@@ -15,6 +16,7 @@ func _process(_delta: float) -> void:
 		DrawBridgeUp.visible = false
 		DrawBridgeUpCol.position.y = 2000
 		DrawBridgeDownCol.position.y = 67.0
+		CatCollision.position.y = 5500
 		used += 1
 		print(used)
 
